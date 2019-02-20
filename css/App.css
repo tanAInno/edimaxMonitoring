@@ -1,11 +1,61 @@
 body {
     font-family: 'Titillium Web', sans-serif;
-    background: '#f9f9f9';
+    background: #f0f0f0;
     overflow-x: hidden;
     overflow-y: scroll;
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
 }
 
+.app-container {
+    width: 100%;
+}
+
+.app-wrapper {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border: 1px;
+}
+
+.app-banner-wrapper {
+    width: 100%;
+    min-height: 75px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #131313;
+}
+
+.app-banner {
+    width: 100%;
+    min-height: 75px;
+    display: flex;
+    flex-direction: row;
+    background: #005eff;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 33px;
+    color: #E7EFDD;
+}
+
+.header-text-wrapper {
+    width: 15%;
+    min-height: 75px;
+    font-size: 18px;
+    color: #f9f9f9;
+    background: #005eff;
+    border: 0px;
+}
+
+.header-text-wrapper:focus {
+    outline: none;
+}
+
+.tab-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

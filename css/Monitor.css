@@ -1,0 +1,75 @@
+.monitor-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.monitor-box {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 90%;
+    height: 250px;
+    margin-top: 40px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+}
+
+.header-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 250px;
+    border-right: 2px solid #ddd;
+    background: #10bf00;
+}
+
+.header-name {
+    margin-top: 25px;
+    margin-left: 3.5%;
+    color: #f4f4f4;
+    font-size: 24px;
+}
+
+.header-status {
+    margin-top: 25px;
+    margin-left: 3.5%;
+    color: #f4f4f4;
+    font-size: 24px;
+}
+
+.header-area {
+    margin-top: 25px;
+    margin-left: 3.5%;
+    color: #f4f4f4;
+    font-size: 24px;
+}
+
+.header-type {
+    margin-top: 25px;
+    margin-left: 3.5%;
+    color: #f4f4f4;
+    font-size: 24px;
+}
+
+.monitor-area{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 250px;
+}
+
+.monitor-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 35px;
+}
+
+.monitor-item {
+    width: 33.3%;
+    text-align: center;
+    color: #272727;
+    font-size: 25px;
+}
