@@ -12,10 +12,14 @@ class Monitor extends Component {
         this.get_interval = setInterval(() => {
             this.getDevices()
         }, 10000)
+        this.post_interval = setInterval(() => {
+            this.postDevices()
+        }, 300000)
     }
 
     componentWillUnmount(){
         clearInterval(this.get_interval)
+        clearInterval(this.post_interval)
     }
 
     async getDevices(){
@@ -25,6 +29,28 @@ class Monitor extends Component {
                 const devices = response.data.devices
                 this.props.dispatch(setDevices(devices))
             }).catch(error => console.log(error))
+    }
+
+    async postDevices(){
+        await this.props.edimaxReducer.devices.map((data,index) => {
+            axios.post("http://localhost:3000/api/edimaxs",{
+                name: data.name,
+                area: data.area,
+                status: data.status,
+                type: data.type,
+                pm1: data.pm1,
+                pm25: data.pm25,
+                pm10: data.pm10,
+                co: data.co,
+                co2: data.co2,
+                tvoc: data.tvoc,
+                hcho: data.hcho,
+                temperature: data.t,
+                humidity: data.h,
+                date_time: data.time
+            }).catch(error => console.log(error))
+        })
+        console.log("post")
     }
 
     render(){

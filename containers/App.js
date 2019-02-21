@@ -3,6 +3,7 @@ import axios from 'axios'
 import '../css/App.css'
 import { Tabs,TabLink,TabContent } from 'react-tabs-redux'
 import Monitor from './Monitor'
+import History from './History'
 
 class App extends Component {
     
@@ -25,6 +26,7 @@ class App extends Component {
                         <Monitor/>
                     </TabContent>
                     <TabContent for="history">
+                        <History/>
                     </TabContent>
                 </div>
             </Tabs>
