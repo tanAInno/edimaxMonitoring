@@ -12,7 +12,7 @@ class History extends Component {
     }
 
     async getHistories(){
-        await axios.get("http://localhost:3000/api/edimaxs")
+        await axios.get("http://203.154.132.69:8000/api/edimaxs")
             .then(response => {
                 console.log(response.data.data)
                 const histories = response.data.data

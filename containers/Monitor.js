@@ -33,7 +33,7 @@ class Monitor extends Component {
 
     async postDevices(){
         await this.props.edimaxReducer.devices.map((data,index) => {
-            axios.post("http://localhost:3000/api/edimaxs",{
+            axios.post("http://203.154.132.69:8000/api/edimaxs",{
                 name: data.name,
                 area: data.area,
                 status: data.status,
