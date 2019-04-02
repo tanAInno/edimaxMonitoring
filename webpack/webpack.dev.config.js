@@ -5,7 +5,7 @@ var parentDir = path.join(__dirname, '../');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = '0.0.0.0';
-const PORT = process.env.PORT || 7070;
+const PORT = process.env.PORT || 5050;
 
 const METADATA = Object.assign({}, {
     host: HOST,
