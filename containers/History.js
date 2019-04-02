@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { setDevices, setHistories } from '../actions/edimax';
 import moment from 'moment'
 import { convertArrayToCSV } from 'convert-array-to-csv';
+import Select from 'react-select'
 
 class History extends Component {
 
@@ -15,7 +16,9 @@ class History extends Component {
             csv : '',
             used_log_list: [],
             log_list: [],
-            counter: 0
+            counter: 0,
+            selectedOption: null,
+            options: [],
         }
         this.handleOnScroll = this.handleOnScroll.bind(this)
     }
@@ -36,9 +39,37 @@ class History extends Component {
                 console.log(response.data.data)
                 const histories = response.data.data
                 this.sortHistories(histories)
+                this.setOption(histories)
                 this.setState({log_list: this.props.edimaxReducer.histories})
                 this.setState({used_log_list: this.state.log_list.slice(0,40)})
             }).catch(error => console.log(error))
+    }
+
+    setOption(op){
+        let options = []
+        for(let i=0;i < op.length;i++){
+            if(this.find(options,op[i].name) == false){
+                options.push({label: op[i].name, value: op[i].name})
+            }
+        }
+        options.sort(function(a, b){
+            if(a.value < b.value) { return -1; }
+            if(a.value > b.value) { return 1; }
+            return 0;
+        })
+        this.setState({options: options})
+        console.log(this.state.options)
+    }
+
+    find(arr,name){
+        var found = false;
+        for(var i = 0; i < arr.length; i++) {
+            if (arr[i].value == name) {
+                found = true;
+                break;
+            }
+        }
+        return found
     }
 
     sortHistories(histories){
@@ -71,13 +102,44 @@ class History extends Component {
         }
     }
 
+    handleChange = (selectedOption) => {
+        this.setState({ selectedOption },() => this.filterLog());
+    }
+
+    filterLog(){
+        let histories = this.props.edimaxReducer.histories
+        let filter_list = []
+        console.log(this.state.selectedOption.value)
+        for(let i=0; i<histories.length;i++){
+            if(this.state.selectedOption.value == histories[i].name){
+                filter_list.push(histories[i])
+            }
+        }
+        this.setState({log_list: filter_list})
+        this.setState({used_log_list: this.state.log_list.slice(0,40)},() => this.filterDate())
+    }
+
+    filterDate(){
+        this.setState({counter: 0})
+        this.setState({log_list: this.state.log_list})
+        this.setState({used_log_list: this.state.log_list.slice(0,40)})
+    }
+
     render(){
         return(
             <div className="tab-container">
                 <div className="history-container">
-                <button
-                    className="export-button" 
-                    onClick={() => this.export()}>Export to CSV</button>
+                <div className="button-container">
+                    <Select
+                        value={this.state.selectedOption}
+                        onChange={this.handleChange}
+                        options={this.state.options}
+                        className="module-select"
+                        />
+                    <button
+                        className="export-button" 
+                        onClick={() => this.export()}>Export to CSV</button>
+                </div>
                 <div className="table-container">
                     <div className="table-header">
                         <div className="table-header-name">Name</div>

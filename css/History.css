@@ -6,6 +6,13 @@
     margin-bottom: 40px;
 }
 
+.button-container{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 20px; 
+}
+
 .table-container{
     display: flex;
     flex: 1;
@@ -96,8 +103,12 @@
 .export-button{
     width: 10%;
     height: 50px;
-    margin-top: 20px;
+    margin-left: 2%;
     font-size: 20px;
     background-color: #f9f9f9;
     border: 1.5px solid #808080;
+}
+
+.module-select{
+    width: 20%;
 }
