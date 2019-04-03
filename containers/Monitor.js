@@ -22,7 +22,6 @@ class Monitor extends Component {
     async getDevices(){
         await axios.get("https://airbox.edimaxcloud.com/devices?token=9af3944d-5ffa-4650-8e6a-dd7e665e0cf7")
             .then(response => {
-                console.log(response.data.devices)
                 const devices = response.data.devices
                 this.props.dispatch(setDevices(devices))
             }).catch(error => console.log(error))
