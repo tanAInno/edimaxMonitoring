@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     width: 90%;
-    height: 100px;
+    height: 150px;
     margin-top: 30px;
     background: white;
     border: 2px solid #A9A9A9;
@@ -23,7 +23,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 85%;
+}
+
+.export-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 75%;
+    margin-top: 20px; 
 }
 
 .table-container{
@@ -122,6 +130,15 @@
     border: 1.5px solid #808080;
 }
 
+.time-button{
+    width: 7%;
+    height: 40px;
+    margin-left: 1%;
+    font-size: 75%;
+    background-color: #f9f9f9;
+    border: 1.5px solid #808080;
+}
+
 .module-select{
     width: 25%;
     font-size: 75%;
@@ -133,7 +150,7 @@
 }
 
 .date-picker{
-    font-size: 100%;
+    font-size: 80%;
     width: 100%;
     border: 1px solid #808080;
     border-radius: 5px;

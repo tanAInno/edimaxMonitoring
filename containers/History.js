@@ -20,7 +20,7 @@ class History extends Component {
             used_log_list: [],
             log_list: [],
             name_filter_list: [],
-            counter: 0,
+            counter: 40,
             selectedOption: null,
             options: [],
             from_date: '',
@@ -84,7 +84,6 @@ class History extends Component {
             return moment(b.date_time) - moment(a.date_time)
         })
         this.props.dispatch(setHistories(histories))
-        console.log(this.props.edimaxReducer.histories)
     }
 
     export() {
@@ -121,7 +120,7 @@ class History extends Component {
                 filter_list.push(histories[i])
             }
         }
-        this.setState({ counter: 0 })
+        this.setState({ counter: 40 })
         this.setState({ name_filter_list: filter_list})
         this.setState({ log_list: filter_list })
         this.setState({ used_log_list: this.state.log_list.slice(0, 40) }, () => this.filterDate())
@@ -129,7 +128,7 @@ class History extends Component {
 
     filterDate() {
         if (this.state.from_date == '' && this.state.to_date == '') {
-            this.setState({ counter: 0 })
+            this.setState({ counter: 40 })
             this.setState({ log_list: this.state.log_list })
             this.setState({ used_log_list: this.state.log_list.slice(0, 40) })
         }
@@ -145,7 +144,7 @@ class History extends Component {
                     filter_list.push(data)
             }
             console.log(filter_list)
-            this.setState({ counter: 0 })
+            this.setState({ counter: 40 })
             this.setState({ log_list: filter_list })
             this.setState({ used_log_list: filter_list.slice(0, 40) })
         }
@@ -199,6 +198,12 @@ class History extends Component {
                                     placeholderText="Select final time"
                                 />
                             </div>
+                            <button className="time-button" style={{marginLeft: '2%'}}>1 Min</button>
+                            <button className="time-button">15 Min</button>
+                            <button className="time-button">1 Hour</button>
+                        </div>
+                        <div className="export-container">
+
                             <button
                                 className="export-button"
                                 onClick={() => this.export()}>Export to CSV</button>
