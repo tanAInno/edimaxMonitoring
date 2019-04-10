@@ -44,7 +44,6 @@ class History extends Component {
             .then(response => {
                 console.log(response.data.data)
                 const histories = response.data.data
-                this.sortHistories(histories)
                 this.setOption(histories)
                 this.setState({ name_filter_list: this.props.edimaxReducer.histories })
                 this.setState({ log_list: this.props.edimaxReducer.histories })
@@ -77,13 +76,6 @@ class History extends Component {
             }
         }
         return found
-    }
-
-    sortHistories(histories) {
-        histories.sort(function (a, b) {
-            return moment(b.date_time) - moment(a.date_time)
-        })
-        this.props.dispatch(setHistories(histories))
     }
 
     export() {
