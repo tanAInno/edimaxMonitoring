@@ -45,6 +45,7 @@ class History extends Component {
                 console.log(response.data.data)
                 const histories = response.data.data
                 this.setOption(histories)
+                this.props.dispatch(setHistories(histories))
                 this.setState({ name_filter_list: this.props.edimaxReducer.histories })
                 this.setState({ log_list: this.props.edimaxReducer.histories })
                 this.setState({ used_log_list: this.state.log_list.slice(0, 40) })
