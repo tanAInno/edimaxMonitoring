@@ -1,0 +1,122 @@
+.product-container {
+    width: 100%;
+}
+
+.product-wrapper {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.product-banner-wrapper {
+    width: 100%;
+    min-height: 75px;
+    display: flex;
+    flex-direction: row;
+}
+
+.product-banner {
+    width: 100%;
+    min-height: 75px;
+    display: flex;
+    flex-direction: row;
+    background: #D3D3D3;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 33px;
+    color: #2B2B2B;
+    position: fixed;
+    top: 0;
+}
+
+.product-text-wrapper {
+    width: 50%;
+    min-height: 75px;
+    font-size: 18px;
+    color: #2B2B2B;
+    background: #D3D3D3;
+    border: 0px;
+}
+
+.product-content-container {
+    align-self: 'center';
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo {
+    position: fixed;
+    top: 18px;
+    left: 15px;  
+}
+
+.logo-img {
+    width: 150px;
+    height: 40px;
+}
+
+.tab-row {
+    width: 25%;
+}
+
+.product-navbar {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #EDEDED;
+    position: fixed;
+    top: 77.5px;
+}
+
+.product-catalogue {
+    margin-left: 15%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+}
+
+.product-card {
+    width: 23%;
+    height: 470px;
+    margin-top: 40px;
+    margin-left: 4%;
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.product-description {
+    font-size: 14px;
+    height: 130px;
+    margin-top: 15px;
+}
+
+.detail-button {
+    width: 60%;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #FEEB34;
+    border: 1.5px solid #FFD500;
+    margin-top: 10px;
+    margin-left: 20%;
+}

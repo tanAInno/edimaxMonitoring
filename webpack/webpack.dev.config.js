@@ -47,11 +47,17 @@ module.exports = {
                 test: /\.svg/, 
                 loader: 'file-loader'
             },{
+                test: /\.png/, 
+                loader: 'file-loader'
+            },{
                 test: /\.gif$/, 
                 loader: "url-loader?mimetype=image/png"
             },{
-                test: /\\.(gif|ttf|eot|svg|woff2?)$/,
+                test: /\\.(jpe?g|png|gif|ttf|eot|svg|woff2?)$/,
                 use: 'url-loader?name=[name].[ext]',
+            },{
+                test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+                loader: 'url-loader?limit=100000' 
             }
         ]
     },
