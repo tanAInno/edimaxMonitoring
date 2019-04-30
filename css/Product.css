@@ -1,12 +1,41 @@
-.product-container {
-    width: 100%;
-}
-
 .product-wrapper {
     width: 100%;
     display: flex;
     flex: 1;
     flex-direction: column;
+    font-family: 'EkkamaiStandard';
+}
+
+.product-header {
+    background: #003678;
+    width: 100%;
+    border-bottom: 1.5px solid #2042a1;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.product-header-text {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-left: 1%;
+    margin-top: 2px;
+}
+
+.product-header-image {
+    width: 30px;
+    height: 30px;
+    margin-left: 0.5%;
+}
+
+.account-row {
+    margin-left: auto;
+    width: 40%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .product-banner-wrapper {
@@ -18,17 +47,15 @@
 
 .product-banner {
     width: 100%;
-    min-height: 75px;
+    min-height: 120px;
     display: flex;
     flex-direction: row;
-    background: #D3D3D3;
+    background: #FFFFFF;
     margin: 0;
     align-items: center;
-    justify-content: center;
     font-size: 33px;
     color: #2B2B2B;
-    position: fixed;
-    top: 0;
+    border-bottom: 1.5px solid #011225;
 }
 
 .product-text-wrapper {
@@ -48,35 +75,149 @@
 }
 
 .logo {
-    position: fixed;
-    top: 18px;
-    left: 15px;  
+    margin-left: 1%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .logo-img {
-    width: 150px;
-    height: 40px;
+    width: 100px;
+    height: 105px;
 }
 
-.tab-row {
-    width: 25%;
+.text-row {
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-text {
+    font-size: 20px;
+}
+
+.search-row {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin-right: 4%;
+}
+
+.search-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.search-input {
+    border: 1.5px solid#C0C0C0;
+    border-right: 0px;
+    width: 95%;
+    height: 30px;
+    font-size: 18px;
+    font-family: 'EkkamaiStandard'
+}
+
+.search-button {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid#C0C0C0;
+    border-left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-img {
+    width: 98.5%;
+    height: 96%;
+}
+
+.shopping-img {
+    width: 50px;
+    height: 50px;
+    margin-left: 2%;
+}
+
+.search-tab-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.search-tab-text {
+    font-size: 18px;
+    color: #2B2B2B;
+    margin-right: 7%;
+}
+
+.search-tab-text-last {
+    font-size: 18px;
+    color: #2B2B2B;
 }
 
 .product-navbar {
     width: 15%;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background: #EDEDED;
-    position: fixed;
-    top: 77.5px;
+    background: #003678;
+}
+
+.product-navbar-header {
+    width: 95%;
+    height: 60px;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.product-navbar-text {
+    margin-top: 10px;
+    margin-left: 5%;
+    color: white;
+    font-size: 18px;
+}
+
+.product-navbar-subtext {
+    margin-left: 15%;
+    color: white;
+    font-size: 18px;
+}
+
+.product-navbar-subitem {
+    margin-left: 25%;
+    color: white;
+    font-size: 18px;
 }
 
 .product-catalogue {
-    margin-left: 15%;
-    width: 80%;
+    width: 83%;
     display: flex;
     flex-direction: column;
+}
+
+.product-catalogue-text {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 2%;
+    color: #2B2B2B;
+}
+
+.product-catalogue-transtext {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 2%;
+    color: #003678;
 }
 
 .product-row{
@@ -87,15 +228,21 @@
 }
 
 .product-card {
-    width: 23%;
-    height: 470px;
-    margin-top: 40px;
-    margin-left: 4%;
+    width: 30%;
+    height: 550px;
+    margin-top: 20px;
+    margin-left: 2%;
+    border: 1px solid #EDEDED;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-image {
     width: 100%;
     height: 250px;
+    margin-top: 15px;
 }
 
 .product-name {
@@ -105,9 +252,19 @@
 }
 
 .product-description {
-    font-size: 14px;
-    height: 130px;
+    font-size: 12px;
+    height: 100px;
     margin-top: 15px;
+    width: 90%;
+}
+
+.product-tag {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.star-rating {
+    margin-top: 10px;
 }
 
 .detail-button {
@@ -115,8 +272,9 @@
     height: 35px;
     font-size: 16px;
     border-radius: 10px;
-    background-color: #FEEB34;
-    border: 1.5px solid #FFD500;
-    margin-top: 10px;
-    margin-left: 20%;
+    background-color: #003678;
+    border: 1.5px solid #022147;
+    color: white;
+    margin-top: 15px;
+    font-family: 'EkkamaiStandard';
 }
