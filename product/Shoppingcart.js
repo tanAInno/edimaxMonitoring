@@ -8,6 +8,8 @@ class ShoppingCart extends Component {
     render() {
         return (
             <div className="tab-container">
+                <div className="shopping-container">
+                </div>
             </div>
         )
     }
