@@ -4,11 +4,14 @@ import '../css/Product.css'
 import '../assets/fonts/EkkamaiStandard-Light.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import Product from './Product'
+import ShoppingCart from './Shoppingcart'
 
 class App extends Component {
 
     render() {
         return (
+            <Tabs className="product-container"
+                selectedTab="product">
             <div className="product-wrapper">
                 <div className="product-header">
                     <div className="product-header-text">ดาวน์โหลดแอพพลิเคชั่น | ติดต่อเรา</div>
@@ -35,20 +38,30 @@ class App extends Component {
                                 <div className="search-button">
                                     <img className="search-img" src={"../assets/images/search.jpg"} />
                                 </div>
-                                <img className="shopping-img" src={"../assets/images/shoppingcart.png"} />
+                                <TabLink className="tab-wrapper" to="shoppingcart">
+                                    <img className="shopping-img" src={"../assets/images/shoppingcart.png"} />
+                                </TabLink>
                             </div>
                             <div className="search-tab-row">
                                 <div className="search-tab-text">หน้าหลัก</div>
                                 <div className="search-tab-text">เกี่ยวกับเรา</div>
                                 <div className="search-tab-text">ข่าวสาร</div>
-                                <div className="search-tab-text">สินค้าและบริการ</div>
+                                <TabLink className="search-tab-text" to='product'>
+                                    สินค้าและบริการ
+                                </TabLink>
                                 <div className="search-tab-text-last">ช่วยเหลือ</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <Product />
+                <TabContent for="product">
+                    <Product />
+                </TabContent>
+                <TabContent for="shoppingcart">
+                    <ShoppingCart />
+                </TabContent>
             </div>
+            </Tabs>
         )
     }
 

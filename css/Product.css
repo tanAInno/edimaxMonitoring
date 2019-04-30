@@ -145,6 +145,11 @@
     margin-left: 2%;
 }
 
+.tab-wrapper {
+    border: 0px;
+    background: white;
+}
+
 .search-tab-row {
     width: 100%;
     display: flex;
@@ -155,6 +160,9 @@
     font-size: 18px;
     color: #2B2B2B;
     margin-right: 7%;
+    background: 'white';
+    font-family: 'EkkamaiStandard';
+    border: 0px;
 }
 
 .search-tab-text-last {
