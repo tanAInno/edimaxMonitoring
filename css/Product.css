@@ -201,18 +201,21 @@
     margin-left: 5%;
     color: white;
     font-size: 18px;
+    line-height: 2;
 }
 
 .product-navbar-subtext {
     margin-left: 15%;
     color: white;
     font-size: 18px;
+    line-height: 2;
 }
 
 .product-navbar-subitem {
     margin-left: 25%;
     color: white;
     font-size: 18px;
+    line-height: 2;
 }
 
 .product-catalogue {
@@ -264,6 +267,7 @@
     font-size: 18px;
     font-weight: bold;
     margin-top: 10px;
+    line-height: 1.5;
 }
 
 .product-description {
@@ -271,6 +275,7 @@
     height: 100px;
     margin-top: 15px;
     width: 90%;
+    line-height: 1.5;
 }
 
 .product-tag {
@@ -322,5 +327,12 @@
 }
 
 .tab-wrapper {
+    margin-left: 2%;
+}
+
+.karcher-logo {
+    width: 180px;
+    height: 50px;
+    margin-top: 15px;
     margin-left: 2%;
 }
