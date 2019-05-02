@@ -71,14 +71,14 @@ module.exports = {
 	compress: true,
 	allowedHosts: [
 	    '.inno.co.th'	
-	],
+    ],
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*',
+        },
         historyApiFallback: true,
         port: METADATA.port,
         host: METADATA.host
-    },
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*',
     },
   
 }
