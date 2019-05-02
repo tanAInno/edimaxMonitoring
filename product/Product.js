@@ -3,6 +3,8 @@ import axios from 'axios'
 import '../css/Product.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import StarRatings from 'react-star-ratings';
+import { setProducts } from '../actions/product';
+import { connect } from 'react-redux'
 
 class Product extends Component {
 
@@ -29,6 +31,22 @@ class Product extends Component {
         return product
     }
 
+    addToCart(data) {
+        let products = this.props.productReducer.products
+        let newobj = {img: data.img,name: data.name,desc: data.desc,tag: data.tag,amount: 1}
+        let exist = false
+        for(let i=0; i < products.length;i++){
+            if(products[i].name == data.name){
+                products[i].amount += 1
+                exist = true
+            }
+        }
+        if(!exist)
+            products.push(newobj)
+        this.props.dispatch(setProducts(products))
+        console.log(this.props.productReducer.products)
+    }
+
     renderRow(list) {
         console.log(list)
         return (
@@ -47,7 +65,7 @@ class Product extends Component {
                                 starRatedColor="#003678"
                                 className="star-rating"
                             />
-                            <button className='detail-button'>หยิบใส่รถเข็น</button>
+                            <button className='detail-button' onClick={() => this.addToCart(data)}>หยิบใส่รถเข็น</button>
                         </div>
                     )
                 })}
@@ -100,4 +118,4 @@ class Product extends Component {
 
 }
 
-export default Product
+export default connect(state => state)(Product)

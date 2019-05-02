@@ -1,8 +1,256 @@
 .shopping-container {
     width: 100%;
+    min-height: 100vh;
     display: flex;
     flex: 1;
     flex-direction: column;
     font-family: 'EkkamaiStandard';
     background: #003678;
+}
+
+.shopping-box {
+    margin-top: 30px;
+    width: 95%;
+    min-height: 90vh;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid #011225;
+    background: white;  
+    margin-bottom: 30px;
+}
+
+.shopping-content {
+    width: 95%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.shopping-header-row {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.shopping-img {
+    margin-left: -0.5%;
+    width: 50px;
+    height: 50px;
+}
+
+.shopping-text-group {
+    margin-left: 1%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #003678;
+}
+
+.shopping-header-text {
+    font-size: 18px;
+    margin-left: 1%;        
+}
+
+.shopping-table {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #003678;
+    margin-bottom: 30px;
+}
+
+.shopping-table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #003678;
+    width: 100%;
+    height: 50px;
+}
+
+.shopping-header-text-main {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 1%;
+    width: 79%;
+}
+
+.shopping-header-text-sub {
+    font-size: 16px;
+    font-weight: bold;
+    width: 10%;
+    text-align: center;
+}
+
+.shopping-table-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #003678;
+    width: 100%;
+    height: 200px;
+}
+
+.shopping-content-main {
+    margin-left: 1%;
+    width: 79%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.shopping-content-tagbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.shopping-content-tag-header {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.shopping-content-tag {
+    font-size: 18px;
+}
+
+.shopping-content-imagebox {
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shopping-content-image {
+    width: 170px;
+    height: 150px;
+}
+
+.shopping-content-name {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.shopping-content-desc {
+    margin-left: 2%;
+    font-size: 16px;
+    margin-right: 4%;
+}
+
+.shopping-content-sub {
+    width: 10%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.shopping-content-button-minus {
+    border: 1px solid #011225;
+    border-radius: 5px;
+    background: #003678;
+    color: white;
+    width: 30%;
+    height: 35px;
+    font-size: 30px;
+    font-family: 'EkkamaiStandard';
+    text-align: center;
+    vertical-align: middle;
+    line-height: 33px;
+}
+
+.shopping-content-button-minus:hover {
+    background-color: #00BFFF;	 
+}
+
+.shopping-content-button-minus:active {
+    background-color: #4169E1;
+}
+
+.shopping-content-button-plus {
+    border: 1px solid #011225;
+    border-radius: 5px;
+    background: #003678;
+    color: white;
+    width: 30%;
+    height: 35px;
+    font-size: 35px;
+    font-family: 'EkkamaiStandard';
+    text-align: center;
+    vertical-align: middle;
+    line-height: 33px;
+}
+
+.shopping-content-button-plus:hover {
+    background-color: #00BFFF;	 
+}
+
+.shopping-content-button-plus:active {
+    background-color: #4169E1;
+}
+
+.shopping-content-button-delete {
+    border: 1px solid #011225;
+    border-radius: 5px;
+    background: #003678;
+    color: white;
+    width: 50%;
+    height: 35px;
+    font-size: 20px;
+    font-family: 'EkkamaiStandard';
+    text-align: center;
+    vertical-align: middle;
+    line-height: 33px;
+}
+
+.shopping-content-button-delete:hover {
+    background-color: #00BFFF;	 
+}
+
+.shopping-content-button-delete:active {
+    background-color: #4169E1;
+}
+
+.shopping-content-amount {
+    width: 40%;
+    font-size: 16px;
+    text-align: center;
+}
+
+.shopping-table-footer {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.button-wrapper {
+    width: 15%;
+    margin-right: 1%;
+}
+
+.checkout-button {
+    margin-right: 1%;
+    border: 1px solid #011225;
+    border-radius: 5px;
+    background: #003678;
+    color: white;
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    font-family: 'EkkamaiStandard';
+}
+
+.checkout-button:hover {
+    background-color: #00BFFF;	 
+}
+
+.checkout-button:active {
+    background-color: #4169E1;
 }

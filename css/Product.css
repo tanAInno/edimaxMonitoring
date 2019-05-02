@@ -9,6 +9,7 @@
 .product-header {
     background: #003678;
     width: 100%;
+    border-top: 1.5px solid #2042a1;
     border-bottom: 1.5px solid #2042a1;
     height: 40px;
     display: flex;
@@ -32,10 +33,11 @@
 .account-row {
     margin-left: auto;
     width: 40%;
-    margin-right: 2%;
+    margin-right: 1%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .product-banner-wrapper {
@@ -148,6 +150,11 @@
 .tab-wrapper {
     border: 0px;
     background: white;
+}
+
+.header-tab-wrapper {
+    border: 0px;
+    background: #003678;
 }
 
 .search-tab-row {
@@ -285,4 +292,35 @@
     color: white;
     margin-top: 15px;
     font-family: 'EkkamaiStandard';
+}
+
+.detail-button:hover {
+    background-color: #00BFFF;	 
+}
+
+.detail-button:active {
+    background-color: #4169E1;
+}
+
+.login-button {
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #003678;
+    border: 1.5px solid white;
+    color: white;   
+    font-family: 'EkkamaiStandard';
+}
+
+.login-button:hover {
+    background-color: #00BFFF;	 
+}
+
+.login-button:active {
+    background-color: #4169E1;
+}
+
+.tab-wrapper {
+    margin-left: 2%;
 }
