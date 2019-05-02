@@ -75,5 +75,10 @@ module.exports = {
         historyApiFallback: true,
         port: METADATA.port,
         host: METADATA.host
-    }
+    },
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+    },
+  
 }
