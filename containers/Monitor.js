@@ -28,6 +28,10 @@ class Monitor extends Component {
     }
     
     render(){
+
+        if(this.props.edimaxReducer.devices.map == null || this.props.edimaxReducer.devices.map.length <= 0)
+            return(<div/>)
+        else
         return(
             <div className="tab-container">
                 <div className="monitor-container">
