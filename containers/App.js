@@ -4,10 +4,12 @@ import '../css/App.css'
 import { Tabs,TabLink,TabContent } from 'react-tabs-redux'
 import Monitor from './Monitor'
 import History from './History'
+import { Link,Redirect } from 'react-router-dom';
 
 class App extends Component {
     
     render () {
+        if(0 == 1)
         return (
             <Tabs className="app-container"
                 activeLinkStyle={{borderBottom: "5px solid #f9f9f9"}}>
@@ -31,6 +33,10 @@ class App extends Component {
                 </div>
             </Tabs>
         )
+        else
+            return(
+                <Redirect to='/product'/>
+            )
     }
 }
 
