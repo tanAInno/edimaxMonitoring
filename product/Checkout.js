@@ -4,6 +4,7 @@ import '../css/Checkout.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
 import { setProducts } from '../actions/product';
+import {Link} from 'react-router-dom';
 import Header from './Header'
 import Select from 'react-select'
 
@@ -43,14 +44,17 @@ class Checkout extends Component {
     }
 
     async sendRequest(){
-        await axios.post("http://203.154.132.69:8080/api/products",{
-            name: this.state.name,
-            email: this.state.email,
-            phone: this.state.phone,
-            department: this.state.department,
-            workplace: this.state.workplace,
-            productList: this.props.productReducer.products
-        }).catch(error => console.log(error))
+        if(this.props.productReducer.products.length > 0){
+            await axios.post("http://203.154.132.69:8080/api/products",{
+                name: this.state.name,
+                email: this.state.email,
+                phone: this.state.phone,
+                department: this.state.department,
+                workplace: this.state.workplace,
+                productList: this.props.productReducer.products
+            }).catch(error => console.log(error))
+        }
+        this.props.dispatch(setProducts([]))
     }
 
     render() {
@@ -114,7 +118,9 @@ class Checkout extends Component {
                                     )
                                 })}
                                 <div className="checkout-confirm-button-wrapper">
-                                    <button className="checkout-confirm-button" onClick={() => this.sendRequest()}>ยืนยันการสั่งซื้อ</button>
+                                    <Link to="/product/confirmation">
+                                        <button className="checkout-confirm-button" onClick={() => this.sendRequest()}>ยืนยันการสั่งซื้อ</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,46 @@
+.confirmation-container {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-family: 'EkkamaiStandard';
+    background: #003678;
+    min-height: 100vh;
+}
+
+.confirmation-box {
+    margin-top: 30px;
+    width: 95%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1.5px solid #011225;
+    background: white; 
+    margin-bottom: 140px;
+}
+
+.confirmation-text-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #003678;
+    margin-top: 40px;
+}
+
+.confirmation-text {
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.back-button {
+    border: 1px solid #011225;
+    border-radius: 5px;
+    background: #003678;
+    color: white;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    font-family: 'EkkamaiStandard';
+    margin-top: 70px;
+    margin-bottom: 50px;
+}

@@ -7,6 +7,7 @@ import Product from './Product'
 import Home from './Home'
 import ShoppingCart from './Shoppingcart'
 import Checkout from './Checkout'
+import Confirmation from './Confirmation'
 import Header from './Header'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ class App extends Component {
                 <Route exact path={this.props.match.path} component={Home} />
                 <Route path={`${this.props.match.path}/shoppingcart`} component={ShoppingCart} />
                 <Route path={`${this.props.match.path}/checkout`} component={Checkout} />
+                <Route path={`${this.props.match.path}/confirmation`} component={Confirmation} />
             </div>
         )
     }
