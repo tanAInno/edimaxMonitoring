@@ -20,9 +20,7 @@ class Product extends Component {
     renderProduct() {
         let product = []
         for (let i = 0; i < this.state.productList.length; i += 4) {
-            console.log(i)
             product.push(this.renderRow(this.state.productList.slice(i, i + 4)))
-            console.log(this.state.productList.length)
         }
         return product
     }
@@ -40,11 +38,9 @@ class Product extends Component {
         if(!exist)
             products.push(newobj)
         this.props.dispatch(setProducts(products))
-        console.log(this.props.productReducer.products)
     }
 
     renderRow(list) {
-        console.log(list)
         return (
             <div className='product-row'>
                 {list.map((data, index) => {

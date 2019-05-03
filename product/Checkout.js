@@ -12,13 +12,45 @@ class Checkout extends Component {
     constructor() {
         super()
         this.state = {
+            name: '',
+            email: '',
+            phone: '',
+            department: '',
+            workplace: '',
             selectedOption: '',
-            options: [{label: '3 เดือน', value: "3 เดือน"},{label: '6 เดือน', value: "6 เดือน"},]
+            options: [
+                {label: 'จ่ายเงินสด', value: 'จ่ายเงินสด'},
+                {label: 'หักจากเงินเดือนเป็นจำนวน 3 เดือน', value: "หักจากเงินเดือนเป็นจำนวน 3 เดือน"},
+                {label: 'หักจากเงินเดือนเป็นจำนวน 6 เดือน', value: "หักจากเงินเดือนเป็นจำนวน 6 เดือน"},]
         }
+    }
+
+    handleChangeWithKey = (key,e) => {
+        if(key == "name")
+            this.setState({name : e.target.value})
+        if(key == "email")
+            this.setState({email : e.target.value})
+        if(key == "phone")
+            this.setState({phone : e.target.value})
+        if(key == "department")
+            this.setState({department : e.target.value})
+        if(key == "workplace")
+            this.setState({workplace : e.target.value})
     }
 
     handleChange = (selectedOption) => {
         this.setState({ selectedOption })
+    }
+
+    async sendRequest(){
+        await axios.post("http://203.154.132.69:8080/api/products",{
+            name: this.state.name,
+            email: this.state.email,
+            phone: this.state.phone,
+            department: this.state.department,
+            workplace: this.state.workplace,
+            productList: this.props.productReducer.products
+        }).catch(error => console.log(error))
     }
 
     render() {
@@ -32,23 +64,33 @@ class Checkout extends Component {
                                 <div className="checkout-form-header">กรุณากรอกแบบฟอร์มเพื่อทำการสั่งซื้อ</div>
                                 <div className="checkout-input-wrapper">
                                     <div className="checkout-input-header">ชื่อ-สกุล</div>
-                                    <input className="checkout-input"/>
+                                    <input className="checkout-input"
+                                        value={this.state.name}
+                                        onChange={e => this.handleChangeWithKey("name",e)}/>
                                 </div>
                                 <div className="checkout-input-wrapper">
                                     <div className="checkout-input-header">E-mail</div>
-                                    <input className="checkout-input"/>
+                                    <input className="checkout-input"
+                                        value={this.state.email}
+                                        onChange={e => this.handleChangeWithKey("email",e)}/>
                                 </div>
                                 <div className="checkout-input-wrapper">
                                     <div className="checkout-input-header">เบอร์โทรศัพท์</div>
-                                    <input className="checkout-input"/>
+                                    <input className="checkout-input"
+                                        value={this.state.phone}
+                                        onChange={e => this.handleChangeWithKey("phone",e)}/>
                                 </div>
                                 <div className="checkout-input-wrapper">
                                     <div className="checkout-input-header">ฝ่าย</div>
-                                    <input className="checkout-input"/>
+                                    <input className="checkout-input"
+                                        value={this.state.department}
+                                        onChange={e => this.handleChangeWithKey("department",e)}/>
                                 </div>
                                 <div className="checkout-input-wrapper">
                                     <div className="checkout-input-header">โครงการ</div>
-                                    <input className="checkout-input"/>
+                                    <input className="checkout-input"
+                                        value={this.state.workplace}
+                                        onChange={e => this.handleChangeWithKey("workplace",e)}/>
                                 </div>
                                 <div className="checkout-input-wrapper">
                                     <div className="checkout-input-header">หักค่าสั่งซื้อสินค้าผ่านเงินเดือน</div>
@@ -72,7 +114,7 @@ class Checkout extends Component {
                                     )
                                 })}
                                 <div className="checkout-confirm-button-wrapper">
-                                    <button className="checkout-confirm-button">ยืนยันการสั่งซื้อ</button>
+                                    <button className="checkout-confirm-button" onClick={() => this.sendRequest()}>ยืนยันการสั่งซื้อ</button>
                                 </div>
                             </div>
                         </div>
