@@ -5,8 +5,21 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
 import { setProducts } from '../actions/product';
 import Header from './Header'
+import Select from 'react-select'
 
 class Checkout extends Component {
+    
+    constructor() {
+        super()
+        this.state = {
+            selectedOption: '',
+            options: [{label: '3 เดือน', value: "3 เดือน"},{label: '6 เดือน', value: "6 เดือน"},]
+        }
+    }
+
+    handleChange = (selectedOption) => {
+        this.setState({ selectedOption })
+    }
 
     render() {
         return(
@@ -37,6 +50,15 @@ class Checkout extends Component {
                                     <div className="checkout-input-header">โครงการ</div>
                                     <input className="checkout-input"/>
                                 </div>
+                                <div className="checkout-input-wrapper">
+                                    <div className="checkout-input-header">หักค่าสั่งซื้อสินค้าผ่านเงินเดือน</div>
+                                    <Select
+                                        value={this.state.selectedOption}
+                                        onChange={this.handleChange}
+                                        options={this.state.options}
+                                        className="checkout-select"
+                                    />
+                                </div>
                             </div>
                             <div className="checkout-shopping-form">
                                 <div className="checkout-form-header">รายชื่อสินค้าที่ต้องการสั่งซื้อ</div>
@@ -49,6 +71,9 @@ class Checkout extends Component {
                                         </div>
                                     )
                                 })}
+                                <div className="checkout-confirm-button-wrapper">
+                                    <button className="checkout-confirm-button">ยืนยันการสั่งซื้อ</button>
+                                </div>
                             </div>
                         </div>
                     </div>

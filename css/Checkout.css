@@ -1,6 +1,5 @@
 .checkout-container {
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -11,13 +10,12 @@
 .checkout-box {
     margin-top: 30px;
     width: 95%;
-    min-height: 90vh;
     align-self: center;
     display: flex;
     flex-direction: row;
     border: 1.5px solid #011225;
-    background: white;  
-    margin-bottom: 30px;
+    background: white; 
+    margin-bottom: 50px;
 }
 
 .checkout-form {
@@ -25,7 +23,8 @@
     margin-top: 5px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
+    margin-bottom: 40px;
 }
 
 .checkout-form-wrapper {
@@ -69,13 +68,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .checkout-shopping-row {
     display: flex;
     flex-direction: row;
     width: 90%;
-    height: 100px;
+    height: 110px;
     align-items: center;
     margin-top: 10px;
     border-bottom: 1px solid #C0C0C0;
@@ -97,4 +97,36 @@
     text-align: center;
     width: 20%;
     font-size: 18px;
+}
+
+.checkout-select {
+    width: 100%;
+    font-size: 18px;
+}
+
+.checkout-confirm-button-wrapper {
+    width: 20%;
+    margin-right: 5%;
+    margin-top: 15px;
+    align-self: flex-end;
+}
+
+.checkout-confirm-button {
+    margin-right: 1%;
+    border: 1px solid #011225;
+    border-radius: 5px;
+    background: #003678;
+    color: white;
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    font-family: 'EkkamaiStandard';
+}
+
+.checkout-confirm-button:hover {
+    background-color: #00BFFF;	 
+}
+
+.checkout-confirm-button:active {
+    background-color: #4169E1;
 }
