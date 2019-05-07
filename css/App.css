@@ -13,6 +13,10 @@ button:focus {
     cursor: pointer;
 }
 
+input:focus {
+    outline: none;
+}
+
 button:hover {
     cursor: pointer;
 }

@@ -1,0 +1,104 @@
+.product-modal-container {
+    width: 600px;
+    height: 300px;
+    border: 1px solid #003678;
+    font-family: 'EkkamaiStandard';
+    display: flex;
+    flex-direction: row;
+}
+
+.product-modal-left {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-modal-img {
+    width: 80%;
+    height: 65%;
+}
+
+.product-modal-name {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.product-modal-right {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-modal-amount {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+}
+
+.product-modal-button-minus {
+    border: 1px solid #011225;
+    background: #003678;
+    color: white;
+    width: 20%;
+    height: 39px;
+    font-size: 30px;
+    font-family: 'EkkamaiStandard';
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+.product-modal-button-plus {
+    border: 1px solid #011225;
+    background: #003678;
+    color: white;
+    width: 20%;
+    height: 39px;
+    font-size: 35px;
+    font-family: 'EkkamaiStandard';
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+.product-modal-content-amount {
+    width: 60%;
+    height: 35px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #003678;
+}
+
+.product-modal-confirm-button {
+    margin-top: 15px;
+    border: 1px solid #011225;
+    border-radius: 5px;
+    background: #003678;
+    color: white;
+    width: 50%;
+    height: 39px;
+    font-size: 18px;
+    font-family: 'EkkamaiStandard';
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+.product-modal-confirm-button:hover{
+    background-color: #00BFFF;	 
+}
+
+.product-modal-confirm-button:active{
+    background-color: #4169E1;
+}
+
+.dialog-text {
+    font-size: 16px;
+    color: #DC143C;
+}

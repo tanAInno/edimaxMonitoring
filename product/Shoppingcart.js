@@ -31,6 +31,14 @@ class ShoppingCart extends Component {
         this.props.dispatch(setProducts(products))
     }
 
+    handleChangeWithKey = (data,key,e) => {
+        if(key == "amount"){
+            let products = this.props.productReducer.products
+            products[products.indexOf(data)].amount = e.target.value
+            this.props.dispatch(setProducts(products))
+        }
+    }
+
     render() {
         return (
             <div className="product-wrapper">
@@ -68,7 +76,12 @@ class ShoppingCart extends Component {
                                                 </div>
                                                 <div className="shopping-content-sub">
                                                     <button className="shopping-content-button-minus" onClick={() => this.minus(data)}>-</button>
-                                                    <div className="shopping-content-amount">{data.amount}</div>
+                                                    <input 
+                                                        className="shopping-content-amount"
+                                                        value={data.amount}
+                                                        type="number"
+                                                        onChange={e => this.handleChangeWithKey(data,"amount",e)}
+                                                    />
                                                     <button className="shopping-content-button-plus" onClick={() => this.plus(data)}>+</button>
                                                 </div>
                                                 <div className="shopping-content-sub">
@@ -81,6 +94,11 @@ class ShoppingCart extends Component {
                                         <Link className="button-wrapper" to="/product/checkout">
                                             <button className="checkout-button">
                                                 ยืนยันการสั่งซื้อ
+                                            </button>
+                                        </Link>
+                                        <Link className="button-wrapper" to="/product">
+                                            <button className="checkout-button">
+                                                กลับไปยังหน้าแรก
                                             </button>
                                         </Link>
                                     </div>

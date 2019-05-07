@@ -22,16 +22,15 @@ class Monitor extends Component {
     async getDevices(){
         await axios.get("https://airbox.edimaxcloud.com/devices?token=9af3944d-5ffa-4650-8e6a-dd7e665e0cf7")
             .then(response => {
-                const devices = response.data.devices
-                this.props.dispatch(setDevices(devices))
+                if(response != null){
+                    const devices = response.data.devices
+                    this.props.dispatch(setDevices(devices))
+                }
             }).catch(error => console.log(error))
     }
     
     render(){
 
-        if(this.props.edimaxReducer.devices.map == null || this.props.edimaxReducer.devices.map.length <= 0)
-            return(<div/>)
-        else
         return(
             <div className="tab-container">
                 <div className="monitor-container">

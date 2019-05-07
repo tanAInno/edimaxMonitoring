@@ -117,9 +117,12 @@ class Checkout extends Component {
                                         </div>
                                     )
                                 })}
-                                <div className="checkout-confirm-button-wrapper">
-                                    <Link to="/product/confirmation">
+                                <div className="checkout-button-wrapper">
+                                    <Link to="/product/confirmation" className="checkout-confirm-button-wrapper">
                                         <button className="checkout-confirm-button" onClick={() => this.sendRequest()}>ยืนยันการสั่งซื้อ</button>
+                                    </Link>
+                                    <Link to="/product/shoppingcart" className="checkout-confirm-button-wrapper">
+                                        <button className="checkout-confirm-button">กลับไปยังหน้าก่อนหน้า</button>
                                     </Link>
                                 </div>
                             </div>

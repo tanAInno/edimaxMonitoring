@@ -224,6 +224,29 @@
     flex-direction: column;
 }
 
+.product-catalogue-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.product-catalogue-button-wrapper {
+    width: 15%;
+    margin-left: auto;
+    align-self: center;
+}
+
+.product-catalogue-button {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #003678;
+    border: 1.5px solid white;
+    color: white;   
+    font-family: 'EkkamaiStandard';
+}
+
 .product-catalogue-text {
     font-size: 20px;
     margin-top: 20px;
@@ -247,7 +270,7 @@
 
 .product-card {
     width: 30%;
-    height: 550px;
+    height: 600px;
     margin-top: 20px;
     margin-left: 2%;
     border: 1px solid #EDEDED;
@@ -292,18 +315,38 @@
     height: 35px;
     font-size: 16px;
     border-radius: 10px;
-    background-color: #003678;
-    border: 1.5px solid #022147;
-    color: white;
+    background-color: #FFD700;
+    border: 1.5px solid #FFA500;
+    color: black;
     margin-top: 15px;
     font-family: 'EkkamaiStandard';
 }
 
 .detail-button:hover {
-    background-color: #00BFFF;	 
+    background-color: #FFFF00;	 
 }
 
 .detail-button:active {
+    background-color: #FF8C00;
+}
+
+.pick-button {
+    width: 60%;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #003678;
+    border: 1.5px solid #022147;
+    color: white;
+    margin-top: 5px;
+    font-family: 'EkkamaiStandard';
+}
+
+.pick-button:hover {
+    background-color: #00BFFF;	 
+}
+
+.pick-button:active {
     background-color: #4169E1;
 }
 

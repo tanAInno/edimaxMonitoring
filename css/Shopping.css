@@ -1,3 +1,9 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .shopping-container {
     width: 100%;
     min-height: 100vh;
@@ -157,16 +163,15 @@
 
 .shopping-content-button-minus {
     border: 1px solid #011225;
-    border-radius: 5px;
     background: #003678;
     color: white;
     width: 30%;
-    height: 35px;
+    height: 39px;
     font-size: 30px;
     font-family: 'EkkamaiStandard';
     text-align: center;
     vertical-align: middle;
-    line-height: 33px;
+    line-height: 35px;
 }
 
 .shopping-content-button-minus:hover {
@@ -179,16 +184,15 @@
 
 .shopping-content-button-plus {
     border: 1px solid #011225;
-    border-radius: 5px;
     background: #003678;
     color: white;
     width: 30%;
-    height: 35px;
+    height: 39px;
     font-size: 35px;
     font-family: 'EkkamaiStandard';
     text-align: center;
     vertical-align: middle;
-    line-height: 33px;
+    line-height: 35px;
 }
 
 .shopping-content-button-plus:hover {
@@ -210,7 +214,6 @@
     font-family: 'EkkamaiStandard';
     text-align: center;
     vertical-align: middle;
-    line-height: 33px;
 }
 
 .shopping-content-button-delete:hover {
@@ -223,8 +226,10 @@
 
 .shopping-content-amount {
     width: 40%;
-    font-size: 16px;
+    height: 35px;
+    font-size: 18px;
     text-align: center;
+    border: 1px solid #003678;
 }
 
 .shopping-table-footer {
@@ -249,7 +254,7 @@
     color: white;
     width: 100%;
     height: 35px;
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'EkkamaiStandard';
 }
 

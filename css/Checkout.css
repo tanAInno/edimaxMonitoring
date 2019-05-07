@@ -104,22 +104,28 @@
     font-size: 18px;
 }
 
-.checkout-confirm-button-wrapper {
-    width: 20%;
+.checkout-button-wrapper {
+    width: 40%;
     margin-right: 5%;
     margin-top: 15px;
     align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin-right: 5%;
+}
+
+.checkout-confirm-button-wrapper {
+    width: 50%;
 }
 
 .checkout-confirm-button {
-    margin-right: 1%;
     border: 1px solid #011225;
     border-radius: 5px;
     background: #003678;
     color: white;
     width: 100%;
     height: 35px;
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'EkkamaiStandard';
 }
 

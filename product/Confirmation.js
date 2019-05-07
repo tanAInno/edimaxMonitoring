@@ -17,7 +17,7 @@ class Confirmation extends Component {
                     <div className="confirmation-container">
                         <div className="confirmation-box">
                             <div className="confirmation-text-header">สั่งสินค้าเรียบร้อยแล้ว</div>
-                            <div className="confirmation-text">ระบบจะทำการใบประเมินราคาสินค้าผ่านทาง E-mail ในภายหลัง</div>
+                            <div className="confirmation-text">ระบบจะทำการส่งใบประเมินราคาสินค้าผ่านทาง E-mail ในภายหลัง</div>
                             <Link to="/product">
                                 <button className="back-button">กลับเข้าสู่หน้าแรก</button>
                             </Link>
