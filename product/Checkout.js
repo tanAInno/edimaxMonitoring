@@ -21,8 +21,9 @@ class Checkout extends Component {
             selectedOption: '',
             options: [
                 {label: 'จ่ายเงินสด', value: 'จ่ายเงินสด'},
-                {label: 'หักจากเงินเดือนเป็นจำนวน 3 เดือน', value: "หักจากเงินเดือนเป็นจำนวน 3 เดือน"},
-                {label: 'หักจากเงินเดือนเป็นจำนวน 6 เดือน', value: "หักจากเงินเดือนเป็นจำนวน 6 เดือน"},]
+                {label: 'ผ่อนชำระ 3 งวด', value: 'ผ่อนชำระ 3 งวด'},
+                {label: 'ผ่อนชำระ 6 งวด', value: 'ผ่อนชำระ 6 งวด'},
+                {label: 'ผ่อนชำระ 9 งวด', value: 'ผ่อนชำระ 9 งวด'},]
         }
     }
 
@@ -97,7 +98,7 @@ class Checkout extends Component {
                                         onChange={e => this.handleChangeWithKey("workplace",e)}/>
                                 </div>
                                 <div className="checkout-input-wrapper">
-                                    <div className="checkout-input-header">หักค่าสั่งซื้อสินค้าผ่านเงินเดือน</div>
+                                    <div className="checkout-input-header">วิธีการชำระเงิน</div>
                                     <Select
                                         value={this.state.selectedOption}
                                         onChange={this.handleChange}

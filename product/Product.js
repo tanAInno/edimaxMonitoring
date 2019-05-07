@@ -75,7 +75,7 @@ class Product extends Component {
                                 starRatedColor="#003678"
                                 className="star-rating"
                             />
-                            <button className='detail-button'>ดูรายละเอียด</button>
+                            {/* <button className='detail-button'>ดูรายละเอียด</button> */}
                             <button className='pick-button' onClick={() => this.openModal(data)}>หยิบสินค้่่าใส่รถเข็น</button>
                         </div>
                     )
