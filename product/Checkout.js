@@ -52,7 +52,8 @@ class Checkout extends Component {
                 phone: this.state.phone,
                 department: this.state.department,
                 workplace: this.state.workplace,
-                productList: this.props.productReducer.products
+                productList: this.props.productReducer.products,
+                paymentOption: this.state.selectedOption
             }).catch(error => console.log(error))
         }
         this.props.dispatch(setProducts([]))
