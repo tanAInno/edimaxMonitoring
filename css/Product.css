@@ -147,6 +147,20 @@
     margin-left: 2%;
 }
 
+.shopping-noti {
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #FFA500;
+    border: 1px solid #FF8C00;
+    border-radius: 10px;
+    width: 16px;
+    text-align: center;
+    text-justify: center;
+    margin-top: 3%;
+    margin-left: -1%;
+}
+
 .tab-wrapper {
     border: 0px;
     background: white;

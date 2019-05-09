@@ -3,8 +3,17 @@ import axios from 'axios'
 import '../css/Product.css'
 import '../assets/fonts/EkkamaiStandard-Light.css'
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 class Header extends Component {
+
+    renderNoti(){
+        if(this.props.productReducer.products.length > 0)
+            return(
+                <div className="shopping-noti">{this.props.productReducer.products.length}</div>
+            )
+    }
+
     render() {
         return (
             <div>
@@ -32,6 +41,7 @@ class Header extends Component {
                             <Link className="tab-wrapper" to="/product/shoppingcart">
                                 <img className="shopping-img" src={"../assets/images/shoppingcart.png"} />
                             </Link>
+                            {this.renderNoti()}
                         </div>
                         <div className="search-tab-row">
                             <div className="search-tab-text">หน้าหลัก</div>
@@ -48,4 +58,4 @@ class Header extends Component {
     }
 }
 
-export default Header
+export default connect(state => state)(Header)

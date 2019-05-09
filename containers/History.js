@@ -10,6 +10,7 @@ import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-widgets/dist/css/react-widgets.css';
+import route from '../api'
 
 class History extends Component {
 
@@ -40,7 +41,7 @@ class History extends Component {
 
 
     async getHistories() {
-        await axios.get("http://203.154.132.69:8080/api/edimaxs")
+        await axios.get(route+"edimaxs")
             .then(response => {
                 console.log(response.data.data)
                 const histories = response.data.data

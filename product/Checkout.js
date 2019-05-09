@@ -7,6 +7,7 @@ import { setProducts } from '../actions/product';
 import {Link} from 'react-router-dom';
 import Header from './Header'
 import Select from 'react-select'
+import route from '../api'
 
 class Checkout extends Component {
     
@@ -21,9 +22,9 @@ class Checkout extends Component {
             selectedOption: '',
             options: [
                 {label: 'จ่ายเงินสด', value: 'จ่ายเงินสด'},
-                {label: 'ผ่อนชำระ 3 งวด', value: 'ผ่อนชำระ 3 งวด'},
-                {label: 'ผ่อนชำระ 6 งวด', value: 'ผ่อนชำระ 6 งวด'},
-                {label: 'ผ่อนชำระ 9 งวด', value: 'ผ่อนชำระ 9 งวด'},]
+                {label: 'ผ่อนชำระ 3 งวด (0.10%)', value: 'ผ่อนชำระ 3 งวด (0.10%)'},
+                {label: 'ผ่อนชำระ 6 งวด (0.15%)', value: 'ผ่อนชำระ 6 งวด (0.15%)'},
+                {label: 'ผ่อนชำระ 9 งวด (0.20%)', value: 'ผ่อนชำระ 9 งวด (0.20%)'},]
         }
     }
 
@@ -46,7 +47,7 @@ class Checkout extends Component {
 
     async sendRequest(){
         if(this.props.productReducer.products.length > 0){
-            await axios.post("http://203.154.132.69:8080/api/products",{
+            await axios.post(route+"products",{
                 name: this.state.name,
                 email: this.state.email,
                 phone: this.state.phone,

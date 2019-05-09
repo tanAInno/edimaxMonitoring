@@ -1,4 +1,4 @@
-import { SET_PRODUCTS, SET_CHOOSEN_PRODUCTS } from "../types/product";
+import { SET_PRODUCTS, SET_CHOOSEN_PRODUCTS, SET_CUSTOMER_LIST } from "../types/product";
 export const setProducts = (products) => {
     return dispatch => {
         dispatch({
@@ -13,6 +13,15 @@ export const setChoosenProduct = (choosenProduct) => {
         dispatch({
             type: SET_CHOOSEN_PRODUCTS,
             payload: { choosenProduct }
+        })
+    }
+}
+
+export const setCustomerList = (customerList) => {
+    return dispatch => {
+        dispatch({
+            type: SET_CUSTOMER_LIST,
+            payload: { customerList }
         })
     }
 }
