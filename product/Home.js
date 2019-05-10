@@ -6,6 +6,7 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import Product from './Product'
 import ShoppingCart from './Shoppingcart'
 import Header from './Header'
+import Footer from './Footer'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -15,6 +16,7 @@ class Home extends Component {
             <div className="product-wrapper">
                 <Header/>
                 <Product/>
+                <Footer/>
             </div>
         )
     }
