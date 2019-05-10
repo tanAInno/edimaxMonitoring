@@ -18,6 +18,7 @@ class Admin extends Component {
                 console.log(response)
                 const customerList = response.data.data.map(c => {
                     return ({
+                        _id: c._id,
                         name: c.name,
                         email: c.email,
                         phone: c.phone,
