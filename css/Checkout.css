@@ -34,16 +34,6 @@
     min-height: 50px;
 }
 
-.checkout-form-header {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    font-size: 24px;
-    font-weight: bold;
-    border-bottom: 1.5px solid #011225;
-    line-height: 3;
-}
-
 .checkout-input-wrapper {
     margin-top: 20px;
     width: 85%;
@@ -104,16 +94,6 @@
     font-size: 18px;
 }
 
-.checkout-button-wrapper {
-    width: 40%;
-    margin-right: 5%;
-    margin-top: 15px;
-    align-self: flex-end;
-    display: flex;
-    flex-direction: row;
-    margin-right: 5%;
-}
-
 .checkout-confirm-button-wrapper {
     width: 50%;
 }
@@ -135,4 +115,68 @@
 
 .checkout-confirm-button:active {
     background-color: #4169E1;
+}
+
+
+@media (min-width: 24em){
+    .checkout-form-header {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom: 1.5px solid #011225;
+        line-height: 3;
+    }
+    .checkout-button-wrapper {
+        width: 60%;
+        margin-right: 5%;
+        margin-top: 15px;
+        align-self: flex-end;
+        display: flex;
+        flex-direction: row;
+        margin-right: 5%;
+    }
+}
+
+@media (min-width: 64em){
+    .checkout-form-header {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom: 1.5px solid #011225;
+        line-height: 3;
+    }
+    .checkout-button-wrapper {
+        width: 50%;
+        margin-right: 5%;
+        margin-top: 15px;
+        align-self: flex-end;
+        display: flex;
+        flex-direction: row;
+        margin-right: 5%;
+    }
+}
+
+@media (min-width: 72em){
+    .checkout-form-header {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 1.5px solid #011225;
+        line-height: 3;
+    }
+    .checkout-button-wrapper {
+        width: 40%;
+        margin-right: 5%;
+        margin-top: 15px;
+        align-self: flex-end;
+        display: flex;
+        flex-direction: row;
+        margin-right: 5%;
+    }
 }

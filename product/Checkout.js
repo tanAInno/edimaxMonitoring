@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom';
 import Header from './Header'
 import Select from 'react-select'
 import route from '../api'
+import Footer from './Footer'
 
 class Checkout extends Component {
     
@@ -21,7 +22,7 @@ class Checkout extends Component {
             workplace: '',
             selectedOption: '',
             options: [
-                {label: 'จ่ายเงินสด', value: 'จ่ายเงินสด'},
+                {label: 'ชำระเงินทันที', value: 'ชำระเงินทันที'},
                 {label: 'ผ่อนชำระ 3 งวด', value: 'ผ่อนชำระ 3 งวด'},
                 {label: 'ผ่อนชำระ 6 งวด', value: 'ผ่อนชำระ 6 งวด'},
                 {label: 'ผ่อนชำระ 9 งวด', value: 'ผ่อนชำระ 9 งวด'},]
@@ -132,6 +133,7 @@ class Checkout extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }

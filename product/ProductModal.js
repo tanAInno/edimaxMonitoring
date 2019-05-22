@@ -3,6 +3,7 @@ import axios from 'axios'
 import '../css/ProductModal.css'
 import { setProducts, setChoosenProduct } from '../actions/product';
 import { connect } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom';
 
 class ProductModal extends Component {
 
@@ -72,6 +73,7 @@ class ProductModal extends Component {
                     </div>
                     <button className="product-modal-confirm-button" onClick={() => this.addToCart()}>หยิบใส่รถเข็น</button>
                     {this.renderDialog()}
+                    <Link className="product-modal-button-wrapper" to="/product/shoppingcart"><button className="product-modal-link-button">ไปยังหน้ารถเข็น</button></Link>
                 </div>
             </div>
         )

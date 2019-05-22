@@ -123,11 +123,6 @@ class Product extends Component {
                     <div className='product-catalogue'>
                         <div className="product-catalogue-header">
                             <img className="karcher-logo" src={"../assets/images/karcher.png"} />
-                            <Link to="/product/shoppingcart" className="product-catalogue-button-wrapper">
-                                <button className="product-catalogue-button">
-                                    ไปยังหน้ารถเข็น
-                                </button>
-                            </Link>
                         </div>
                         {this.renderProduct()}
                     </div>

@@ -46,6 +46,28 @@
     border-radius: 3px;
 }
 
+.admin-export-button {
+    width: 20%;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #003678;
+    border: 1.5px solid black;
+    color: white;   
+    font-family: 'EkkamaiStandard';
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.admin-export-button:hover {
+    background-color: #00BFFF;	 
+}
+
+.admin-export-button:active {
+    background-color: #4169E1;
+}
+
 .admin-login-button {
     width: 20%;
     height: 35px;
@@ -70,7 +92,6 @@
 
 .admin-container {
     width: 100%;
-    height: 100vh;
     display: flex;
     flex: 1;
     flex-direction: column;

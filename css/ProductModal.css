@@ -90,11 +90,38 @@
     line-height: 35px;
 }
 
+.product-modal-button-wrapper {
+    width: 50%;
+}
+
+.product-modal-link-button {
+    margin-top: 15px;
+    border: 1px solid #011225;
+    border-radius: 5px;
+    background: #003678;
+    color: white;
+    width: 100%;
+    height: 39px;
+    font-size: 18px;
+    font-family: 'EkkamaiStandard';
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
 .product-modal-confirm-button:hover{
     background-color: #00BFFF;	 
 }
 
 .product-modal-confirm-button:active{
+    background-color: #4169E1;
+}
+
+.product-modal-link-button:hover{
+    background-color: #00BFFF;	 
+}
+
+.product-modal-link-button:active{
     background-color: #4169E1;
 }
 

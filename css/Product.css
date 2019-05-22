@@ -177,59 +177,11 @@
     flex-direction: row;
 }
 
-.search-tab-text {
-    font-size: 18px;
-    color: #2B2B2B;
-    margin-right: 7%;
-    background: 'white';
-    font-family: 'EkkamaiStandard';
-    border: 0px;
-}
-
-.search-tab-text-last {
-    font-size: 18px;
-    color: #2B2B2B;
-}
-
 .product-navbar {
     width: 15%;
     display: flex;
     flex-direction: column;
     background: #003678;
-}
-
-.product-navbar-header {
-    width: 95%;
-    height: 60px;
-    border-bottom: 1px solid white;
-    font-size: 20px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-}
-
-.product-navbar-text {
-    margin-top: 10px;
-    margin-left: 5%;
-    color: white;
-    font-size: 18px;
-    line-height: 2;
-}
-
-.product-navbar-subtext {
-    margin-left: 15%;
-    color: white;
-    font-size: 18px;
-    line-height: 2;
-}
-
-.product-navbar-subitem {
-    margin-left: 25%;
-    color: white;
-    font-size: 18px;
-    line-height: 2;
 }
 
 .product-catalogue {
@@ -249,17 +201,6 @@
     width: 15%;
     margin-left: auto;
     align-self: center;
-}
-
-.product-catalogue-button {
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    border-radius: 10px;
-    background-color: #003678;
-    border: 1.5px solid white;
-    color: white;   
-    font-family: 'EkkamaiStandard';
 }
 
 .product-catalogue-text {
@@ -283,24 +224,6 @@
     margin-bottom: 10px;
 }
 
-.product-card {
-    width: 22.5%;
-    height: 600px;
-    margin-top: 20px;
-    margin-left: 2%;
-    border: 1px solid #EDEDED;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.product-image {
-    width: 100%;
-    height: 250px;
-    margin-top: 15px;
-}
-
 .product-name {
     font-size: 18px;
     font-weight: bold;
@@ -310,7 +233,7 @@
 
 .product-description {
     font-size: 12px;
-    height: 100px;
+    height: 23%;
     margin-top: 15px;
     width: 90%;
     line-height: 1.5;
@@ -343,18 +266,6 @@
 
 .detail-button:active {
     background-color: #FF8C00;
-}
-
-.pick-button {
-    width: 60%;
-    height: 35px;
-    font-size: 16px;
-    border-radius: 10px;
-    background-color: #003678;
-    border: 1.5px solid #022147;
-    color: white;
-    margin-top: 5px;
-    font-family: 'EkkamaiStandard';
 }
 
 .pick-button:hover {
@@ -393,4 +304,223 @@
     height: 50px;
     margin-top: 15px;
     margin-left: 2%;
+}
+
+@media (min-width: 24em){
+    .search-tab-text {
+        font-size: 16px;
+        color: #2B2B2B;
+        margin-right: 7%;
+        background: 'white';
+        font-family: 'EkkamaiStandard';
+        border: 0px;
+    }
+    .search-tab-text-last {
+        font-size: 16px;
+        color: #2B2B2B;
+    }
+    .pick-button {
+        width: 80%;
+        height: 35px;
+        font-size: 13px;
+        border-radius: 10px;
+        background-color: #003678;
+        border: 1.5px solid #022147;
+        color: white;
+        margin-top: 5px;
+        font-family: 'EkkamaiStandard';
+    }
+    .product-card {
+        width: 22.5%;
+        height: 550px;
+        margin-top: 20px;
+        margin-left: 2%;
+        border: 1px solid #EDEDED;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-image {
+        width: 100%;
+        height: 200px;
+        margin-top: 15px;
+    }
+    .product-navbar-header {
+        width: 95%;
+        height: 60px;
+        border-bottom: 1px solid white;
+        font-size: 16px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    }
+    
+    .product-navbar-text {
+        margin-top: 10px;
+        margin-left: 5%;
+        color: white;
+        font-size: 14px;
+        line-height: 2;
+    }
+    
+    .product-navbar-subtext {
+        margin-left: 15%;
+        color: white;
+        font-size: 14px;
+        line-height: 2;
+    }
+    
+    .product-navbar-subitem {
+        margin-left: 25%;
+        color: white;
+        font-size: 14px;
+        line-height: 2;
+    }
+}
+
+@media (min-width: 64em){
+    .search-tab-text {
+        font-size: 16px;
+        color: #2B2B2B;
+        margin-right: 7%;
+        background: 'white';
+        font-family: 'EkkamaiStandard';
+        border: 0px;
+    }
+    .search-tab-text-last {
+        font-size: 16px;
+        color: #2B2B2B;
+    }
+    .pick-button {
+        width: 80%;
+        height: 35px;
+        font-size: 13px;
+        border-radius: 10px;
+        background-color: #003678;
+        border: 1.5px solid #022147;
+        color: white;
+        margin-top: 5px;
+        font-family: 'EkkamaiStandard';
+    }
+    .product-card {
+        width: 22.5%;
+        height: 550px;
+        margin-top: 20px;
+        margin-left: 2%;
+        border: 1px solid #EDEDED;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-image {
+        width: 100%;
+        height: 200px;
+        margin-top: 15px;
+    }
+    .product-navbar-header {
+        width: 95%;
+        height: 60px;
+        border-bottom: 1px solid white;
+        font-size: 18px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    }
+    .product-navbar-text {
+        margin-top: 10px;
+        margin-left: 5%;
+        color: white;
+        font-size: 16px;
+        line-height: 2;
+    }
+    .product-navbar-subtext {
+        margin-left: 15%;
+        color: white;
+        font-size: 16px;
+        line-height: 2;
+    }
+    .product-navbar-subitem {
+        margin-left: 25%;
+        color: white;
+        font-size: 16px;
+        line-height: 2;
+    }
+}
+
+@media (min-width: 72em){
+    .search-tab-text {
+        font-size: 18px;
+        color: #2B2B2B;
+        margin-right: 7%;
+        background: 'white';
+        font-family: 'EkkamaiStandard';
+        border: 0px;
+    }
+    .search-tab-text-last {
+        font-size: 18px;
+        color: #2B2B2B;
+    }
+    .pick-button {
+        width: 60%;
+        height: 35px;
+        font-size: 16px;
+        border-radius: 10px;
+        background-color: #003678;
+        border: 1.5px solid #022147;
+        color: white;
+        margin-top: 5px;
+        font-family: 'EkkamaiStandard';
+    }
+    .product-card {
+        width: 22.5%;
+        height: 630px;
+        margin-top: 20px;
+        margin-left: 2%;
+        border: 1px solid #EDEDED;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-image {
+        width: 100%;
+        height: 250px;
+        margin-top: 15px;
+    }
+    .product-navbar-header {
+        width: 95%;
+        height: 60px;
+        border-bottom: 1px solid white;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    }
+    .product-navbar-text {
+        margin-top: 10px;
+        margin-left: 5%;
+        color: white;
+        font-size: 18px;
+        line-height: 2;
+    }
+    .product-navbar-subtext {
+        margin-left: 15%;
+        color: white;
+        font-size: 18px;
+        line-height: 2;
+    }
+    .product-navbar-subitem {
+        margin-left: 25%;
+        color: white;
+        font-size: 18px;
+        line-height: 2;
+    }
 }

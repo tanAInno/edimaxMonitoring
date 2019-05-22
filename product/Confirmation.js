@@ -5,6 +5,7 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
 import { setProducts } from '../actions/product';
 import Header from './Header'
+import Footer from './Footer'
 import {Link} from 'react-router-dom';
 
 class Confirmation extends Component {
@@ -24,6 +25,7 @@ class Confirmation extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }

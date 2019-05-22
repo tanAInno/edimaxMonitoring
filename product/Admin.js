@@ -5,11 +5,36 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
 import route from '../api'
 import { setCustomerList } from '../actions/product';
+import { convertArrayToCSV } from 'convert-array-to-csv';
 
 class Admin extends Component {
 
     componentDidMount() {
         this.getList()
+    }
+
+    export() {
+        let exportList = []
+        for(let i=0;i < this.props.productReducer.customerList.length; i++){
+            let data = this.props.productReducer.customerList[i]
+            let productList = this.props.productReducer.customerList[i].productList
+            for(let j=0; j < productList.length; j++){
+                let exportdata = {
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone,
+                    department: data.department,
+                    workplace: data.workplace,
+                    product: productList[j].name,
+                    amount: productList[j].amount,
+                    paymentOption: data.paymentOption
+                }
+                exportList.push(exportdata)
+            }
+        }
+        let csv = convertArrayToCSV(exportList)
+        var fileDownload = require('js-file-download');
+        fileDownload(csv, 'history.csv')
     }
 
     async getList() {
@@ -36,6 +61,7 @@ class Admin extends Component {
         return (
             <div className="admin-container">
                 <div className="admin-header">รายชื่อการสั่งซื้อสินค้า</div>
+                <button onClick={() => this.export()} className="admin-export-button">Export to CSV</button>
                 <div className="admin-table">
                     <div className="admin-table-header">
                         <div className="admin-table-header-name">

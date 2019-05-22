@@ -5,6 +5,7 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
 import { setProducts } from '../actions/product';
 import Header from './Header'
+import Footer from './Footer'
 import { Link, Redirect } from 'react-router-dom';
 
 class ShoppingCart extends Component {
@@ -107,6 +108,7 @@ class ShoppingCart extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }
