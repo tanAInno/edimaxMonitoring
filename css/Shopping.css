@@ -115,34 +115,12 @@ input[type=number]::-webkit-outer-spin-button {
     width: 10%;
 }
 
-.shopping-content-tag-header {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 1.5;
-}
-
-.shopping-content-tag {
-    font-size: 18px;
-    line-height: 1.5;
-}
-
 .shopping-content-imagebox {
     width: 20%;
     margin-left: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.shopping-content-image {
-    width: 100%;
-    height: 150px;
-}
-
-.shopping-content-name {
-    margin-top: 5px;
-    font-size: 16px;
-    line-height: 1.5;
 }
 
 .shopping-content-desc {
@@ -264,4 +242,68 @@ input[type=number]::-webkit-outer-spin-button {
 
 .checkout-button:active {
     background-color: #4169E1;
+}
+
+
+@media (min-width: 24em){
+    .shopping-content-image {
+        width: 80%;
+        height: 100px;
+    }
+    .shopping-content-name {
+        margin-top: 5px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .shopping-content-tag-header {
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+    .shopping-content-tag {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
+
+@media (min-width: 64em){
+    .shopping-content-image {
+        width: 90%;
+        height: 125px;
+    }
+    .shopping-content-name {
+        margin-top: 5px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .shopping-content-tag-header {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+    .shopping-content-tag {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+@media (min-width: 72em){
+    .shopping-content-image {
+        width: 100%;
+        height: 150px;
+    }
+    .shopping-content-name {
+        margin-top: 5px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .shopping-content-tag-header {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+    .shopping-content-tag {
+        font-size: 18px;
+        line-height: 1.5;
+    }
 }

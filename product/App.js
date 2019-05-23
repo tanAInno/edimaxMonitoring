@@ -10,6 +10,7 @@ import Checkout from './Checkout'
 import Confirmation from './Confirmation'
 import Admin from './Admin'
 import AdminLogin from './AdminLogin'
+import Login from './Login'
 import Header from './Header'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 
@@ -18,7 +19,8 @@ class App extends Component {
     render() {
         return (
             <div className="product-wrapper">
-                <Route exact path={this.props.match.path} component={Home} />
+                <Route exact path={this.props.match.path} component={Login} />
+                <Route path={`${this.props.match.path}/main`} component={Home} />
                 <Route path={`${this.props.match.path}/shoppingcart`} component={ShoppingCart} />
                 <Route path={`${this.props.match.path}/checkout`} component={Checkout} />
                 <Route path={`${this.props.match.path}/confirmation`} component={Confirmation} />
