@@ -123,14 +123,6 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
 }
 
-.shopping-content-desc {
-    margin-left: 4%;
-    width: 75%;
-    font-size: 16px;
-    line-height: 1.5;
-    margin-right: 5%;
-}
-
 .shopping-content-sub {
     width: 10%;
     align-items: center;
@@ -252,17 +244,24 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .shopping-content-name {
         margin-top: 5px;
-        font-size: 14px;
+        font-size: 12px;
         line-height: 1.5;
     }
     .shopping-content-tag-header {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
         line-height: 1.5;
     }
     .shopping-content-tag {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 1.5;
+    }
+    .shopping-content-desc {
+        margin-left: 4%;
+        width: 75%;
+        font-size: 12px;
+        line-height: 1.5;
+        margin-right: 5%;
     }
 }
 
@@ -273,17 +272,24 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .shopping-content-name {
         margin-top: 5px;
-        font-size: 14px;
+        font-size: 12px;
         line-height: 1.5;
     }
     .shopping-content-tag-header {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: bold;
         line-height: 1.5;
     }
     .shopping-content-tag {
-        font-size: 16px;
+        font-size: 12px;
         line-height: 1.5;
+    }
+    .shopping-content-desc {
+        margin-left: 4%;
+        width: 75%;
+        font-size: 12px;
+        line-height: 1.5;
+        margin-right: 5%;
     }
 }
 
@@ -305,5 +311,12 @@ input[type=number]::-webkit-outer-spin-button {
     .shopping-content-tag {
         font-size: 18px;
         line-height: 1.5;
+    }
+    .shopping-content-desc {
+        margin-left: 4%;
+        width: 75%;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-right: 5%;
     }
 }
