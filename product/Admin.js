@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import route from '../api'
 import { setCustomerList } from '../actions/product';
 import { convertArrayToCSV } from 'convert-array-to-csv';
+import utf8 from 'utf8'
 
 class Admin extends Component {
 
@@ -14,27 +15,21 @@ class Admin extends Component {
     }
 
     export() {
-        let exportList = []
+        let csv = "name\temail\tphone\tdepartment\tworkplace\tproduct_name\tamount\tpaymentOption \n"
         for(let i=0;i < this.props.productReducer.customerList.length; i++){
             let data = this.props.productReducer.customerList[i]
             let productList = this.props.productReducer.customerList[i].productList
             for(let j=0; j < productList.length; j++){
-                let exportdata = {
-                    name: data.name,
-                    email: data.email,
-                    phone: data.phone,
-                    department: data.department,
-                    workplace: data.workplace,
-                    product: productList[j].name,
-                    amount: productList[j].amount,
-                    paymentOption: data.paymentOption
-                }
-                exportList.push(exportdata)
+                csv = csv + data.name + "\t" + data.email + "\t" + data.phone + 
+                "\t" + data.department + "\t" + data.workplace + "\t" + productList[j].name +
+                "\t" + data.productList[j].amount + "\t" + data.paymentOption + "\n"
             }
         }
-        let csv = convertArrayToCSV(exportList)
+        var iconv = require('iconv-lite');
         var fileDownload = require('js-file-download');
-        fileDownload(csv, 'history.csv')
+        let encodedFile = iconv.encode(csv, 'utf16')
+        console.log(encodedFile)
+        fileDownload(encodedFile, 'history.csv')
     }
 
     async getList() {

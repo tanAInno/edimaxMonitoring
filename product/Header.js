@@ -17,12 +17,7 @@ class Header extends Component {
     render() {
         return (
             <div>
-            <div className="product-header">
-                <div className="product-header-text">ดาวน์โหลดแอพพลิเคชั่น | ติดต่อเรา</div>
-                <img className="product-header-image" src={"../assets/images/line.png"} />
-                <img className="product-header-image" src={"../assets/images/facebook.png"} />
-                <img className="product-header-image" src={"../assets/images/home.png"} />
-            </div>
+            <div className="product-header" />
             <div className="product-banner-wrapper">
                 <div className="product-banner">
                     <div className="logo">
