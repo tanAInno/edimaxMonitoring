@@ -45,35 +45,36 @@ class ProductModal extends Component {
         this.setState({addCart: true})
     }
 
-    renderDialog(){
-        if(this.state.addCart)
+    renderLogo(type){
+        if(type == 'karcher')
             return(
-                <div className="dialog-text">เพิ่มสินค้าเข้าไปยังรายการสั่งซื้อเรียบร้อย</div>
+                <img className="product-modal-logo" src={'../assets/images/karcher.png'}/>
+            )
+        if(type == 'innocare')
+            return(
+                <div className="product-modal-logo-text">INNOCARE</div>
             )
     }
 
     render() {
         return (
             <div className="product-modal-container">
-                <div className="product-modal-left">
-                    <img className="product-modal-img" src={this.props.img} />
-                    <div className="product-modal-name">{this.props.name}</div>
+                <div className="product-modal-header">
+                    <div className="product-modal-header-text">เพิ่มสินค้าลงในตะกร้าเรียบร้อย</div>
                 </div>
-                <div className="product-modal-right">
-                    <div className="product-modal-amount">
-                        <button className="product-modal-button-minus" onClick={() => this.minus()}>-</button>
-                        <input
-                            className="product-modal-content-amount"
-                            value={this.state.amount}
-                            type="number"
-                            min="0"
-                            onChange={e => this.handleChangeWithKey("amount", e)}
-                        />
-                        <button className="product-modal-button-plus" onClick={() => this.plus()}>+</button>
+                <div className="product-modal-content">
+                    <div className="product-modal-left">
+                        <img className="product-modal-img" src={this.props.img} />
                     </div>
-                    <button className="product-modal-confirm-button" onClick={() => this.addToCart()}>หยิบใส่รถเข็น</button>
-                    {this.renderDialog()}
-                    <Link className="product-modal-button-wrapper" to="/product/shoppingcart"><button className="product-modal-link-button">ไปยังหน้ารถเข็น</button></Link>
+                    <div className="product-modal-right">
+                        {this.renderLogo(this.props.type)}
+                        <div className="product-modal-name">{this.props.name}</div>
+                        <div className="product-modal-price-wrapper">
+                            <div className="product-modal-price">{this.props.price}</div>
+                            <div className="product-modal-price-tag"> / ชิ้น</div>
+                        </div>
+                        <div className="product-modal-amount">จำนวน 1</div>
+                    </div>
                 </div>
             </div>
         )

@@ -1,8 +1,51 @@
-.product-modal-container {
-    width: 600px;
-    height: 300px;
-    border: 1px solid #003678;
-    font-family: 'EkkamaiStandard';
+
+@media (min-width: 24em){
+    .product-modal-container {
+        width: 60vw;
+        height: 15vh;
+        font-family: 'RSU';
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (min-width: 64em){
+    .product-modal-container {
+        width: 60vw;
+        height: 25vh;
+        font-family: 'RSU';
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (min-width: 72em){
+    .product-modal-container {
+        width: 50vw;
+        height: 50vh;
+        font-family: 'RSU';
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.product-modal-header {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-modal-header-text {
+    font-size: 190%;
+    color: #228B22;
+    margin-left: 3%;
+    line-height: 1.5;
+}
+
+.product-modal-content {
+    width: 100%;
+    height: 90%;
+    font-family: 'RSU';
     display: flex;
     flex-direction: row;
 }
@@ -12,109 +55,88 @@
     flex-direction: column;
     width: 40%;
     height: 100%;
+    margin-right: 10%;
+    margin-left: 5%;
     align-items: center;
     justify-content: center;
 }
 
 .product-modal-img {
-    width: 80%;
-    height: 65%;
-}
-
-.product-modal-name {
-    font-size: 20px;
-    line-height: 1.5;
+    width: 90%;
+    height: 75%;
 }
 
 .product-modal-right {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 45%;
     height: 100%;
-    align-items: center;
     justify-content: center;
 }
 
-.product-modal-amount {
+.product-modal-logo {
+    width: 55%;
+    height: 15%;
+}
+
+.product-modal-logo-text {
+    font-size: 190%;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #13304F;
+}
+
+.product-modal-name {
+    margin-top: 10%;
+    font-size: 180%;
+    line-height: 1.5;
+}
+
+.product-modal-price-wrapper {
     display: flex;
     flex-direction: row;
-    width: 60%;
 }
 
-.product-modal-button-minus {
-    border: 1px solid #011225;
-    background: #003678;
-    color: white;
-    width: 20%;
-    height: 39px;
-    font-size: 30px;
-    font-family: 'EkkamaiStandard';
-    text-align: center;
-    vertical-align: middle;
-    line-height: 35px;
+.product-modal-price {
+    font-size: 180%;
+    line-height: 1.5;
+    color: #7FD0DA;
 }
 
-.product-modal-button-plus {
-    border: 1px solid #011225;
-    background: #003678;
-    color: white;
-    width: 20%;
-    height: 39px;
-    font-size: 35px;
-    font-family: 'EkkamaiStandard';
-    text-align: center;
-    vertical-align: middle;
-    line-height: 35px;
+.product-modal-price-tag {
+    font-size: 180%;
+    line-height: 1.5;
 }
 
-.product-modal-content-amount {
-    width: 60%;
-    height: 35px;
-    font-size: 18px;
-    text-align: center;
-    border: 1px solid #003678;
+.product-modal-amount {
+    font-size: 180%;
+    line-height: 1.5;
 }
 
-.product-modal-confirm-button {
-    margin-top: 15px;
-    border: 1px solid #011225;
-    border-radius: 5px;
-    background: #003678;
-    color: white;
-    width: 50%;
-    height: 39px;
-    font-size: 18px;
-    font-family: 'EkkamaiStandard';
-    text-align: center;
-    vertical-align: middle;
-    line-height: 35px;
-}
-
-.product-modal-button-wrapper {
-    width: 50%;
+.product-modal-button-group {
+    width: 90%;
+    height: 15%;
+    font-family: 'RSU';
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 5%;
 }
 
 .product-modal-link-button {
-    margin-top: 15px;
-    border: 1px solid #011225;
-    border-radius: 5px;
-    background: #003678;
+    width: 40%;
+    height: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 25px;
+    border: 1px solid rgb(28, 203, 226);
+    background: #7FD0DA;
     color: white;
-    width: 100%;
-    height: 39px;
-    font-size: 18px;
-    font-family: 'EkkamaiStandard';
+    font-size: 190%;
+    font-family: 'RSU';
     text-align: center;
     vertical-align: middle;
-    line-height: 35px;
-}
-
-.product-modal-confirm-button:hover{
-    background-color: #00BFFF;	 
-}
-
-.product-modal-confirm-button:active{
-    background-color: #4169E1;
+    line-height: 50px;
 }
 
 .product-modal-link-button:hover{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import '../css/Product.css'
-import '../assets/fonts/EkkamaiStandard-Light.css'
+import '../assets/fonts/fontface.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import Product from './Product'
 import Home from './Home'
@@ -11,7 +11,7 @@ import Confirmation from './Confirmation'
 import Admin from './Admin'
 import AdminLogin from './AdminLogin'
 import Login from './Login'
-import Header from './Header'
+import Header from '../Header'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -19,8 +19,7 @@ class App extends Component {
     render() {
         return (
             <div className="product-wrapper">
-                <Route exact path={this.props.match.path} component={Login} />
-                <Route path={`${this.props.match.path}/main`} component={Home} />
+                <Route exact path={`${this.props.match.path}`} component={Home} />
                 <Route path={`${this.props.match.path}/shoppingcart`} component={ShoppingCart} />
                 <Route path={`${this.props.match.path}/checkout`} component={Checkout} />
                 <Route path={`${this.props.match.path}/confirmation`} component={Confirmation} />

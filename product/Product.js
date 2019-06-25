@@ -30,19 +30,20 @@ class Product extends Component {
         this.state = {
             modalIsOpen: false,
             productList: [
-                { img: "../assets/images/K2420.jpg", rating: 4.4, tag: '1234', name: "K 2.420", desc: "เครื่องฉีดน้ำแรงดันสูงที่เหมาะสำหรับการทำความสะอาดในส่วนที่ยากจะเข้าถึง เช่นหลังคอมเพรสเซอร์แอร์ ใต้ท้องรถ ฯลฯ และให้ผลลัพธ์ที่ดีและรวดเร็วกว่าเมื่อเทียบกับการใช้แปรงหรืออุปกรณ์ขัดถูใดๆ" },
-                { img: "../assets/images/SC2.jpg", rating: 4.4, tag: '1235', name: "SC 2 Easy Fix", desc: "เครื่องทำความสะอาดระบบไอน้ำรุ่นพื้นฐาน สามารถใช้งานง่ายและสะดวก มีส่วนควบคุมไอน้ำ 2 ระดับสำหรับปรับความเข้มข้นของไอน้ำให้เหมาะกับพื้นผิวและสิ่งสกปรก" },
-                { img: "../assets/images/SC2D.jpg", rating: 4.5, tag: '1236', name: "SC 2 Deluxe Easy Fix", desc: "เครื่องทำความสะอาดระบบไอน้ำรุ่นพื้นฐาน สามารถใช้งานง่ายและสะดวก มีส่วนควบคุมไอน้ำ 2 ระดับสำหรับปรับความเข้มข้นของไอน้ำให้เหมาะกับพื้นผิวและสิ่งสกปรก" },
-                { img: "../assets/images/FC5.jpg", rating: 4.0, tag: '1237', name: "FC 5 Premium", desc: "เครื่องทำความสะอาดพื้นอัตโนมัติที่จะทำความสะอาด รวมกันได้ในครั้งเดียว ทำให้พื้นของคุณเปล่งประกายโดย ไม่ต้องใช้ ไม้ถูพื้น ถังน้ำ หรือ การขัดพื้นแต่อย่างใด" },
-                { img: "../assets/images/airmaskAll.jpg", rating: 4.5, tag: '1238', name: "Airmask + หนามเตย", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
-                { img: "../assets/images/airmask.png", rating: 4.8, tag: '1239', name: "Airmask", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
-                { img: "../assets/images/bazel.png", rating: 4.3, tag: '1240', name: "หนามเตย", desc: "" },
+                { img: "../assets/images/K2420.jpg", type: 'karcher', price: 4300, name: "K 2.420", desc: "เครื่องฉีดน้ำแรงดันสูงที่เหมาะสำหรับการทำความสะอาดในส่วนที่ยากจะเข้าถึง เช่นหลังคอมเพรสเซอร์แอร์ ใต้ท้องรถ ฯลฯ และให้ผลลัพธ์ที่ดีและรวดเร็วกว่าเมื่อเทียบกับการใช้แปรงหรืออุปกรณ์ขัดถูใดๆ" },
+                { img: "../assets/images/SC2.jpg", type: 'karcher', price: 4350, name: "SC 2 Easy Fix", desc: "เครื่องทำความสะอาดระบบไอน้ำรุ่นพื้นฐาน สามารถใช้งานง่ายและสะดวก มีส่วนควบคุมไอน้ำ 2 ระดับสำหรับปรับความเข้มข้นของไอน้ำให้เหมาะกับพื้นผิวและสิ่งสกปรก" },
+                { img: "../assets/images/SC2D.jpg", type: 'karcher', price: 4600, name: "SC 2 Deluxe Easy Fix", desc: "เครื่องทำความสะอาดระบบไอน้ำรุ่นพื้นฐาน สามารถใช้งานง่ายและสะดวก มีส่วนควบคุมไอน้ำ 2 ระดับสำหรับปรับความเข้มข้นของไอน้ำให้เหมาะกับพื้นผิวและสิ่งสกปรก" },
+                { img: "../assets/images/FC5.jpg", type: 'karcher', price: 9900, name: "FC 5 Premium", desc: "เครื่องทำความสะอาดพื้นอัตโนมัติที่จะทำความสะอาด รวมกันได้ในครั้งเดียว ทำให้พื้นของคุณเปล่งประกายโดย ไม่ต้องใช้ ไม้ถูพื้น ถังน้ำ หรือ การขัดพื้นแต่อย่างใด" },
+                { img: "../assets/images/airmaskAll.jpg", type: 'innocare', price: 405, name: "Airmask + หนามเตย", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
+                { img: "../assets/images/airmask.png", type: 'innocare', price: 295, name: "Airmask", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
+                { img: "../assets/images/bazel.png", type: 'innocare', price: 110, name: "หนามเตย", desc: "" },
             ]
         }
     }
 
     openModal(data) {
         this.props.dispatch(setChoosenProduct(data))
+        this.addToCart(data)
         this.setState({ modalIsOpen: true })
     }
 
@@ -53,33 +54,60 @@ class Product extends Component {
         this.setState({ modalIsOpen: false })
     }
 
-    renderProduct() {
+    renderProduct(type) {
         let product = []
-        for (let i = 0; i < this.state.productList.length; i += 4) {
-            product.push(this.renderRow(this.state.productList.slice(i, i + 4)))
+        let usedlist = []
+        for (let i = 0; i < this.state.productList.length; i++) {
+            if(this.state.productList[i].type == type)
+                usedlist.push(this.state.productList[i])
+        }
+        for (let i = 0; i < usedlist.length; i += 4) {
+            product.push(this.renderRow(usedlist.slice(i, i + 4)))
         }
         return product
     }
+
+    addToCart(data) {
+        let products = this.props.productReducer.products
+        let newobj = { img: data.img, 
+                    name: data.name, 
+                    desc: data.desc, 
+                    tag: data.tag, 
+                    amount: 1,
+                    price: data.price,
+                    type: data.type }
+        let exist = false
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].name == data.name) {
+                products[i].amount += 1
+                exist = true
+            }
+        }
+        if (!exist)
+            products.push(newobj)
+        this.props.dispatch(setProducts(products))
+    }
+
 
     renderRow(list) {
         return (
             <div className='product-row'>
                 {list.map((data, index) => {
+                    if(index == 3)
+                        return (
+                            <div className='product-card-last'>
+                                <img className='product-image' src={data.img} />
+                                <div className='product-name'>{data.name}</div>
+                                <div className='product-price'>{data.price} บาท</div>
+                                <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
+                            </div>
+                        )
                     return (
                         <div className='product-card'>
                             <img className='product-image' src={data.img} />
                             <div className='product-name'>{data.name}</div>
-                            <div className='product-description'>{data.desc}</div>
-                            <div className='product-tag'>รหัสสินค้า {data.tag}</div>
-                            <StarRatings
-                                rating={data.rating}
-                                starDimension="25px"
-                                starSpacing="5px"
-                                starRatedColor="#003678"
-                                className="star-rating"
-                            />
-                            {/*<button className='detail-button'>ดูรายละเอียด</button>*/}
-                            <button className='pick-button' onClick={() => this.openModal(data)}>หยิบสินค้าใส่รถเข็น</button>
+                            <div className='product-price'>{data.price} บาท</div>
+                            <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
                         </div>
                     )
                 })}
@@ -91,55 +119,36 @@ class Product extends Component {
         return (
             <div className="tab-container">
                 <div className="product-content-container">
-                    <div className='product-navbar'>
-                        <div className='product-navbar-header'>
-                            สินค้าและบริการ
-                        </div>
-                        <div className="product-navbar-text">
-                            INNO PRODUCT
-                        </div>
-                        <div className="product-navbar-subtext">
-                            INNOCARE
-                        </div>
-                        <div className="product-navbar-subitem">
-                            - AIRMASK
-                        </div>
-                        <div className="product-navbar-subitem">
-                            - OTHER
-                        </div>
-                        <div className="product-navbar-subtext">
-                            KARCHER
-                        </div>
-                        <div className="product-navbar-subitem">
-                            - เครื่องดูดฝุ่น
-                        </div>
-                        <div className="product-navbar-subitem">
-                            - มอเตอร์
-                        </div>
-                        <div className="product-navbar-subtext">
-                            จักรยานไฟฟ้า
-                        </div>
-                    </div>
                     <div className='product-catalogue'>
                         <div className="product-catalogue-header">
-                            <img className="karcher-logo" src={"../assets/images/karcher.png"} />
+                            <div className="product-catalogue-header-text-first">INNOCARE</div>
+                            <div className="product-catalogue-header-text">PRODUCTS</div>
                         </div>
-                        {this.renderProduct()}
+                        <div className="product-list-header">สินค้า Karcher</div>
+                        {this.renderProduct('karcher')}
+                        <div className="product-list-header">สินค้า Inno Product</div>
+                        {this.renderProduct('innocare')}
                     </div>
                     <Modal
                         isOpen={this.state.modalIsOpen}
                         onAfterOpen={() => this.afterOpenModal()}
                         onRequestClose={() => this.closeModal()}
-                        contentLabel="หยิบสินค้าใส่รถเข็น"
+                        contentLabel="สั่งซื้อ"
                         style={customStyles}
                     >
                         <ProductModal
                             img={this.props.productReducer.choosenProduct.img}
+                            type={this.props.productReducer.choosenProduct.type}
                             name={this.props.productReducer.choosenProduct.name}
                             desc={this.props.productReducer.choosenProduct.desc}
                             tag={this.props.productReducer.choosenProduct.tag}
+                            price={this.props.productReducer.choosenProduct.price}
                             rating={this.props.productReducer.choosenProduct.rating}
                         />
+                        <div className="product-modal-button-group">
+                            <button className="product-modal-link-button" onClick={() => this.closeModal()}>กลับ</button>
+                            <button className="product-modal-link-button" onClick={() => this.closeModal()}>ทำการสั่งซื้อ</button>
+                        </div>
                     </Modal>
                 </div>
             </div>

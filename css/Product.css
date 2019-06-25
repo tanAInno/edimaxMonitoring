@@ -3,31 +3,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    font-family: 'EkkamaiStandard';
-}
-
-.product-header {
-    background: #003678;
-    width: 100%;
-    border-top: 1.5px solid #2042a1;
-    border-bottom: 1.5px solid #2042a1;
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.product-header-text {
-    color: #FFFFFF;
-    font-size: 20px;
-    margin-left: 1%;
-    margin-top: 2px;
-}
-
-.product-header-image {
-    width: 30px;
-    height: 30px;
-    margin-left: 0.5%;
+    font-family: 'RSU';
 }
 
 .account-row {
@@ -38,26 +14,6 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-}
-
-.product-banner-wrapper {
-    width: 100%;
-    min-height: 75px;
-    display: flex;
-    flex-direction: row;
-}
-
-.product-banner {
-    width: 100%;
-    min-height: 120px;
-    display: flex;
-    flex-direction: row;
-    background: #FFFFFF;
-    margin: 0;
-    align-items: center;
-    font-size: 33px;
-    color: #2B2B2B;
-    border-bottom: 1.5px solid #011225;
 }
 
 .product-text-wrapper {
@@ -74,6 +30,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    background: #EEEEEE;
+    justify-content: center;    
 }
 
 .logo {
@@ -122,7 +80,7 @@
     width: 95%;
     height: 30px;
     font-size: 18px;
-    font-family: 'EkkamaiStandard'
+    font-family: 'RSU'
 }
 
 .search-button {
@@ -177,24 +135,31 @@
     flex-direction: row;
 }
 
-.product-navbar {
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    background: #003678;
-}
-
 .product-catalogue {
-    width: 83%;
+    width: 96%;
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+    background: white;
 }
 
 .product-catalogue-header {
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.product-catalogue-header-text-first {
+    color: #13304F;
+    font-size: 34px;
+    margin-right: 3%;
+}
+
+.product-catalogue-header-text {
+    color: #13304F;
+    font-size: 34px;
 }
 
 .product-catalogue-button-wrapper {
@@ -221,7 +186,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .product-description {
@@ -250,7 +216,7 @@
     border: 1.5px solid #FFA500;
     color: black;
     margin-top: 15px;
-    font-family: 'EkkamaiStandard';
+    font-family: 'RSU';
 }
 
 .detail-button:hover {
@@ -261,14 +227,6 @@
     background-color: #FF8C00;
 }
 
-.pick-button:hover {
-    background-color: #00BFFF;	 
-}
-
-.pick-button:active {
-    background-color: #4169E1;
-}
-
 .login-button {
     width: 100%;
     height: 35px;
@@ -277,7 +235,7 @@
     background-color: #003678;
     border: 1.5px solid white;
     color: white;   
-    font-family: 'EkkamaiStandard';
+    font-family: 'RSU';
 }
 
 .login-button:hover {
@@ -300,36 +258,29 @@
 }
 
 @media (min-width: 24em){
-    .search-tab-text {
-        font-size: 16px;
-        color: #2B2B2B;
-        margin-right: 7%;
-        background: 'white';
-        font-family: 'EkkamaiStandard';
-        border: 0px;
-    }
-    .search-tab-text-last {
-        font-size: 16px;
-        color: #2B2B2B;
-    }
     .pick-button {
-        width: 80%;
-        height: 35px;
-        font-size: 13px;
+        width: 60%;
+        height: 45px;
+        font-size: 27px;
         border-radius: 10px;
-        background-color: #003678;
-        border: 1.5px solid #022147;
+        border: 0px;
+        background-color: #7FD0DA;
         color: white;
-        margin-top: 5px;
-        font-family: 'EkkamaiStandard';
+        margin-top: 10px;
+        font-family: 'RSU';
+        align-items: center;
     }
     .product-card {
-        width: 22.5%;
-        height: 550px;
-        margin-top: 20px;
-        margin-left: 2%;
-        border: 1px solid #EDEDED;
-        border-radius: 5px;
+        width: 20%;
+        margin-left: 4%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-card-last {
+        width: 20%;
+        margin-left: 4%;
+        margin-right: 4%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -339,79 +290,51 @@
         height: 200px;
         margin-top: 15px;
     }
-    .product-navbar-header {
-        width: 95%;
-        height: 60px;
-        border-bottom: 1px solid white;
-        font-size: 16px;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self: center;
-    }
-    
-    .product-navbar-text {
-        margin-top: 10px;
-        margin-left: 5%;
-        color: white;
-        font-size: 14px;
-        line-height: 2;
-    }
-    
-    .product-navbar-subtext {
-        margin-left: 15%;
-        color: white;
-        font-size: 14px;
-        line-height: 2;
-    }
-    
-    .product-navbar-subitem {
-        margin-left: 25%;
-        color: white;
-        font-size: 14px;
-        line-height: 2;
-    }
-
     .product-name {
-        font-size: 15px;
-        font-weight: bold;
+        font-size: 22px;
+        color: #13304F;
         margin-top: 10px;
         line-height: 1.5;
+    }
+    .product-price {
+        font-size: 27px;
+        color: #7FD0DA;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+    .product-list-header {
+        font-size: 27px;
+        color: #13304F;
+        margin-top: 40px;
+        line-height: 1.5;
+        margin-left: 5%;
     }
 }
 
 @media (min-width: 64em){
-    .search-tab-text {
-        font-size: 16px;
-        color: #2B2B2B;
-        margin-right: 7%;
-        background: 'white';
-        font-family: 'EkkamaiStandard';
-        border: 0px;
-    }
-    .search-tab-text-last {
-        font-size: 16px;
-        color: #2B2B2B;
-    }
     .pick-button {
-        width: 80%;
-        height: 35px;
-        font-size: 13px;
+        width: 60%;
+        height: 45px;
+        font-size: 27px;
         border-radius: 10px;
-        background-color: #003678;
-        border: 1.5px solid #022147;
+        border: 0px;
+        background-color: #7FD0DA;
         color: white;
-        margin-top: 5px;
-        font-family: 'EkkamaiStandard';
+        margin-top: 10px;
+        font-family: 'RSU';
+        align-items: center;
     }
     .product-card {
-        width: 22.5%;
-        height: 550px;
-        margin-top: 20px;
-        margin-left: 2%;
-        border: 1px solid #EDEDED;
-        border-radius: 5px;
+        width: 20%;
+        margin-left: 4%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-card-last {
+        width: 20%;
+        margin-left: 4%;
+        margin-right: 4%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -421,75 +344,51 @@
         height: 200px;
         margin-top: 15px;
     }
-    .product-navbar-header {
-        width: 95%;
-        height: 60px;
-        border-bottom: 1px solid white;
-        font-size: 18px;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self: center;
-    }
-    .product-navbar-text {
-        margin-top: 10px;
-        margin-left: 5%;
-        color: white;
-        font-size: 16px;
-        line-height: 2;
-    }
-    .product-navbar-subtext {
-        margin-left: 15%;
-        color: white;
-        font-size: 16px;
-        line-height: 2;
-    }
-    .product-navbar-subitem {
-        margin-left: 25%;
-        color: white;
-        font-size: 16px;
-        line-height: 2;
-    }
     .product-name {
-        font-size: 16px;
-        font-weight: bold;
+        font-size: 24px;
+        color: #13304F;
         margin-top: 10px;
         line-height: 1.5;
+    }
+    .product-price {
+        font-size: 27px;
+        color: #7FD0DA;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+    .product-list-header {
+        font-size: 27px;
+        color: #13304F;
+        margin-top: 40px;
+        line-height: 1.5;
+        margin-left: 5%;
     }
 }
 
 @media (min-width: 72em){
-    .search-tab-text {
-        font-size: 18px;
-        color: #2B2B2B;
-        margin-right: 7%;
-        background: 'white';
-        font-family: 'EkkamaiStandard';
-        border: 0px;
-    }
-    .search-tab-text-last {
-        font-size: 18px;
-        color: #2B2B2B;
-    }
     .pick-button {
         width: 60%;
-        height: 35px;
-        font-size: 16px;
+        height: 45px;
+        font-size: 30px;
         border-radius: 10px;
-        background-color: #003678;
-        border: 1.5px solid #022147;
+        border: 0px;
+        background-color: #7FD0DA;
         color: white;
-        margin-top: 5px;
-        font-family: 'EkkamaiStandard';
+        margin-top: 10px;   
+        font-family: 'RSU';
+        align-items: center;
     }
     .product-card {
-        width: 22.5%;
-        height: 630px;
-        margin-top: 20px;
-        margin-left: 2%;
-        border: 1px solid #EDEDED;
-        border-radius: 5px;
+        width: 20%;
+        margin-left: 4%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-card-last {
+        width: 20%;
+        margin-left: 4%;
+        margin-right: 4%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -499,40 +398,23 @@
         height: 250px;
         margin-top: 15px;
     }
-    .product-navbar-header {
-        width: 95%;
-        height: 60px;
-        border-bottom: 1px solid white;
-        font-size: 20px;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self: center;
-    }
-    .product-navbar-text {
-        margin-top: 10px;
-        margin-left: 5%;
-        color: white;
-        font-size: 18px;
-        line-height: 2;
-    }
-    .product-navbar-subtext {
-        margin-left: 15%;
-        color: white;
-        font-size: 18px;
-        line-height: 2;
-    }
-    .product-navbar-subitem {
-        margin-left: 25%;
-        color: white;
-        font-size: 18px;
-        line-height: 2;
-    }
     .product-name {
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 26px;
+        color: #13304F;
         margin-top: 10px;
         line-height: 1.5;
+    }
+    .product-price {
+        font-size: 30px;
+        color: #7FD0DA;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+    .product-list-header {
+        font-size: 30px;
+        color: #13304F;
+        margin-top: 40px;
+        line-height: 1.5;
+        margin-left: 5%;
     }
 }

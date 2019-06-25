@@ -3,62 +3,73 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    font-family: 'EkkamaiStandard';
-    background: #003678;
+    font-family: 'RSU';
+    background: #EEEEEE;
 }
 
 .checkout-box {
-    margin-top: 30px;
-    width: 95%;
+    margin-top: 15px;
+    width: 98%;
     align-self: center;
     display: flex;
     flex-direction: row;
-    border: 1.5px solid #011225;
-    background: white; 
-    margin-bottom: 140px;
-}
-
-.checkout-form {
-    width: 40%;
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
+    border: 0px;
+    background: #EEEEEE; 
     margin-bottom: 40px;
 }
 
+.checkout-form {
+    width: 59%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-bottom: 30px;
+    background: white;
+}
+
 .checkout-form-wrapper {
-    width: 90%;
+    width: 96%;
     display: flex;
     flex-direction: row;
     min-height: 50px;
 }
 
-.checkout-input-wrapper {
+.checkout-input-row {
     margin-top: 20px;
-    width: 85%;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.checkout-input-wrapper {
+    width: 46%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .checkout-input-header {
     font-size: 20px;
-    font-weight: bold;
-    line-height: 2.5;
+    font-weight: lighter;
+    line-height: 1.5;
 }
 
 .checkout-input {
     width: 100%;
     height: 25px;
     font-size: 18px;
-    border: 1px solid #011225;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    padding-left: 1%;
+    font-weight: lighter;
 }
 
 .checkout-shopping-form {
-    width: 60%;
-    margin-top: 5px;
+    width: 39%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    background: white;
 }
 
 .checkout-shopping-row {
@@ -67,26 +78,60 @@
     width: 90%;
     height: 110px;
     align-items: center;
+    border-bottom: 1px solid #CCC;
     margin-top: 10px;
-    border-bottom: 1px solid #C0C0C0;
+    padding-bottom: 10px;
 }
 
 .checkout-shopping-image{
-    width: 15%;
-    height: 90%;
+    width: 25%;
+    height: 95%;
     margin-left: 2%;
 }
 
+.checkout-shopping-info {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: center;
+    margin-left: 3%;
+}
+
 .checkout-shopping-name{
-    text-align: center;
-    width: 60%;
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.checkout-shopping-price {
+    font-size: 20px;
+    color: #7FD0DA;
+    line-height: 1.5;
 }
 
 .checkout-shopping-amount{
-    text-align: center;
-    width: 20%;
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.checkout-total-row {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    align-self: flex-end;
+    margin-right: 5%;
+}
+
+.checkout-total-header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.checkout-total-text {
+    font-size: 20px;
+    color: #7FD0DA;
+    font-weight: bold;
+    margin-left: auto;
 }
 
 .checkout-select {
@@ -95,38 +140,27 @@
 }
 
 .checkout-confirm-button-wrapper {
-    width: 50%;
+    width: 35%;
+    margin-right: 5%;
+    align-self: flex-end;
+    margin-top: 15px;
 }
-
-.checkout-confirm-button {
-    border: 1px solid #011225;
-    border-radius: 5px;
-    background: #003678;
-    color: white;
-    width: 100%;
-    height: 35px;
-    font-size: 14px;
-    font-family: 'EkkamaiStandard';
-}
-
-.checkout-confirm-button:hover {
-    background-color: #00BFFF;	 
-}
-
-.checkout-confirm-button:active {
-    background-color: #4169E1;
-}
-
 
 @media (min-width: 24em){
     .checkout-form-header {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
+        align-self: flex-start;
+        margin-left: 3%;
+        margin-top: 20px;
         font-size: 20px;
+        height: 45px;
         font-weight: bold;
-        border-bottom: 1.5px solid #011225;
-        line-height: 3;
+        color: #13304F;
+        background: #7FD0DA;
+        border-radius: 4px;
+        line-height: 45px;
+        vertical-align: center;
+        padding-left: 2%;
+        padding-right: 2%;
     }
     .checkout-button-wrapper {
         width: 60%;
@@ -137,17 +171,35 @@
         flex-direction: row;
         margin-right: 5%;
     }
+    .checkout-confirm-button {
+        border: 0px;
+        border-radius: 5px;
+        background: #7FD0DA;
+        color: #13304F;
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        font-family: 'RSU';
+        line-height: 40px;
+        vertical-align: center;
+    }
 }
 
 @media (min-width: 64em){
     .checkout-form-header {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
+        align-self: flex-start;
+        margin-left: 3%;
+        margin-top: 20px;
         font-size: 20px;
+        height: 45px;
         font-weight: bold;
-        border-bottom: 1.5px solid #011225;
-        line-height: 3;
+        color: #13304F;
+        background: #7FD0DA;
+        border-radius: 4px;
+        line-height: 45px;
+        vertical-align: center;
+        padding-left: 2%;
+        padding-right: 2%;
     }
     .checkout-button-wrapper {
         width: 50%;
@@ -158,17 +210,35 @@
         flex-direction: row;
         margin-right: 5%;
     }
+    .checkout-confirm-button {
+        border: 0px;
+        border-radius: 5px;
+        background: #7FD0DA;
+        color: #13304F;
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        font-family: 'RSU';
+        line-height: 40px;
+        vertical-align: center;
+    }
 }
 
 @media (min-width: 72em){
     .checkout-form-header {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
+        align-self: flex-start;
+        margin-left: 3%;
+        margin-top: 20px;
         font-size: 24px;
+        height: 45px;
         font-weight: bold;
-        border-bottom: 1.5px solid #011225;
-        line-height: 3;
+        color: #13304F;
+        background: #7FD0DA;
+        border-radius: 4px;
+        line-height: 45px;
+        vertical-align: center;
+        padding-left: 2%;
+        padding-right: 2%;
     }
     .checkout-button-wrapper {
         width: 40%;
@@ -178,5 +248,17 @@
         display: flex;
         flex-direction: row;
         margin-right: 5%;
+    }
+    .checkout-confirm-button {
+        border: 0px;
+        border-radius: 5px;
+        background: #7FD0DA;
+        color: #13304F;
+        width: 100%;
+        height: 40px;
+        font-size: 24px;
+        font-family: 'RSU';
+        line-height: 40px;
+        vertical-align: center;
     }
 }
