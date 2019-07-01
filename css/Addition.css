@@ -1,0 +1,70 @@
+.service-addition-wrapper {
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+}
+
+.service-addition-header {
+    font-size: 28px;
+    margin-top: 30px;
+    color: #13304F;
+    align-self: flex-start;
+}
+
+.service-addition-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.service-addition-input-area {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    margin-right: 3%;
+    margin-top: 10px;
+}
+
+.service-addition-type-box {
+    width: 100%;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-addition-type-header {
+    font-size: 24px;
+    color: #13304F;
+    height: 45px;
+    line-height: 45px;
+    vertical-align: middle;
+    padding-left: 2%;
+    width: 98%;
+    border-bottom: 1px solid #CCC;
+}
+
+.service-addition-radio-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.service-addition-radio-row {
+    font-size: 22px;
+    color: #13304F;
+    height: 45px;
+    line-height: 45px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.service-addition-radio {
+    width: 47.5%;
+    margin-left: 2.5%;
+}

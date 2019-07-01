@@ -1,0 +1,220 @@
+.service-datetime-wrapper {
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+}
+
+.service-datetime-header {
+    font-size: 28px;
+    margin-top: 30px;
+    color: #13304F;
+    align-self: flex-start;
+}
+
+.service-datetime-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.service-datetime-calendar {
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    margin-right: 3%;
+    margin-top: 10px;
+}
+
+.service-datetime-calendar-header {
+    margin-left: 2%;
+    font-size: 24px;
+    width: 100%;
+    height: 40px;
+    line-height: 45px;
+    vertical-align: middle;
+}
+
+.service-datetime-calendar-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid #CCC;
+}
+
+.service-datetime-calendar-month-wrapper {
+    width: 95%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.service-datetime-calendar-arrow {
+    height: 35px;
+    width: 7%;
+    border: 1.5px solid #CCC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-datetime-calendar-arrow:hover {
+    cursor: pointer;
+}
+
+.calendar-arrow-icon {
+    font-size: 25px;
+    color: #CCC;
+    font-weight: 50;
+}
+
+.service-datetime-calendar-month {
+    font-size: 24px;    
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+.service-datetime-calendar-day-header {
+    width: 95%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.service-datetime-calendar-day {
+    font-size: 20px;
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+    width: 14.285%;
+    text-align: center;
+}
+
+.service-datetime-day-body {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #CCC;
+}
+
+.service-datetime-day-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+}
+
+.service-datetime-day {
+    font-size: 20px;
+    width: 14.285%;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    vertical-align: middle;
+    border-right: 1px solid #CCC;
+}
+
+.service-datetime-day:hover {
+    cursor: pointer;
+}
+
+.service-datetime-day-disable {
+    font-size: 20px;
+    color: #CCC;
+    width: 14.285%;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    vertical-align: middle;
+    border-right: 1px solid #CCC;
+}
+
+.service-datetime-day-disable:hover {
+    cursor: pointer;
+}
+
+.service-datetime-day-selected {
+    font-size: 20px;
+    color: white;
+    width: 14.285%;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    vertical-align: middle;
+    border-right: 1px solid #CCC;
+    background: #7FD0DA;
+}
+
+.service-datetime-day-selected:hover {
+    cursor: pointer;
+}
+
+.service-booking-reserve-date-wrapper {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #CCC;
+}
+
+.service-booking-reserve-date-header {
+    color: #13304F;
+    font-size: 18px;
+    margin-left: 3%;
+}
+
+.service-booking-reserve-date {
+    color: #13304F;
+    font-size: 18px;
+    margin-right: 3%;
+}
+
+.service-datetime-timepicker {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.service-datetime-timepicker-button {
+    font-size: 24px;
+    color: #7FD0DA;
+    background: white;
+    border: 1px solid #7FD0DA;
+    border-radius: 5px;
+    height: 45px;
+    line-height: 45px;
+    vertical-align: middle;
+    margin-right: 3%;
+    font-family: 'RSU';
+}
+
+.service-datetime-timepicker-button-selected {
+    font-size: 24px;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    background: #7FD0DA;
+    height: 45px;
+    line-height: 45px;
+    vertical-align: middle;
+    margin-right: 3%;
+    font-family: 'RSU';
+}

@@ -5,32 +5,123 @@ import Footer from '../Footer'
 import '../assets/fonts/fontface.css'
 import '../css/Booking.css'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { setServices, setTotalPrice } from '../actions/service'
 
 class Booking extends Component {
 
-    render() {
+    state = {
+        packages : [{ name: "9,000 - 18,000 BTU, แบบติดผนัง", price: 549 },
+        { name: "18,001 - 36,000 BTU, แบบติดผนัง", price: 749 },
+        { name: "9,000 - 18,000 BTU, แบบแขวน", price: 799 },
+        { name: "18,001 - 36,000 BTU, แบบแขวน", price: 899 },
+        { name: "9,000 - 18,000 BTU, แบบฝังฝ้า", price: 999 },
+        { name: "36,001 - 60,000 BTU, แบบฝังฝ้า", price: 1349 },
+        { name: "9,000 - 24,000 BTU, แบบตู้ตั้ง", price: 1149 },
+        { name: "9,000 - 36,000 BTU, 4 ทิศทาง", price: 999 }]
+    }
+
+    renderItems() {
         return(
+            this.state.packages.map((data, index) => {
+                return (
+                    <div className="service-booking-list-item">
+                        <div className="service-booking-list-text-group">
+                            <div className="service-booking-list-item-text">{data.name}</div>
+                            <div className="service-booking-list-item-text">{data.price} บาท / เครื่อง</div>
+                        </div>
+                        <button className="service-booking-list-button" onClick={() => this.addService(data)}>เพิ่ม</button>
+                    </div>
+                )
+            })
+        )
+    }
+
+    renderChoosenItems() {
+        return(
+            this.props.serviceReducer.services.map((data,index) => {
+                return(
+                    <div className="service-booking-reserve-item-wrapper">
+                        <div className="service-booking-reserve-item-header">{data.name}</div>
+                        <div className="service-booking-reserve-item">
+                            <button className="service-booking-reserve-item-minus" onClick={() => this.minus(data)}>-</button>
+                            <div className="service-booking-reserve-item-amount">{data.amount}</div>
+                            <button className="service-booking-reserve-item-plus" onClick={() => this.plus(data)}>+</button>
+                            <button className="service-booking-reserve-item-delete" onClick={() => this.delete(data)}>ลบ</button>
+                        </div>
+                    </div>
+                )
+            })
+        )
+    }
+
+    addService(data) {
+        let services = this.props.serviceReducer.services
+        let newobj = { name: data.name,
+                    price: data.price,
+                    amount: 1}
+        let exist = false
+        for (let i = 0; i < services.length; i++) {
+            if (services[i].name == data.name) {
+                services[i].amount += 1
+                exist = true
+            }
+        }
+        if (!exist)
+            services.push(newobj)
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice + data.price))
+        this.renderChoosenItems()
+    }
+
+    plus(data) {
+        let services = this.props.serviceReducer.services
+        services[services.indexOf(data)].amount += 1
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice + data.price))
+    }
+
+    minus(data) {
+        let services = this.props.serviceReducer.services
+        let index = services.indexOf(data)
+        services[index].amount -= 1
+        if (services[index].amount == 0)
+            services.splice(index, 1)
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - data.price))
+    }
+
+    delete(data) {
+        let services = this.props.serviceReducer.services
+        let index = services.indexOf(data)
+        services.splice(index, 1)
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
+    }
+
+    render() {
+        return (
             <div className="service-wrapper">
-                <Header active="service"/>
+                <Header active="service" />
                 <div className="service-booking-wrapper">
                     <div className="service-booking-img-group">
-                        <img className="service-booking-img" src={"../assets/images/air_1.jpg"}/>
-                        <img className="service-booking-img" src={"../assets/images/air_2.jpg"}/>
+                        <img className="service-booking-img" src={"../assets/images/air_1.jpg"} />
+                        <img className="service-booking-img" src={"../assets/images/air_2.jpg"} />
                     </div>
                     <div className="service-booking-header">ล้างแอร์</div>
                     <div className="service-booking-order">
-                        <div className="service-booking-order-wrapper">
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/booking">
                             <div className="service-booking-order-circle-active">1</div>
                             <div className="service-booking-order-text">รายการ</div>
-                        </div>
-                        <div className="service-booking-order-wrapper">
+                        </Link>
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/datetime">
                             <div className="service-booking-order-circle">2</div>
                             <div className="service-booking-order-text">วันเวลา</div>
-                        </div>
-                        <div className="service-booking-order-wrapper">
+                        </Link>
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/addition">
                             <div className="service-booking-order-circle">3</div>
                             <div className="service-booking-order-text">เพิ่มเติม</div>
-                        </div>
+                        </Link>
                         <div className="service-booking-order-wrapper">
                             <div className="service-booking-order-circle">4</div>
                             <div className="service-booking-order-text">ที่อยู่</div>
@@ -42,15 +133,15 @@ class Booking extends Component {
                     </div>
                     <div className="service-booking-story">
                         <div className="service-booking-story-wrapper-side">
-                            <img className="service-booking-story-img-high" src={"../assets/images/service_point.png"}/>
+                            <img className="service-booking-story-img-high" src={"../assets/images/service_point.png"} />
                             <div className="service-booking-story-text">สะดวก ล้างแอร์ได้ง่ายๆแค่จองผ่านเว็บไซต์ พร้อมรับสิทธิพิเศษมากมาย</div>
                         </div>
                         <div className="service-booking-story-wrapper-center">
-                            <img className="service-booking-story-img" src={"../assets/images/service_time.png"}/>
+                            <img className="service-booking-story-img" src={"../assets/images/service_time.png"} />
                             <div className="service-booking-story-text">รวดเร็ว ด้วยการให้บริการแบบมืออาชีพโดยช่างผู้เชี่ยวชาญ</div>
                         </div>
                         <div className="service-booking-story-wrapper-side">
-                            <img className="service-booking-story-img" src={"../assets/images/service_approve.png"}/>
+                            <img className="service-booking-story-img" src={"../assets/images/service_approve.png"} />
                             <div className="service-booking-story-text">ปลอดภัย ผู้ให้บริการได้รับการอบรมและตรวจสอบประวัติอาชญากรรม</div>
                         </div>
                     </div>
@@ -64,72 +155,20 @@ class Booking extends Component {
                     <div className="service-booking-sub-header">เลือกรายการบริการ</div>
                     <div className="service-booking-list">
                         <div className="service-booking-list-table">
-                            <div className="service-booking-list-item">
-                                <div className="service-booking-list-text-group">
-                                    <div className="service-booking-list-item-text">9,000 - 18,000 BTU, แบบติดผนัง</div>
-                                    <div className="service-booking-list-item-text">549 บาท / เครื่อง</div>
-                                </div>
-                                <button className="service-booking-list-button">เพิ่ม</button>
-                            </div>
-                            <div className="service-booking-list-item">
-                                <div className="service-booking-list-text-group">
-                                    <div className="service-booking-list-item-text">18,001 - 36,000 BTU, แบบติดผนัง</div>
-                                    <div className="service-booking-list-item-text">749 บาท / เครื่อง</div>
-                                </div>
-                                <button className="service-booking-list-button">เพิ่ม</button>
-                            </div>
-                            <div className="service-booking-list-item">
-                                <div className="service-booking-list-text-group">
-                                    <div className="service-booking-list-item-text">9,000 - 18,000 BTU, แบบแขวน</div>
-                                    <div className="service-booking-list-item-text">799 บาท / เครื่อง</div>
-                                </div>
-                                <button className="service-booking-list-button">เพิ่ม</button>
-                            </div>
-                            <div className="service-booking-list-item">
-                                <div className="service-booking-list-text-group">
-                                    <div className="service-booking-list-item-text">18,001 - 36,000 BTU, แบบแขวน</div>
-                                    <div className="service-booking-list-item-text">899 บาท / เครื่อง</div>
-                                </div>
-                                <button className="service-booking-list-button">เพิ่ม</button>
-                            </div>
-                            <div className="service-booking-list-item">
-                                <div className="service-booking-list-text-group">
-                                    <div className="service-booking-list-item-text">9,000 - 18,000 BTU, แบบฝังฝ้า</div>
-                                    <div className="service-booking-list-item-text">999 บาท / เครื่อง</div>
-                                </div>
-                                <button className="service-booking-list-button">เพิ่ม</button>
-                            </div>
-                            <div className="service-booking-list-item">
-                                <div className="service-booking-list-text-group">
-                                    <div className="service-booking-list-item-text">36,001 - 60,000 BTU, แบบฝังฝ้า</div>
-                                    <div className="service-booking-list-item-text">1,349 บาท / เครื่อง</div>
-                                </div>
-                                <button className="service-booking-list-button">เพิ่ม</button>
-                            </div>
-                            <div className="service-booking-list-item">
-                                <div className="service-booking-list-text-group">
-                                    <div className="service-booking-list-item-text">9,000 - 24,000 BTU, แบบตู้ตั้ง</div>
-                                    <div className="service-booking-list-item-text">1,199 บาท / เครื่อง</div>
-                                </div>
-                                <button className="service-booking-list-button">เพิ่ม</button>
-                            </div>
-                            <div className="service-booking-list-item">
-                                <div className="service-booking-list-text-group">
-                                    <div className="service-booking-list-item-text">9,000 - 36,000 BTU, 4 ทิศทาง</div>
-                                    <div className="service-booking-list-item-text">999 บาท / เครื่อง</div>
-                                </div>
-                                <button className="service-booking-list-button">เพิ่ม</button>
-                            </div>
+                            {this.renderItems()}
                         </div>
                         <div className="service-booking-reserve">
                             <div className="service-booking-reserve-box">
                                 <div className="service-booking-reserve-header">ล้างแอร์</div>
+                                {this.renderChoosenItems()}
                                 <div className="service-booking-reserve-total-wrapper">
                                     <div className="service-booking-reserve-total-header">รวมยอด</div>
-                                    <div className="service-booking-reserve-total">0 บาท</div>
+                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice} บาท</div>
                                 </div>
                             </div>
-                            <button className="service-booking-reserve-button">ดำเนินการต่อ</button>
+                            <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/datetime">
+                                <button className="service-booking-reserve-button">ดำเนินการต่อ</button>
+                            </Link>
                         </div>
                     </div>
                     <div className="service-booking-requirement">
@@ -141,11 +180,11 @@ class Booking extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         )
     }
 
 }
 
-export default Booking
+export default connect(state => state)(Booking)

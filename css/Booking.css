@@ -157,6 +157,80 @@
     vertical-align: middle;
 }
 
+.service-booking-reserve-item-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 65px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #CCC;
+}
+
+.service-booking-reserve-item-header {
+    color: #13304F;
+    font-size: 18px;
+    width: 67%;
+    margin-left: 3%;
+}
+
+.service-booking-reserve-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 27%;
+    margin-right: 3%;
+}
+
+.service-booking-reserve-item-amount {
+    color: #13304F;
+    font-size: 18px;
+    width: 25%;
+    text-align: center;
+}
+
+.service-booking-reserve-item-minus {
+    font-size: 25px;
+    background: #7FD0DA;
+    color: white;
+    width: 21%;
+    height: 30px;
+    border: 0px;
+    margin-right: 3%; 
+    font-family: 'RSU';
+    line-height: 30px;
+    vertical-align: center;
+    text-align: center;
+}
+
+.service-booking-reserve-item-plus {
+    font-size: 23px;
+    background: #7FD0DA;
+    color: white;
+    width: 21%;
+    height: 30px;
+    border: 0px;
+    margin-left: 3%;
+    margin-right: 3%; 
+    font-family: 'RSU';
+    line-height: 30px;
+    vertical-align: center;
+    text-align: center;
+}
+
+.service-booking-reserve-item-delete {
+    font-size: 20px;
+    background: white;
+    color: #BBB;
+    width: 27%;
+    height: 30px;
+    border: 0px;
+    font-family: 'RSU';
+    line-height: 30px;
+    vertical-align: center;
+    text-align: center;
+}
+
 .service-booking-reserve-total-wrapper {
     display: flex;
     flex-direction: row;
@@ -176,6 +250,10 @@
     color: #13304F;
     font-size: 18px;
     margin-right: 3%;
+}
+
+.service-booking-reserve-button-wrapper {
+    width: 100%;
 }
 
 .service-booking-reserve-button {
