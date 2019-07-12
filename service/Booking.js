@@ -7,23 +7,14 @@ import '../css/Booking.css'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { setServices, setTotalPrice } from '../actions/service'
+import list from '../list'
 
 class Booking extends Component {
 
-    state = {
-        packages : [{ name: "9,000 - 18,000 BTU, แบบติดผนัง", price: 549 },
-        { name: "18,001 - 36,000 BTU, แบบติดผนัง", price: 749 },
-        { name: "9,000 - 18,000 BTU, แบบแขวน", price: 799 },
-        { name: "18,001 - 36,000 BTU, แบบแขวน", price: 899 },
-        { name: "9,000 - 18,000 BTU, แบบฝังฝ้า", price: 999 },
-        { name: "36,001 - 60,000 BTU, แบบฝังฝ้า", price: 1349 },
-        { name: "9,000 - 24,000 BTU, แบบตู้ตั้ง", price: 1149 },
-        { name: "9,000 - 36,000 BTU, 4 ทิศทาง", price: 999 }]
-    }
-
-    renderItems() {
+    renderItems(type) {
         return(
-            this.state.packages.map((data, index) => {
+            list.serviceList.map((data, index) => {
+                if(data.type == type)
                 return (
                     <div className="service-booking-list-item">
                         <div className="service-booking-list-text-group">
@@ -122,14 +113,14 @@ class Booking extends Component {
                             <div className="service-booking-order-circle">3</div>
                             <div className="service-booking-order-text">เพิ่มเติม</div>
                         </Link>
-                        <div className="service-booking-order-wrapper">
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/address">
                             <div className="service-booking-order-circle">4</div>
                             <div className="service-booking-order-text">ที่อยู่</div>
-                        </div>
-                        <div className="service-booking-order-wrapper">
+                        </Link>
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/payment">
                             <div className="service-booking-order-circle">5</div>
                             <div className="service-booking-order-text">ชำระเงิน</div>
-                        </div>
+                        </Link>
                     </div>
                     <div className="service-booking-story">
                         <div className="service-booking-story-wrapper-side">
@@ -155,7 +146,16 @@ class Booking extends Component {
                     <div className="service-booking-sub-header">เลือกรายการบริการ</div>
                     <div className="service-booking-list">
                         <div className="service-booking-list-table">
-                            {this.renderItems()}
+                            ​<div className="service-booking-list-header">แบบติดผนัง</div>
+                                {this.renderItems("ติดผนัง")}
+                                <div className="service-booking-list-header">แบบแขวน</div>
+                                {this.renderItems("แขวน")}
+                                <div className="service-booking-list-header">แบบฝังฝ้า</div>
+                                {this.renderItems("ฝังฝ้า")}
+                                <div className="service-booking-list-header">แบบตู้ตั้ง</div>
+                                {this.renderItems("ตู้ตั้ง")}
+                                <div className="service-booking-list-header">แบบ 4 ทิศทาง</div>
+                                {this.renderItems("4 ทิศ")}
                         </div>
                         <div className="service-booking-reserve">
                             <div className="service-booking-reserve-box">

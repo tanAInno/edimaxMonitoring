@@ -269,6 +269,8 @@
         margin-top: 10px;
         font-family: 'RSU';
         align-items: center;
+        line-height: 50px;
+        vertical-align: middle;
     }
     .product-card {
         width: 20%;
@@ -323,6 +325,8 @@
         margin-top: 10px;
         font-family: 'RSU';
         align-items: center;
+        line-height: 50px;
+        vertical-align: middle;
     }
     .product-card {
         width: 20%;
@@ -377,6 +381,8 @@
         margin-top: 10px;   
         font-family: 'RSU';
         align-items: center;
+        line-height: 50px;
+        vertical-align: middle;
     }
     .product-card {
         width: 20%;

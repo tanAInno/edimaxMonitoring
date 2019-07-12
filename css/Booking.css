@@ -92,15 +92,14 @@
 }
 
 .service-booking-sub-header {
-    margin-left: 4%;
     margin-top: 30px;
     font-size: 26px;
+    font-weight: bold;
     color: #13304F;
     align-self: flex-start;
 }
 
-.service-booking-list {
-    margin-top: 20px;
+.service-booking-list { 
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -111,6 +110,7 @@
     margin-right: 3%;
     display: flex;
     flex-direction: column;
+    margin-top: -25px;
 }
 
 .service-booking-list-item {
@@ -369,6 +369,12 @@
         vertical-align: middle;
         font-family: 'RSU';
     }
+    .service-booking-list-header {
+        font-size: 20px;
+        font-weight: bold;
+        color: #13304F;
+        margin-top: 10px;
+    }
 }
 
 @media (min-width: 64em){
@@ -441,6 +447,12 @@
         vertical-align: middle;
         font-family: 'RSU';
     }
+    .service-booking-list-header {
+        font-size: 22px;
+        font-weight: bold;
+        color: #13304F;
+        margin-top: 10px;
+    }
 }
 
 @media (min-width: 72em){
@@ -512,5 +524,11 @@
         line-height: 40px;
         vertical-align: middle;
         font-family: 'RSU';
+    }
+    .service-booking-list-header {
+        font-size: 24px;
+        font-weight: bold;
+        color: #13304F;
+        margin-top: 10px;
     }
 }

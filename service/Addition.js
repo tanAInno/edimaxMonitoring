@@ -7,9 +7,17 @@ import '../assets/fonts/fontface.css'
 import '../css/Addition.css'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { setServices, setTotalPrice } from '../actions/service'
+import { setServices, setTotalPrice, setAddition } from '../actions/service'
+import firebase from 'firebase'
+import FileUploader from 'react-firebase-file-uploader'
 
 class Addition extends Component {
+
+    state = {
+        imagePreviewUrl: '',
+        selectedOption: '',
+        detail: ''
+    }
 
     renderChoosenItems() {
         return (
@@ -29,9 +37,70 @@ class Addition extends Component {
         )
     }
 
+    handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
+    handleProgress = progress => this.setState({ progress });
+    handleUploadError = error => {
+        this.setState({ isUploading: false });
+        console.error(error);
+    };
+    handleUploadSuccess = filename => {
+        this.setState({ image: filename, progress: 100, isUploading: false });
+        firebase
+        .storage()
+        .ref("images")
+        .child(filename)
+        .getDownloadURL()
+        .then(url => this.setState({ imagePreviewUrl: url }));
+    };
+
+    plus(data) {
+        let services = this.props.serviceReducer.services
+        services[services.indexOf(data)].amount += 1
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice + data.price))
+    }
+
+    minus(data) {
+        let services = this.props.serviceReducer.services
+        let index = services.indexOf(data)
+        services[index].amount -= 1
+        if (services[index].amount == 0)
+            services.splice(index, 1)
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - data.price))
+    }
+
+    delete(data) {
+        let services = this.props.serviceReducer.services
+        let index = services.indexOf(data)
+        services.splice(index, 1)
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
+    }
+
+    handleOnChange(e) {
+        this.setState({selectedOption: e.target.value})
+    }
+
+    handleAreaChange(e) {
+        this.setState({detail: e.target.value})
+    }
+
+    setAddition(){
+        this.props.dispatch(setAddition({type: this.state.selectedOption, detail: this.state.detail, img: this.state.imagePreviewUrl}))
+        console.log(this.state.selectedOption)
+    }
+
     render() {
         const format = "D MMMM YYYY"
         let th = require('date-fns/locale/th')
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+          $imagePreview = (<img className="previewImage" src={imagePreviewUrl} />);
+        } else {
+          $imagePreview = (<div className="previewText">อัพโหลดรูปภาพรายละเอียดของแอร์</div>);
+        }
         return (
             <div className="service-wrapper">
                 <Header active="service" />
@@ -54,32 +123,67 @@ class Addition extends Component {
                             <div className="service-booking-order-circle-active">3</div>
                             <div className="service-booking-order-text">เพิ่มเติม</div>
                         </Link>
-                        <div className="service-booking-order-wrapper">
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/address">
                             <div className="service-booking-order-circle">4</div>
                             <div className="service-booking-order-text">ที่อยู่</div>
-                        </div>
-                        <div className="service-booking-order-wrapper">
+                        </Link>
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/payment">
                             <div className="service-booking-order-circle">5</div>
                             <div className="service-booking-order-text">ชำระเงิน</div>
-                        </div>
+                        </Link>
                     </div>
                     <div className="service-addition-header">ใส่รายละเอียดเพิ่มเติม</div>
                     <div className="service-addition-content">
                         <div className="service-addition-input-area">
-                            <div className="service-addition-type-box">
+                            <div className="service-addition-type-box-first">
                                 <div className="service-addition-type-header">
                                     ลักษณะพื้นที่
                                 </div>
                                 <div className="service-addition-radio-group">
                                     <form>
                                         <div className="service-addition-radio-row">
-                                            <div className="service-addition-radio"><input type="radio" name="type" value="บ้านเดี่ยว" /> บ้านเดี่ยว</div>
-                                            <div className="service-addition-radio"><input type="radio" name="type" value="ตึกแถว/ทาวน์โฮม" /> ตึกแถว/ทาวน์โฮม</div>
+                                            <div className="service-addition-radio"><input type="radio" name="type" value="บ้านเดี่ยว" onChange={(e) => this.handleOnChange(e)}/> บ้านเดี่ยว</div>
+                                            <div className="service-addition-radio"><input type="radio" name="type" value="ตึกแถว/ทาวน์โฮม" onChange={(e) => this.handleOnChange(e)}/> ตึกแถว/ทาวน์โฮม</div>
                                         </div>
                                         <div className="service-addition-radio-row">
-                                            <div className="service-addition-radio"><input type="radio" name="type" value="อพาร์ทเม้น/คอนโด" /> อพาร์ทเม้น/คอนโด</div>
-                                            <div className="service-addition-radio"><input type="radio" name="type" value="สำนักงาน" /> สำนักงาน</div>
+                                            <div className="service-addition-radio"><input type="radio" name="type" value="อพาร์ทเม้น/คอนโด" onChange={(e) => this.handleOnChange(e)}/> อพาร์ทเม้น/คอนโด</div>
+                                            <div className="service-addition-radio"><input type="radio" name="type" value="สำนักงาน" onChange={(e) => this.handleOnChange(e)}/> สำนักงาน</div>
                                         </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div className="service-addition-type-box">
+                                <div className="service-addition-type-header">
+                                    รายละเอียดเพิ่มเติม
+                                </div>
+                                <div className="service-addition-type-text">
+                                    ข้อมูลเพิ่มเติมที่คุณทราบเกี่ยวกับแอร์ เราจะแจ้งข้อมูลเหล่านั้นให้กับผู้ให้บริการของคุณ
+                                </div>
+                                <textarea className="service-addition-type-textarea" value={this.state.detail} onChange={e => this.handleAreaChange(e)}/>
+                            </div>
+                            <div className="service-addition-type-box">
+                                <div className="service-addition-type-header">
+                                    อัพโหลดรูปภาพ
+                                </div>
+                                <div className="service-addition-type-text">
+                                    ข้อมูลเพิ่มเติมที่คุณทราบเกี่ยวกับแอร์ เราจะแจ้งข้อมูลเหล่านั้นให้กับผู้ให้บริการของคุณ
+                                </div>
+                                <div className="service-previewcomponent">
+                                    <div className="service-imgPreview">
+                                        {$imagePreview}
+                                    </div>
+                                    <form onSubmit={(e) => this.handleSubmit(e)}>
+                                        <FileUploader
+                                            className="service-fileInput"
+                                            accept="image/*"
+                                            name="image"
+                                            randomizeFilename
+                                            storageRef={firebase.storage().ref("images")}
+                                            onUploadStart={this.handleUploadStart}
+                                            onUploadError={this.handleUploadError}
+                                            onUploadSuccess={this.handleUploadSuccess}
+                                            onProgress={this.handleProgress}
+                                        />
                                     </form>
                                 </div>
                             </div>
@@ -101,8 +205,8 @@ class Addition extends Component {
                                     <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice} บาท</div>
                                 </div>
                             </div>
-                            <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/addition">
-                                <button className="service-booking-reserve-button">ดำเนินการต่อ</button>
+                            <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/address">
+                                <button className="service-booking-reserve-button" onClick={() => this.setAddition()}>ดำเนินการต่อ</button>
                             </Link>
                         </div>
                     </div>

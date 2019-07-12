@@ -1,0 +1,209 @@
+.service-payment-wrapper {
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+}
+
+.service-payment-header {
+    font-size: 28px;
+    margin-top: 30px;
+    color: #13304F;
+    align-self: flex-start;
+}
+
+.service-payment-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.service-payment-box {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    margin-right: 3%;
+    margin-top: 10px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+}
+
+.service-payment-box-check-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    margin-top: 10px;
+    align-items: center;
+    height: 35px;
+}
+
+.service-payment-box-check {
+    width: 35px;
+    height: 35px;
+}
+
+.service-payment-box-check-text {
+    margin-left: 2%;
+    font-size: 18px;
+    color: #13304F;
+}
+
+.service-payment-button-group {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 50px;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.service-payment-button-left {
+    width: 47.5%;
+    height: 100%;
+    margin-right: 5%;
+    font-size: 22px;
+    font-family: 'RSU';
+    line-height: 50px;
+    vertical-align: middle;
+    color: #13304F;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+.service-payment-button-left-active {
+    width: 47.5%;
+    height: 100%;
+    margin-right: 5%;
+    font-size: 22px;
+    font-family: 'RSU';
+    line-height: 50px;
+    vertical-align: middle;
+    color: white;
+    background: #7FD0DA;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+.service-payment-button-right {
+    width: 47.5%;
+    height: 100%;
+    font-size: 22px;
+    font-family: 'RSU';
+    line-height: 50px;
+    vertical-align: middle;
+    color: #13304F;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+.service-payment-button-right-active {
+    width: 47.5%;
+    height: 100%;
+    font-size: 22px;
+    font-family: 'RSU';
+    line-height: 50px;
+    vertical-align: middle;
+    color: white;
+    background: #7FD0DA;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+.service-payment-box-content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-self: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.service-payment-box-price-row {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.service-payment-box-price-header {
+    font-size: 20px;
+    color: #13304F;
+}
+
+.service-payment-box-price-text {
+    font-size: 20px;
+    color: #13304F;
+}
+
+.service-payment-bank-img {
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.service-payment-bank {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.service-payment-bank-text {
+    font-size: 20px;
+    color: #13304F;
+}
+
+@media (min-width: 24em){
+    .service-payment-box-header {
+        margin-left: 5%;
+        font-size: 18px;
+        margin-top: 20px;
+        color: #13304F;
+        font-weight: bold;
+    }
+    .service-payment-box-text {
+        margin-left: 5%;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #13304F;
+    }
+}
+
+@media (min-width: 64em){
+    .service-payment-box-header {
+        margin-left: 5%;
+        font-size: 20px;
+        margin-top: 20px;
+        color: #13304F;
+        font-weight: bold;
+    }
+    .service-payment-box-text {
+        margin-left: 5%;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #13304F;
+    }
+}
+
+@media (min-width: 72em){
+    .service-payment-box-header {
+        margin-left: 5%;
+        font-size: 22px;
+        margin-top: 20px;
+        color: #13304F;
+        font-weight: bold;
+    }
+    .service-payment-box-text {
+        margin-left: 5%;
+        margin-top: 20px;
+        font-size: 22px;
+        color: #13304F;
+    }
+}

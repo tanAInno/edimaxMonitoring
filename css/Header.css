@@ -91,13 +91,15 @@
     align-self: flex-end;
     width: 20px;
     height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
     border: 0px;
     border-radius: 50%;
     background: #FF4500;
     color: white;
-    margin-left: -37%;
-    margin-bottom: -10%;
-    font-size: 15px;
+    margin-left: -35%;
+    margin-bottom: 45%;
+    font-size: 17px;
     text-align: center;
 }
 

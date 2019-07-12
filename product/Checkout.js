@@ -9,6 +9,8 @@ import Header from '../Header'
 import Select from 'react-select'
 import route from '../api'
 import Footer from '../Footer'
+import firebase from 'firebase'
+import FileUploader from 'react-firebase-file-uploader'
 
 class Checkout extends Component {
 
@@ -29,12 +31,7 @@ class Checkout extends Component {
             fax: '',
             password: '',
             confirmpassword: '',
-            selectedOption: '',
-            options: [
-                { label: 'ชำระเงินทันที', value: 'ชำระเงินทันที' },
-                { label: 'ผ่อนชำระ 3 งวด', value: 'ผ่อนชำระ 3 งวด' },
-                { label: 'ผ่อนชำระ 6 งวด', value: 'ผ่อนชำระ 6 งวด' },
-                { label: 'ผ่อนชำระ 9 งวด', value: 'ผ่อนชำระ 9 งวด' },]
+            imagePreviewUrl: '',
         }
     }
 
@@ -57,18 +54,12 @@ class Checkout extends Component {
             this.setState({ district: e.target.value })
         if (key == "subdistrict")
             this.setState({ subdistrict: e.target.value })
-        if (key == "phone")
-            this.setState({ phone: e.target.value })
         if (key == "zipcode")
             this.setState({ zipcode: e.target.value })
         if (key == "homephone")
             this.setState({ homephone: e.target.value })
         if (key == "fax")
             this.setState({ fax: e.target.value })
-    }
-
-    handleChange = (selectedOption) => {
-        this.setState({ selectedOption })
     }
 
     async sendRequest() {
@@ -87,17 +78,41 @@ class Checkout extends Component {
                 homephone: this.state.homephone,
                 fax: this.state.fax,
                 productList: this.props.productReducer.products,
-                totalprice: this.props.productReducer.totalprice
+                totalprice: this.props.productReducer.totalprice,
+                paymentImage: this.state.imagePreviewUrl
             }).catch(error => console.log(error))
         }
         this.props.dispatch(setProducts([]))
         this.props.dispatch(setTotalPrice(0))
     }
 
+    handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
+    handleProgress = progress => this.setState({ progress });
+    handleUploadError = error => {
+        this.setState({ isUploading: false });
+        console.error(error);
+    };
+    handleUploadSuccess = filename => {
+        this.setState({ image: filename, progress: 100, isUploading: false });
+        firebase
+        .storage()
+        .ref("images")
+        .child(filename)
+        .getDownloadURL()
+        .then(url => this.setState({ imagePreviewUrl: url }));
+    };
+
     render() {
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+          $imagePreview = (<img className="previewImage" src={imagePreviewUrl} />);
+        } else {
+          $imagePreview = (<div className="previewText">อัพโหลดรูปเพื่อส่งหลักฐานการชำระเงิน</div>);
+        }
         return (
             <div className="product-wrapper">
-                <Header />
+                <Header active="product" />
                 <div className="shopping-status-container">
                     <div className="shopping-status-first">
                         <div className="shopping-status-circle">
@@ -239,6 +254,46 @@ class Checkout extends Component {
                                 <div className="checkout-total-row">
                                     <div className="checkout-total-header">รวม</div>
                                     <div className="checkout-total-text">{this.props.productReducer.totalprice} บาท</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="checkout-payment-box">
+                            <div className="checkout-form-header">3. วิธีชำระเงิน</div>
+                            <div className="checkout-payment-content">
+                                <div className="checkout-payment-detail">
+                                    <img className="checkout-payment-img" src={"../assets/images/scb.png"} />
+                                    <div className="checkout-payment-text-group">
+                                        <div className="checkout-payment-text-row">
+                                            <div className="checkout-payment-text-header">ช่องทางธนาคาร</div>
+                                            <div className="checkout-payment-text">ไทยพาณิชย์</div>
+                                        </div>
+                                        <div className="checkout-payment-text-row">
+                                            <div className="checkout-payment-text-header">เลขที่บัญชี</div>
+                                            <div className="checkout-payment-text">154-5-15462-3</div>
+                                        </div>
+                                        <div className="checkout-payment-text-row">
+                                            <div className="checkout-payment-text-header">ชื่อบัญชี</div>
+                                            <div className="checkout-payment-text">บริษัท อินโนเวชั่น เทคโนโลยี จำกัด</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="previewComponent">
+                                    <form onSubmit={(e) => this.handleSubmit(e)}>
+                                        <FileUploader
+                                            className="fileInput"
+                                            accept="image/*"
+                                            name="image"
+                                            randomizeFilename
+                                            storageRef={firebase.storage().ref("images")}
+                                            onUploadStart={this.handleUploadStart}
+                                            onUploadError={this.handleUploadError}
+                                            onUploadSuccess={this.handleUploadSuccess}
+                                            onProgress={this.handleProgress}
+                                        />
+                                    </form>
+                                    <div className="imgPreview">
+                                        {$imagePreview}
+                                    </div>
                                 </div>
                                 <Link to="/product/confirmation" className="checkout-confirm-button-wrapper">
                                     <button className="checkout-confirm-button" onClick={() => this.sendRequest()}>ยืนยันการสั่งซื้อ</button>

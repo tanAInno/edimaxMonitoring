@@ -142,8 +142,86 @@
 .checkout-confirm-button-wrapper {
     width: 35%;
     margin-right: 5%;
-    align-self: flex-end;
-    margin-top: 15px;
+    align-self: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.checkout-payment-box {
+    width: 98%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.checkout-payment-content {
+    width: 94%;
+    background: #EDEDED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.checkout-payment-detail {
+    width: 85%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.checkout-payment-text-row {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: row;
+}
+
+.previewComponent {
+    margin-top: 40px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.fileInput {
+    border-bottom: 4px solid lightgray;
+    border-right: 4px solid lightgray;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    background: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10%;
+    margin-top: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+  
+.imgPreview {
+    text-align: center;
+    height: 95%;
+    width: 65%;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 5px solid gray;
+    border-bottom: 5px solid gray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: white;
+    margin-left: 10%;
+}
+
+.imgPreview img{
+    width: 100%;
+    height: 100%;
 }
 
 @media (min-width: 24em){
@@ -152,13 +230,13 @@
         margin-left: 3%;
         margin-top: 20px;
         font-size: 20px;
-        height: 45px;
+        height: 30px;
         font-weight: bold;
         color: #13304F;
         background: #7FD0DA;
         border-radius: 4px;
-        line-height: 45px;
-        vertical-align: center;
+        line-height: 30px;
+        vertical-align: middle;
         padding-left: 2%;
         padding-right: 2%;
     }
@@ -181,7 +259,28 @@
         font-size: 20px;
         font-family: 'RSU';
         line-height: 40px;
-        vertical-align: center;
+        vertical-align: middle;
+    }
+    .checkout-payment-text-group {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+        margin-top: 5px;
+    }
+    .checkout-payment-text-header {
+        width: 35%;
+        font-size: 18px;
+        color: #13304F;
+    }
+    .checkout-payment-text {
+        width: 65%;
+        font-size: 18px;
+        color: #13304F;
+    }
+    .checkout-payment-img {
+        width: 300px;
+        height: 120px;
     }
 }
 
@@ -191,13 +290,13 @@
         margin-left: 3%;
         margin-top: 20px;
         font-size: 20px;
-        height: 45px;
+        height: 30px;
         font-weight: bold;
         color: #13304F;
         background: #7FD0DA;
         border-radius: 4px;
-        line-height: 45px;
-        vertical-align: center;
+        line-height: 30px;
+        vertical-align: middle;
         padding-left: 2%;
         padding-right: 2%;
     }
@@ -220,7 +319,28 @@
         font-size: 20px;
         font-family: 'RSU';
         line-height: 40px;
-        vertical-align: center;
+        vertical-align: middle;
+    }
+    .checkout-payment-text-group {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+        margin-top: 5px;
+    }
+    .checkout-payment-text-header {
+        width: 35%;
+        font-size: 20px;
+        color: #13304F;
+    }
+    .checkout-payment-text {
+        width: 65%;
+        font-size: 20px;
+        color: #13304F;
+    }
+    .checkout-payment-img {
+        width: 300px;
+        height: 120px;
     }
 }
 
@@ -236,7 +356,7 @@
         background: #7FD0DA;
         border-radius: 4px;
         line-height: 45px;
-        vertical-align: center;
+        vertical-align: middle;
         padding-left: 2%;
         padding-right: 2%;
     }
@@ -259,6 +379,27 @@
         font-size: 24px;
         font-family: 'RSU';
         line-height: 40px;
-        vertical-align: center;
+        vertical-align: middle;
+    }
+    .checkout-payment-text-group {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+        margin-top: 15px;
+    }
+    .checkout-payment-text-header {
+        width: 35%;
+        font-size: 24px;
+        color: #13304F;
+    }
+    .checkout-payment-text {
+        width: 65%;
+        font-size: 24px;
+        color: #13304F;
+    }
+    .checkout-payment-img {
+        width: 400px;
+        height: 150px;
     }
 }

@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import Modal from 'react-modal';
 import ProductModal from './ProductModal'
 import {Link} from 'react-router-dom';
+import list from '../list'
 
 const customStyles = {
     content: {
@@ -29,15 +30,6 @@ class Product extends Component {
 
         this.state = {
             modalIsOpen: false,
-            productList: [
-                { img: "../assets/images/K2420.jpg", type: 'karcher', price: 4300, name: "K 2.420", desc: "เครื่องฉีดน้ำแรงดันสูงที่เหมาะสำหรับการทำความสะอาดในส่วนที่ยากจะเข้าถึง เช่นหลังคอมเพรสเซอร์แอร์ ใต้ท้องรถ ฯลฯ และให้ผลลัพธ์ที่ดีและรวดเร็วกว่าเมื่อเทียบกับการใช้แปรงหรืออุปกรณ์ขัดถูใดๆ" },
-                { img: "../assets/images/SC2.jpg", type: 'karcher', price: 4350, name: "SC 2 Easy Fix", desc: "เครื่องทำความสะอาดระบบไอน้ำรุ่นพื้นฐาน สามารถใช้งานง่ายและสะดวก มีส่วนควบคุมไอน้ำ 2 ระดับสำหรับปรับความเข้มข้นของไอน้ำให้เหมาะกับพื้นผิวและสิ่งสกปรก" },
-                { img: "../assets/images/SC2D.jpg", type: 'karcher', price: 4600, name: "SC 2 Deluxe Easy Fix", desc: "เครื่องทำความสะอาดระบบไอน้ำรุ่นพื้นฐาน สามารถใช้งานง่ายและสะดวก มีส่วนควบคุมไอน้ำ 2 ระดับสำหรับปรับความเข้มข้นของไอน้ำให้เหมาะกับพื้นผิวและสิ่งสกปรก" },
-                { img: "../assets/images/FC5.jpg", type: 'karcher', price: 9900, name: "FC 5 Premium", desc: "เครื่องทำความสะอาดพื้นอัตโนมัติที่จะทำความสะอาด รวมกันได้ในครั้งเดียว ทำให้พื้นของคุณเปล่งประกายโดย ไม่ต้องใช้ ไม้ถูพื้น ถังน้ำ หรือ การขัดพื้นแต่อย่างใด" },
-                { img: "../assets/images/airmaskAll.jpg", type: 'innocare', price: 405, name: "Airmask + หนามเตย", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
-                { img: "../assets/images/airmask.png", type: 'innocare', price: 295, name: "Airmask", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
-                { img: "../assets/images/bazel.png", type: 'innocare', price: 110, name: "หนามเตย", desc: "" },
-            ]
         }
     }
 
@@ -57,9 +49,9 @@ class Product extends Component {
     renderProduct(type) {
         let product = []
         let usedlist = []
-        for (let i = 0; i < this.state.productList.length; i++) {
-            if(this.state.productList[i].type == type)
-                usedlist.push(this.state.productList[i])
+        for (let i = 0; i < list.productList.length; i++) {
+            if(list.productList[i].type == type)
+                usedlist.push(list.productList[i])
         }
         for (let i = 0; i < usedlist.length; i += 4) {
             product.push(this.renderRow(usedlist.slice(i, i + 4)))
@@ -98,7 +90,7 @@ class Product extends Component {
                             <div className='product-card-last'>
                                 <img className='product-image' src={data.img} />
                                 <div className='product-name'>{data.name}</div>
-                                <div className='product-price'>{data.price} บาท</div>
+                                <div className='product-price'>฿ {data.price}</div>
                                 <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
                             </div>
                         )
@@ -106,7 +98,7 @@ class Product extends Component {
                         <div className='product-card'>
                             <img className='product-image' src={data.img} />
                             <div className='product-name'>{data.name}</div>
-                            <div className='product-price'>{data.price} บาท</div>
+                            <div className='product-price'>฿ {data.price}</div>
                             <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
                         </div>
                     )

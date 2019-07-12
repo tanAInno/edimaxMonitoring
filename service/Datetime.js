@@ -21,7 +21,7 @@ class Datetime extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(setSelectedDate(new Date()))
+        this.props.dispatch(setSelectedDate(dateFns.addDays(new Date(), 5)))
     }
 
     renderChoosenItems() {
@@ -85,10 +85,10 @@ class Datetime extends Component {
             for (let i = 0; i < 7; i++) {
                 formattedDate = dateFns.format(day, dateFormat)
                 const cloneDay = day
-                if (!dateFns.isSameMonth(day, monthStart))
+                if (!dateFns.isSameMonth(day, monthStart) || dateFns.compareAsc(dateFns.subDays(day, 4), new Date()) < 0)
                     days.push(<div className="service-datetime-day-disable"
                         key={day}
-                        onClick={() => this.onDateClick(dateFns.parse(cloneDay))}>{formattedDate}</div>)
+                        >{formattedDate}</div>)
                 else if (dateFns.isSameDay(day, selectedDate))
                     days.push(<div className="service-datetime-day-selected"
                         key={day}
@@ -116,6 +116,31 @@ class Datetime extends Component {
             return <button className="service-datetime-timepicker-button" onClick={() => this.props.dispatch(setSelectedTime(data))}>{data}</button>
     }
 
+    plus(data) {
+        let services = this.props.serviceReducer.services
+        services[services.indexOf(data)].amount += 1
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice + data.price))
+    }
+
+    minus(data) {
+        let services = this.props.serviceReducer.services
+        let index = services.indexOf(data)
+        services[index].amount -= 1
+        if (services[index].amount == 0)
+            services.splice(index, 1)
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - data.price))
+    }
+
+    delete(data) {
+        let services = this.props.serviceReducer.services
+        let index = services.indexOf(data)
+        services.splice(index, 1)
+        this.props.dispatch(setServices(services))
+        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
+    }
+
     render() {
         const format = "D MMMM YYYY"
         let th = require('date-fns/locale/th')
@@ -141,14 +166,14 @@ class Datetime extends Component {
                             <div className="service-booking-order-circle">3</div>
                             <div className="service-booking-order-text">เพิ่มเติม</div>
                         </Link>
-                        <div className="service-booking-order-wrapper">
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/address">
                             <div className="service-booking-order-circle">4</div>
                             <div className="service-booking-order-text">ที่อยู่</div>
-                        </div>
-                        <div className="service-booking-order-wrapper">
+                        </Link>
+                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/payment">
                             <div className="service-booking-order-circle">5</div>
                             <div className="service-booking-order-text">ชำระเงิน</div>
-                        </div>
+                        </Link>
                     </div>
                     <div className="service-datetime-header">ระบุช่วงเวลาที่ต้องการ</div>
                     <div className="service-datetime-content">

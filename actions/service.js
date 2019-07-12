@@ -1,4 +1,4 @@
-import { SET_SERVICES, SET_TOTAL_PRICE, SET_SELECTED_DATE, SET_SELECTED_TIME } from '../types/service'
+import { SET_SERVICES, SET_TOTAL_PRICE, SET_SELECTED_DATE, SET_SELECTED_TIME, SET_ADDRESS, SET_ADDITION } from '../types/service'
 
 export const setServices = (services) => {
     return dispatch => {
@@ -32,6 +32,24 @@ export const setSelectedTime = (selectedTime) => {
         dispatch({
             type: SET_SELECTED_TIME,
             payload: { selectedTime }
+        })
+    }
+}
+
+export const setAddition = (addition) => {
+    return dispatch => {
+        dispatch({
+            type: SET_ADDITION,
+            payload: { addition }
+        })
+    }
+}
+
+export const setAddress = (address) => {
+    return dispatch => {
+        dispatch({
+            type: SET_ADDRESS,
+            payload: { address }
         })
     }
 }

@@ -1,0 +1,45 @@
+.service-thank-wrapper {
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+}
+
+.service-thank-text-header {
+    font-size: 25px;
+    font-weight: bold;
+    color: #13304F;
+    margin-top: 40px;
+}
+
+.service-thank-img {
+    margin-top: 30px;
+    width: 150px;
+    height: 150px;
+}
+
+.service-thank-text {
+    font-size: 22px;
+    color: #13304F;
+    margin-top: 30px;
+}
+
+.service-thank-button-wrapper {
+    width: 20%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.service-thank-button {
+    width: 100%;
+    height: 50px;
+    font-size: 22px;
+    color: white;
+    background: #7FD0DA;
+    font-family: 'RSU';
+    line-height: 50px;
+    vertical-align: middle;
+    border: 0;
+    border-radius: 5px;
+}

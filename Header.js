@@ -56,7 +56,7 @@ class Header extends Component {
             return (
                 <div className="product-header-center">
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
-                    <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/product/main"><div>PRODUCTS</div></Link>
+                    <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/product/"><div>PRODUCTS</div></Link>
                     <div className="product-header-text">BLOG</div>
                     <div className="product-header-text">PROMOTION</div>
                     <input className="product-search-input" placeholder={"Search"} />

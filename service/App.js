@@ -6,6 +6,9 @@ import Home from './Home'
 import Booking from './Booking'
 import Datetime from './Datetime'
 import Addition from './Addition'
+import Address from './Address'
+import Payment from './Payment'
+import Thanks from './Thanks'
 
 class App extends Component {
 
@@ -16,6 +19,9 @@ class App extends Component {
                 <Route path={`${this.props.match.path}/booking`} component={Booking}/>
                 <Route path={`${this.props.match.path}/datetime`} component={Datetime}/>
                 <Route path={`${this.props.match.path}/addition`} component={Addition}/>
+                <Route path={`${this.props.match.path}/address`} component={Address}/>
+                <Route path={`${this.props.match.path}/payment`} component={Payment}/>
+                <Route path={`${this.props.match.path}/thanks`} component={Thanks}/>
             </div>
         )
     }
