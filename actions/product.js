@@ -1,4 +1,4 @@
-import { SET_PRODUCTS, SET_CHOOSEN_PRODUCTS, SET_CUSTOMER_LIST, SET_TOTAL_PRODUCT_PRICE } from "../types/product";
+import { SET_PRODUCTS, SET_CHOOSEN_PRODUCTS, SET_CUSTOMER_LIST, SET_TOTAL_PRODUCT_PRICE, SET_COUPON_LIST } from "../types/product";
 export const setProducts = (products) => {
     return dispatch => {
         dispatch({
@@ -31,6 +31,15 @@ export const setTotalProductPrice = (totalprice) => {
         dispatch({
             type: SET_TOTAL_PRODUCT_PRICE,
             payload: { totalprice }
+        })
+    }
+}
+
+export const setCouponList = (couponList) => {
+    return dispatch => {
+        dispatch({
+            type: SET_COUPON_LIST,
+            payload: { couponList }
         })
     }
 }

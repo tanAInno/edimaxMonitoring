@@ -1,0 +1,13 @@
+.coupon-row {
+    width: 70%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.coupon-text {
+    width: 50%;
+    font-size: 22px;
+    text-align: center;
+}

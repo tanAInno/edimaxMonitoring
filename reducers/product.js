@@ -1,9 +1,10 @@
-import { SET_PRODUCTS,SET_CHOOSEN_PRODUCTS, SET_CUSTOMER_LIST, SET_TOTAL_PRODUCT_PRICE } from "../types/product"
+import { SET_PRODUCTS,SET_CHOOSEN_PRODUCTS, SET_CUSTOMER_LIST, SET_TOTAL_PRODUCT_PRICE, SET_COUPON_LIST } from "../types/product"
 const initState = {
     products: [],
     choosenProduct: {},
     customerList: [],
-    totalprice: 0
+    totalprice: 0,
+    couponList: []
 }
 export default (state = initState, action) => {
     switch(action.type) {
@@ -15,6 +16,8 @@ export default (state = initState, action) => {
             return {...state, customerList: action.payload.customerList}  
         case SET_TOTAL_PRODUCT_PRICE:
             return {...state, totalprice: action.payload.totalprice}
+        case SET_COUPON_LIST:
+            return {...state, couponList: action.payload.couponList}
         default:
             return state
     }
