@@ -3,7 +3,7 @@ import axios from 'axios'
 import '../css/Shopping.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
-import { setProducts,setTotalPrice } from '../actions/product';
+import { setProducts,setTotalProductPrice } from '../actions/product';
 import Header from '../Header'
 import Footer from '../Footer'
 import { Link, Redirect } from 'react-router-dom';
@@ -23,7 +23,7 @@ class ShoppingCart extends Component {
             for(let i=0; i < products.length; i++) {
                 total += products[i].price * products[i].amount
             }
-            this.props.dispatch(setTotalPrice(total))
+            this.props.dispatch(setTotalProductPrice(total))
         }
     }
 
@@ -31,17 +31,16 @@ class ShoppingCart extends Component {
         let products = this.props.productReducer.products
         products[products.indexOf(data)].amount += 1
         this.props.dispatch(setProducts(products))
-        this.props.dispatch(setTotalPrice(this.props.productReducer.totalprice + data.price))
+        this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice + data.price))
     }
 
     minus(data) {
         let products = this.props.productReducer.products
         let index = products.indexOf(data)
-        products[index].amount -= 1
-        if (products[index].amount == 0)
-            products.splice(index, 1)
-        this.props.dispatch(setProducts(products))
-        this.props.dispatch(setTotalPrice(this.props.productReducer.totalprice - data.price))
+        if (products[index].amount > 1){
+            products[index].amount -= 1
+            this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice - data.price))
+        }
     }
 
     delete(data) {
@@ -49,7 +48,7 @@ class ShoppingCart extends Component {
         let index = products.indexOf(data)
         products.splice(index, 1)
         this.props.dispatch(setProducts(products))
-        this.props.dispatch(setTotalPrice(this.props.productReducer.totalprice - (data.price * data.amount)))
+        this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice - (data.price * data.amount)))
     }
 
     handleChangeWithKey = (key, e) => {
@@ -59,7 +58,7 @@ class ShoppingCart extends Component {
 
     useCoupon() {
         if (this.state.coupon == "123456" && this.state.couponUsed == false){
-            this.props.dispatch(setTotalPrice(this.props.productReducer.totalprice * 8/10))
+            this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice * 8/10))
             this.setState({couponUsed: true})
             this.setState({coupon : ''})
             this.setState({caution: 'right'})
@@ -94,7 +93,7 @@ class ShoppingCart extends Component {
     render() {
         return (
             <div className="shopping-wrapper">
-                <Header />
+                <Header active="product"/>
                 <div className="shopping-status-container">
                     <div className="shopping-status-first">
                         <div className="shopping-status-circle-active">

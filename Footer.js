@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './css/Product.css'
 import './css/Service.css'
+import './css/Main.css'
 import './assets/fonts/fontface.css'
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'

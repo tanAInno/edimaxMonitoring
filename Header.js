@@ -29,7 +29,8 @@ class Header extends Component {
         super()
 
         this.state = {
-            modalIsOpen: false
+            modalIsOpen: false,
+            searchInput: ''
         }
     }
 
@@ -45,19 +46,40 @@ class Header extends Component {
     }
 
     renderCounter() {
-        if (this.props.productReducer.products.length > 0)
-            return <div className="product-header-sub-count">{this.props.productReducer.products.length}</div>
+        if (this.props.productReducer.products.length + this.props.serviceReducer.services.length > 0)
+            return <div className="product-header-sub-count">{this.props.productReducer.products.length + this.props.serviceReducer.services.length}</div>
         else
-            return <div/>
+            return <div />
+    }
+
+    handleSearchChange(e) {
+        this.setState({ searchInput: e.target.value })
     }
 
     renderActive(active) {
+        if (active == "main")
+            return (
+                <div className="product-header-center">
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/product/"><div>PRODUCTS</div></Link>
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
+                    <div className="product-header-text">PROMOTION</div>
+                    <input className="product-search-input" placeholder={"Search"} />
+                    <div className="product-header-sub-logo-wrapper">
+                        <img className="product-header-sub-logo" src={"../assets/images/noti.jpg"} />
+                    </div>
+                    <div className="product-header-sub-logo-wrapper">
+                        <img className="product-header-sub-logo" src={"../assets/images/shopping.jpg"} onClick={() => this.openModal(this.props.productReducer.products)} />
+                        {this.renderCounter()}
+                    </div>
+                </div>
+            )
         if (active == "product")
             return (
                 <div className="product-header-center">
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
                     <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/product/"><div>PRODUCTS</div></Link>
-                    <div className="product-header-text">BLOG</div>
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     <input className="product-search-input" placeholder={"Search"} />
                     <div className="product-header-sub-logo-wrapper">
@@ -74,9 +96,26 @@ class Header extends Component {
                 <div className="product-header-center">
                     <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/product"><div>PRODUCTS</div></Link>
-                    <div className="product-header-text">BLOG</div>
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
-                    <input className="product-search-input" placeholder={"Search"} />
+                    <input className="product-search-input" placeholder={"Search"} value={this.state.searchInput} onChange={e => this.handleSearchChange(e)} />
+                    <div className="product-header-sub-logo-wrapper">
+                        <img className="product-header-sub-logo" src={"../assets/images/noti.jpg"} />
+                    </div>
+                    <div className="product-header-sub-logo-wrapper">
+                        <img className="product-header-sub-logo" src={"../assets/images/shopping.jpg"} onClick={() => this.openModal(this.props.productReducer.products)} />
+                        {this.renderCounter()}
+                    </div>
+                </div>
+            )
+        if (active == "blog")
+            return (
+                <div className="product-header-center">
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/product"><div>PRODUCTS</div></Link>
+                    <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
+                    <div className="product-header-text">PROMOTION</div>
+                    <input className="product-search-input" placeholder={"Search"} value={this.state.searchInput} onChange={e => this.handleSearchChange(e)} />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={"../assets/images/noti.jpg"} />
                     </div>
@@ -92,7 +131,7 @@ class Header extends Component {
         return (
             <div className="product-header-wrapper">
                 <div className="product-header-logo-wrapper">
-                    <img className="product-header-logo" src={"../assets/images/logo.png"} />
+                    <Link className="product-header-logo" style={{ textDecoration: 'none' }} to="/"><img className="product-header-logo-img" src={"../assets/images/logo.png"} /></Link>
                 </div>
                 <div className="product-header-content-wrapper">
                     <div className="product-header-top">

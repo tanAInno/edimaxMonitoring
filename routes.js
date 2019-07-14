@@ -3,9 +3,8 @@ import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-d
 import Monitor from './containers/App';
 import Product from './product/App';
 import Service from './service/App'
+import Blog from './blog/App'
 import Main from './App';
-import ShoppingCart from './product/Shoppingcart';
-import Checkout from './product/Checkout';
 export default () => {
  return (
    <BrowserRouter>
@@ -14,6 +13,7 @@ export default () => {
     <Route path='/monitor' component={Monitor}/>
     <Route path='/product' component={Product} />
     <Route path='/service' component={Service} />
+    <Route path='/blog' component={Blog} />
     </Switch>
    </BrowserRouter>
  )

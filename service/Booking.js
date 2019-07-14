@@ -6,7 +6,7 @@ import '../assets/fonts/fontface.css'
 import '../css/Booking.css'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { setServices, setTotalPrice } from '../actions/service'
+import { setServices, setTotalServicePrice } from '../actions/service'
 import list from '../list'
 
 class Booking extends Component {
@@ -61,7 +61,7 @@ class Booking extends Component {
         if (!exist)
             services.push(newobj)
         this.props.dispatch(setServices(services))
-        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice + data.price))
+        this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice + data.price))
         this.renderChoosenItems()
     }
 
@@ -69,17 +69,16 @@ class Booking extends Component {
         let services = this.props.serviceReducer.services
         services[services.indexOf(data)].amount += 1
         this.props.dispatch(setServices(services))
-        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice + data.price))
+        this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice + data.price))
     }
 
     minus(data) {
         let services = this.props.serviceReducer.services
         let index = services.indexOf(data)
-        services[index].amount -= 1
-        if (services[index].amount == 0)
-            services.splice(index, 1)
-        this.props.dispatch(setServices(services))
-        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - data.price))
+        if (services[index].amount > 1){
+            services[index].amount -= 1
+            this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - data.price))
+        }
     }
 
     delete(data) {
@@ -87,7 +86,7 @@ class Booking extends Component {
         let index = services.indexOf(data)
         services.splice(index, 1)
         this.props.dispatch(setServices(services))
-        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
+        this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
     }
 
     render() {

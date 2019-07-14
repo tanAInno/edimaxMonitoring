@@ -1,4 +1,4 @@
-import { SET_SERVICES, SET_TOTAL_PRICE, SET_SELECTED_DATE, SET_SELECTED_TIME, SET_ADDRESS, SET_ADDITION } from '../types/service'
+import { SET_SERVICES, SET_TOTAL_SERVICE_PRICE, SET_SELECTED_DATE, SET_SELECTED_TIME, SET_ADDRESS, SET_ADDITION } from '../types/service'
 
 export const setServices = (services) => {
     return dispatch => {
@@ -9,10 +9,10 @@ export const setServices = (services) => {
     }
 }
 
-export const setTotalPrice = (totalprice) => {
+export const setTotalServicePrice = (totalprice) => {
     return dispatch => {
         dispatch({
-            type: SET_TOTAL_PRICE,
+            type: SET_TOTAL_SERVICE_PRICE,
             payload: { totalprice }
         })
     }

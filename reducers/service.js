@@ -1,4 +1,4 @@
-import { SET_SERVICES, SET_TOTAL_PRICE, SET_SELECTED_DATE, SET_SELECTED_TIME, SET_ADDRESS, SET_ADDITION } from '../types/service'
+import { SET_SERVICES, SET_TOTAL_SERVICE_PRICE, SET_SELECTED_DATE, SET_SELECTED_TIME, SET_ADDRESS, SET_ADDITION } from '../types/service'
 const initState = {
     services: [],
     totalprice: 0,
@@ -11,7 +11,7 @@ export default (state = initState, action) => {
     switch(action.type) {
         case SET_SERVICES:
             return {...state, services: action.payload.services}
-        case SET_TOTAL_PRICE:
+        case SET_TOTAL_SERVICE_PRICE:
             return {...state, totalprice: action.payload.totalprice}
         case SET_SELECTED_DATE:
             return {...state, selectedDate: action.payload.selectedDate}

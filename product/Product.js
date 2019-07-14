@@ -88,7 +88,7 @@ class Product extends Component {
                     if(index == 3)
                         return (
                             <div className='product-card-last'>
-                                <img className='product-image' src={data.img} />
+                                <Link style={{ textDecoration: 'none' }} to={{pathname:`/product/detail/${data.id}`}}><img className='product-image' src={data.img} /></Link>
                                 <div className='product-name'>{data.name}</div>
                                 <div className='product-price'>฿ {data.price}</div>
                                 <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
@@ -96,7 +96,7 @@ class Product extends Component {
                         )
                     return (
                         <div className='product-card'>
-                            <img className='product-image' src={data.img} />
+                            <Link style={{ textDecoration: 'none' }} to={{pathname:`/product/detail/${data.id}`, productId: data.id}}><img className='product-image' src={data.img} /></Link>
                             <div className='product-name'>{data.name}</div>
                             <div className='product-price'>฿ {data.price}</div>
                             <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>

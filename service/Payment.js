@@ -8,7 +8,7 @@ import '../css/Payment.css'
 import route from '../api'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { setServices, setTotalPrice } from '../actions/service'
+import { setServices, setTotalServicePrice } from '../actions/service'
 import firebase from 'firebase'
 import FileUploader from 'react-firebase-file-uploader'
 
@@ -105,14 +105,14 @@ class Payment extends Component {
         if (this.state.bankpayment)
             return (
                 <div className="service-payment-box-content">
-                    <img className="service-payment-bank-img" src={"../assets/images/scb.png"}/>
+                    <img className="service-payment-bank-img" src={"../assets/images/tmb.jpg"}/>
                     <div className="service-payment-bank">
                         <div className="service-payment-bank-text">ช่องทางธนาคาร</div>
-                        <div className="service-payment-bank-text">ไทยพาณิชย์</div>
+                        <div className="service-payment-bank-text">ธนาคารทหารไทยจำกัด มหาชน</div>
                     </div>
                     <div className="service-payment-bank">
                         <div className="service-payment-bank-text">เลขที่บัญชี</div>
-                        <div className="service-payment-bank-text">154-5-15462-3</div>
+                        <div className="service-payment-bank-text">069-2-64698-7</div>
                     </div>
                     <div className="service-payment-bank">
                         <div className="service-payment-bank-text">ชื่อบัญชี</div>
@@ -174,17 +174,16 @@ class Payment extends Component {
         let services = this.props.serviceReducer.services
         services[services.indexOf(data)].amount += 1
         this.props.dispatch(setServices(services))
-        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice + data.price))
+        this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice + data.price))
     }
 
     minus(data) {
         let services = this.props.serviceReducer.services
         let index = services.indexOf(data)
-        services[index].amount -= 1
-        if (services[index].amount == 0)
-            services.splice(index, 1)
-        this.props.dispatch(setServices(services))
-        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - data.price))
+        if (services[index].amount > 1){
+            services[index].amount -= 1
+            this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - data.price))
+        }
     }
 
     delete(data) {
@@ -192,7 +191,7 @@ class Payment extends Component {
         let index = services.indexOf(data)
         services.splice(index, 1)
         this.props.dispatch(setServices(services))
-        this.props.dispatch(setTotalPrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
+        this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
     }
 
     async sendRequest() {

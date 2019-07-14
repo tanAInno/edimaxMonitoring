@@ -4,44 +4,71 @@ import '../css/ShoppingModal.css'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
-import { setProducts, setTotalPrice } from '../actions/product';
+import { setProducts, setTotalProductPrice } from '../actions/product';
+import { setServices, setTotalServicePrice, setAddition } from '../actions/service'
 
 class ShoppingcartModal extends Component {
 
     componentDidMount() {
         let products = this.props.productReducer.products
         let total = 0
-        if(products.length > 0){
-            for(let i=0; i < products.length; i++) {
+        if (products.length > 0) {
+            for (let i = 0; i < products.length; i++) {
                 total += products[i].price * products[i].amount
             }
-            this.props.dispatch(setTotalPrice(total))
+            this.props.dispatch(setTotalProductPrice(total))
         }
     }
 
-    plus(data) {
-        let products = this.props.productReducer.products
-        products[products.indexOf(data)].amount += 1
-        this.props.dispatch(setProducts(products))
-        this.props.dispatch(setTotalPrice(this.props.productReducer.totalprice + data.price))
+    plus(data, type) {
+        if (type == "product") {
+            let products = this.props.productReducer.products
+            products[products.indexOf(data)].amount += 1
+            this.props.dispatch(setProducts(products))
+            this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice + data.price))
+        }
+        if (type == "service") {
+            let services = this.props.serviceReducer.services
+            services[services.indexOf(data)].amount += 1
+            this.props.dispatch(setServices(services))
+            this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice + data.price))
+        }
     }
 
-    minus(data) {
-        let products = this.props.productReducer.products
-        let index = products.indexOf(data)
-        products[index].amount -= 1
-        if (products[index].amount == 0)
+    minus(data, type) {
+        if (type == "product") {
+            let products = this.props.productReducer.products
+            let index = products.indexOf(data)
+            if (products[index].amount > 1) {
+                products[index].amount -= 1
+                this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice - data.price))
+            }
+        }
+        if (type == "service") {
+            let services = this.props.serviceReducer.services
+            let index = services.indexOf(data)
+            if (services[index].amount > 1) {
+                services[index].amount -= 1
+                this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - data.price))
+            }
+        }
+    }
+
+    delete(data, type) {
+        if (type == "product") {
+            let products = this.props.productReducer.products
+            let index = products.indexOf(data)
             products.splice(index, 1)
-        this.props.dispatch(setProducts(products))
-        this.props.dispatch(setTotalPrice(this.props.productReducer.totalprice - data.price))
-    }
-
-    delete(data) {
-        let products = this.props.productReducer.products
-        let index = products.indexOf(data)
-        products.splice(index, 1)
-        this.props.dispatch(setProducts(products))
-        this.props.dispatch(setTotalPrice(this.props.productReducer.totalprice - (data.price * data.amount)))
+            this.props.dispatch(setProducts(products))
+            this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice - (data.price * data.amount)))
+        }
+        if (type == "service") {
+            let services = this.props.serviceReducer.services
+            let index = services.indexOf(data)
+            services.splice(index, 1)
+            this.props.dispatch(setServices(services))
+            this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
+        }
     }
 
     render() {
@@ -65,30 +92,87 @@ class ShoppingcartModal extends Component {
                             </TabLink>
                         </div>
                         <TabContent for="all">
-                        <div className="shopping-modal-table">
-                            {this.props.productReducer.products.map((data, index) => {
-                                return (
-                                    <div className="shopping-modal-box">
-                                        <img className="shopping-modal-box-img" src={data.img} />
-                                        <div className="shopping-modal-box-content">
-                                            <div className="shopping-modal-box-name">{data.name}</div>
-                                            <div className="shopping-modal-box-price">{data.price} บาท</div>
-                                            <div className="shopping-modal-box-button-group">
-                                                <button className="shopping-modal-box-button" onClick={() => this.minus(data)}>-</button>
-                                                <div className="shopping-modal-box-amount">{data.amount}</div>
-                                                <button className="shopping-modal-box-button" onClick={() => this.plus(data)}>+</button>
-                                                <button className="shopping-modal-box-delete" onClick={() => this.delete(data)}>ลบ</button>
+                            <div className="shopping-modal-table">
+                                {this.props.productReducer.products.map((data, index) => {
+                                    return (
+                                        <div className="shopping-modal-box">
+                                            <img className="shopping-modal-box-img" src={data.img} />
+                                            <div className="shopping-modal-box-content">
+                                                <div className="shopping-modal-box-name">{data.name}</div>
+                                                <div className="shopping-modal-box-price">{data.price} บาท</div>
+                                                <div className="shopping-modal-box-button-group">
+                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data,"product")}>-</button>
+                                                    <div className="shopping-modal-box-amount">{data.amount}</div>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data,"product")}>+</button>
+                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data,"product")}>ลบ</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )
-                            })}
-                            <div className="shopping-modal-total-price">รวมทั้งสิ้น: {this.props.productReducer.totalprice} บาท</div>
-                        </div>
+                                    )
+                                })}
+                                {this.props.serviceReducer.services.map((data, index) => {
+                                    return (
+                                        <div className="shopping-modal-box">
+                                            <img className="shopping-modal-box-img" src={"../assets/images/air_1.jpg"} />
+                                            <div className="shopping-modal-box-content">
+                                                <div className="shopping-modal-box-name">{data.name}</div>
+                                                <div className="shopping-modal-box-price">{data.price} บาท</div>
+                                                <div className="shopping-modal-box-button-group">
+                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data,"service")}>-</button>
+                                                    <div className="shopping-modal-box-amount">{data.amount}</div>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data,"service")}>+</button>
+                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data,"service")}>ลบ</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="shopping-modal-total-price">รวมทั้งสิ้น: {this.props.productReducer.totalprice + this.props.serviceReducer.totalprice} บาท</div>
+                            </div>
                         </TabContent>
                         <TabContent for="services">
+                            <div className="shopping-modal-table">
+                                {this.props.serviceReducer.services.map((data, index) => {
+                                    return (
+                                        <div className="shopping-modal-box">
+                                            <img className="shopping-modal-box-img" src={"../assets/images/air_1.jpg"} />
+                                            <div className="shopping-modal-box-content">
+                                                <div className="shopping-modal-box-name">{data.name}</div>
+                                                <div className="shopping-modal-box-price">{data.price} บาท</div>
+                                                <div className="shopping-modal-box-button-group">
+                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data,"service")}>-</button>
+                                                    <div className="shopping-modal-box-amount">{data.amount}</div>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data,"service")}>+</button>
+                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data,"service")}>ลบ</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="shopping-modal-total-price">รวมทั้งสิ้น: {this.props.serviceReducer.totalprice} บาท</div>
+                            </div>
                         </TabContent>
                         <TabContent for="products">
+                            <div className="shopping-modal-table">
+                                {this.props.productReducer.products.map((data, index) => {
+                                    return (
+                                        <div className="shopping-modal-box">
+                                            <img className="shopping-modal-box-img" src={data.img} />
+                                            <div className="shopping-modal-box-content">
+                                                <div className="shopping-modal-box-name">{data.name}</div>
+                                                <div className="shopping-modal-box-price">{data.price} บาท</div>
+                                                <div className="shopping-modal-box-button-group">
+                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data)}>-</button>
+                                                    <div className="shopping-modal-box-amount">{data.amount}</div>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data)}>+</button>
+                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data)}>ลบ</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="shopping-modal-total-price">รวมทั้งสิ้น: {this.props.productReducer.totalprice} บาท</div>
+                            </div>
                         </TabContent>
                     </Tabs>
                     <Link className="shopping-modal-button-wrapper" style={{ textDecoration: 'none' }} to="/product/shoppingcart">

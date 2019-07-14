@@ -3,7 +3,7 @@ import axios from 'axios'
 import '../css/Checkout.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
-import { setProducts, setTotalPrice } from '../actions/product';
+import { setProducts, setTotalProductPrice } from '../actions/product';
 import { Link } from 'react-router-dom';
 import Header from '../Header'
 import Select from 'react-select'
@@ -83,7 +83,7 @@ class Checkout extends Component {
             }).catch(error => console.log(error))
         }
         this.props.dispatch(setProducts([]))
-        this.props.dispatch(setTotalPrice(0))
+        this.props.dispatch(setTotalProductPrice(0))
     }
 
     handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
@@ -261,15 +261,15 @@ class Checkout extends Component {
                             <div className="checkout-form-header">3. วิธีชำระเงิน</div>
                             <div className="checkout-payment-content">
                                 <div className="checkout-payment-detail">
-                                    <img className="checkout-payment-img" src={"../assets/images/scb.png"} />
+                                    <img className="checkout-payment-img" src={"../assets/images/tmb.jpg"} />
                                     <div className="checkout-payment-text-group">
                                         <div className="checkout-payment-text-row">
                                             <div className="checkout-payment-text-header">ช่องทางธนาคาร</div>
-                                            <div className="checkout-payment-text">ไทยพาณิชย์</div>
+                                            <div className="checkout-payment-text">ธนาคารทหารไทยจำกัด มหาชน</div>
                                         </div>
                                         <div className="checkout-payment-text-row">
                                             <div className="checkout-payment-text-header">เลขที่บัญชี</div>
-                                            <div className="checkout-payment-text">154-5-15462-3</div>
+                                            <div className="checkout-payment-text">069-2-64698-7</div>
                                         </div>
                                         <div className="checkout-payment-text-row">
                                             <div className="checkout-payment-text-header">ชื่อบัญชี</div>
