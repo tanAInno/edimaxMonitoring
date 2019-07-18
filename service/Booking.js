@@ -11,27 +11,31 @@ import list from '../list'
 
 class Booking extends Component {
 
+    state = {
+        isChecked: false
+    }
+
     renderItems(type) {
-        return(
+        return (
             list.serviceList.map((data, index) => {
-                if(data.type == type)
-                return (
-                    <div className="service-booking-list-item">
-                        <div className="service-booking-list-text-group">
-                            <div className="service-booking-list-item-text">{data.name}</div>
-                            <div className="service-booking-list-item-text">{data.price} บาท / เครื่อง</div>
+                if (data.type == type)
+                    return (
+                        <div className="service-booking-list-item">
+                            <div className="service-booking-list-text-group">
+                                <div className="service-booking-list-item-text">{data.name}</div>
+                                <div className="service-booking-list-item-text">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท / เครื่อง</div>
+                            </div>
+                            <button className="service-booking-list-button" onClick={() => this.addService(data)}>เพิ่ม</button>
                         </div>
-                        <button className="service-booking-list-button" onClick={() => this.addService(data)}>เพิ่ม</button>
-                    </div>
-                )
+                    )
             })
         )
     }
 
     renderChoosenItems() {
-        return(
-            this.props.serviceReducer.services.map((data,index) => {
-                return(
+        return (
+            this.props.serviceReducer.services.map((data, index) => {
+                return (
                     <div className="service-booking-reserve-item-wrapper">
                         <div className="service-booking-reserve-item-header">{data.name}</div>
                         <div className="service-booking-reserve-item">
@@ -48,9 +52,11 @@ class Booking extends Component {
 
     addService(data) {
         let services = this.props.serviceReducer.services
-        let newobj = { name: data.name,
-                    price: data.price,
-                    amount: 1}
+        let newobj = {
+            name: data.name,
+            price: data.price,
+            amount: 1
+        }
         let exist = false
         for (let i = 0; i < services.length; i++) {
             if (services[i].name == data.name) {
@@ -75,7 +81,7 @@ class Booking extends Component {
     minus(data) {
         let services = this.props.serviceReducer.services
         let index = services.indexOf(data)
-        if (services[index].amount > 1){
+        if (services[index].amount > 1) {
             services[index].amount -= 1
             this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - data.price))
         }
@@ -87,6 +93,29 @@ class Booking extends Component {
         services.splice(index, 1)
         this.props.dispatch(setServices(services))
         this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
+    }
+
+    handleCheck() {
+        this.setState({ isChecked: !this.state.isChecked }, () => this.addAirmask())
+    }
+
+    addAirmask() {
+        console.log(this.state.isChecked)
+        let newobj = {
+            name: "ติดตั้ง airmask",
+            price: 200,
+            amount: 1
+        }
+        let services = this.props.serviceReducer.services
+        if (this.state.isChecked == false) {
+            services.splice(services.indexOf(newobj), 1)
+            this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - 200))
+        }
+        if (this.state.isChecked == true) {
+            services.push(newobj)
+            this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice + 200))
+        }
+        this.props.dispatch(setServices(services))
     }
 
     render() {
@@ -138,23 +167,16 @@ class Booking extends Component {
                     <div className="service-booking-area">
                         <div className="service-booking-area-header">เขตพื้นที่ให้บริการ</div>
                         <div className="service-booking-area-content">กรุงเทพมหานคร</div>
-                        <div className="service-booking-area-content">ปทุมธานี</div>
-                        <div className="service-booking-area-content">ปราจีนบุรี</div>
-                        <div className="service-booking-area-content">สระบุรี</div>
                     </div>
                     <div className="service-booking-sub-header">เลือกรายการบริการ</div>
                     <div className="service-booking-list">
                         <div className="service-booking-list-table">
-                            ​<div className="service-booking-list-header">แบบติดผนัง</div>
-                                {this.renderItems("ติดผนัง")}
-                                <div className="service-booking-list-header">แบบแขวน</div>
-                                {this.renderItems("แขวน")}
-                                <div className="service-booking-list-header">แบบฝังฝ้า</div>
-                                {this.renderItems("ฝังฝ้า")}
-                                <div className="service-booking-list-header">แบบตู้ตั้ง</div>
-                                {this.renderItems("ตู้ตั้ง")}
-                                <div className="service-booking-list-header">แบบ 4 ทิศทาง</div>
-                                {this.renderItems("4 ทิศ")}
+                            <div className="service-booking-list-header">Wall type (ติดผนัง)</div>
+                            {this.renderItems("ติดผนัง")}
+                            <div className="service-booking-list-header">Ceiling type (แขวนฝ้า)</div>
+                            {this.renderItems("แขวน")}
+                            <div className="service-booking-list-header">Casset type (ฝังฝ้า 4 ทิศทาง)</div>
+                            {this.renderItems("4 ทิศ")}
                         </div>
                         <div className="service-booking-reserve">
                             <div className="service-booking-reserve-box">
@@ -162,8 +184,11 @@ class Booking extends Component {
                                 {this.renderChoosenItems()}
                                 <div className="service-booking-reserve-total-wrapper">
                                     <div className="service-booking-reserve-total-header">รวมยอด</div>
-                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice} บาท</div>
+                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                 </div>
+                            </div>
+                            <div className="service-booking-checkbox-row">
+                                <input type="checkbox" className="service-booking-checkbox" onChange={() => this.handleCheck()} /> <div className="service-booking-checkbox-text">พร้อมติดตั้ง airmask</div>
                             </div>
                             <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/datetime">
                                 <button className="service-booking-reserve-button">ดำเนินการต่อ</button>

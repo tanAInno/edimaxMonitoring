@@ -83,7 +83,7 @@ button:hover {
 .footer-top {
     width: 100%;
     height: 150px;
-    background: #E6E6FA;
+    background: #7FD0DA;
 }
 
 .footer-center {
@@ -95,7 +95,7 @@ button:hover {
 .footer-bottom {
     width: 100%;
     height: 50px;
-    background: #003678;
+    background: #13304F;
     color: #FFFFFF;
     text-align: center;
     display: flex;
@@ -197,7 +197,7 @@ button:hover {
     }
     
     .footer-content-text {
-        font-size: 16px;
+        font-size: 14px;
         color: #000000;
         line-height: 1.5;
     }
@@ -217,7 +217,7 @@ button:hover {
     }
     
     .footer-content-text {
-        font-size: 18px;
+        font-size: 16px;
         color: #000000;
         line-height: 1.5;
     }

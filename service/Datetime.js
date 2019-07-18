@@ -21,7 +21,7 @@ class Datetime extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(setSelectedDate(dateFns.addDays(new Date(), 5)))
+        this.props.dispatch(setSelectedDate(dateFns.addDays(new Date(), 14)))
     }
 
     renderChoosenItems() {
@@ -85,7 +85,7 @@ class Datetime extends Component {
             for (let i = 0; i < 7; i++) {
                 formattedDate = dateFns.format(day, dateFormat)
                 const cloneDay = day
-                if (!dateFns.isSameMonth(day, monthStart) || dateFns.compareAsc(dateFns.subDays(day, 4), new Date()) < 0)
+                if (!dateFns.isSameMonth(day, monthStart) || dateFns.compareAsc(dateFns.subDays(day, 13), new Date()) < 0)
                     days.push(<div className="service-datetime-day-disable"
                         key={day}
                         >{formattedDate}</div>)
@@ -206,7 +206,7 @@ class Datetime extends Component {
                                 </div>
                                 <div className="service-booking-reserve-total-wrapper">
                                     <div className="service-booking-reserve-total-header">รวมยอด</div>
-                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice} บาท</div>
+                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                 </div>
                             </div>
                             <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/addition">
@@ -215,8 +215,8 @@ class Datetime extends Component {
                         </div>
                     </div>
                     <div className="service-datetime-timepicker">
-                        {this.renderButton("9.00 - 12.00 น.")}
-                        {this.renderButton("12.00 - 16.00 น.")}
+                        {this.renderButton("9.00 - 12.00 น. (ช่วงเช้า)")}
+                        {this.renderButton("12.00 - 16.00 น. (ช่วงบ่าย)")}
                     </div>
                 </div>
                 <Footer />

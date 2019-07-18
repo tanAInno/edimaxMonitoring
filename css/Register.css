@@ -1,0 +1,73 @@
+.register-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-wrapper {
+    width: 90%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    font-family: 'RSU';
+    margin-bottom: 40px;
+}
+
+.register-header {
+    font-size: 25px;
+    font-weight: bold;
+    align-self: center;
+    color: #13304F;
+}
+
+.register-input-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.register-input-group {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.register-input-header {
+    font-size: 20px;
+    color: #13304F;
+    margin-bottom: 10px;
+}
+
+.register-input {
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    vertical-align: center;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+.register-button {
+    color: white;
+    background: #7FD0DA;
+    width: 15%;
+    height: 40px;
+    font-size: 22px;
+    font-family: 'RSU';
+    line-height: 40px;
+    vertical-align: middle;
+    border: 0px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.register-message {
+    color: red;
+    font-size: 20px;
+    margin-bottom: 20px;
+}

@@ -43,7 +43,6 @@ class History extends Component {
     async getHistories() {
         await axios.get(route+"edimaxs")
             .then(response => {
-                console.log(response.data.data)
                 const histories = response.data.data
                 this.setOption(histories)
                 this.props.dispatch(setHistories(histories))
@@ -66,7 +65,6 @@ class History extends Component {
             return 0;
         })
         this.setState({ options: options })
-        console.log(this.state.options)
     }
 
     find(arr, name) {
@@ -108,7 +106,6 @@ class History extends Component {
     filterLog() {
         let histories = this.props.edimaxReducer.histories
         let filter_list = []
-        console.log(this.state.selectedOption.value)
         for (let i = 0; i < histories.length; i++) {
             if (this.state.selectedOption.value == histories[i].name) {
                 filter_list.push(histories[i])
@@ -130,14 +127,12 @@ class History extends Component {
             let from_date = moment(this.state.from_date)
             let to_date = moment(this.state.to_date)
             let filter_list = []
-            console.log(from_date + " : " + to_date)
             for (let i = 0; i < this.state.name_filter_list.length; i++) {
                 let data = this.state.name_filter_list[i]
                 if ((moment(data.date_time) >= from_date || this.state.from_date == '')
                     && (moment(data.date_time) <= to_date || this.state.to_date == ''))
                     filter_list.push(data)
             }
-            console.log(filter_list)
             this.setState({ counter: 40 })
             this.setState({ log_list: filter_list })
             this.setState({ used_log_list: filter_list.slice(0, 40) })

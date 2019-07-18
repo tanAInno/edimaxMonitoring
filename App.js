@@ -11,6 +11,8 @@ import './assets/fonts/fontface.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { Player } from 'video-react';
+import "./node_modules/video-react/dist/video-react.css";
 
 library.add(faArrowLeft, faArrowRight)
 
@@ -83,13 +85,12 @@ class App extends Component {
                     {this.renderCircle()}
                 </div>
                 <div className="main-content">
-                    <div className="main-content-header">INNOCARE Solution</div>
-                    <div className="main-content-solution">
-                        <div className="main-content-solution-header">ลมหายใจของบ้าน</div>
-                        <div className="main-content-solution-text">ระบบระบายอากาศสำหรับบ้านนั้นสำคัญอย่างมาก ระบบระบายอากาศที่ดีจะทำให้ผู้อาศัยภายในบ้าน สดชื่นและสุขภาพดี</div>
-                        <div className="main-content-solution-text">คุณรู้หรือไม่ กว่า 30% อากาศภายในอาคาร/บ้าน เป็นพิษมากกว่าภายนอกถึง 100 เท่า</div>
-                        <div className="main-content-solution-text">INNOCARE IAQ SOLUTION เพื่อคุณภาพอากาศที่ดีกว่า</div>
-                        <Link className="main-content-solution-text" style={{ textDecoration: 'none' }} to="/blog"><div>( คลิ้ก )</div></Link>
+                    <div className="main-video-player">
+                    <Player
+                        playsInline
+                        poster="./assets/images/poster.png"
+                        src="./assets/videos/airmaskvideo.mp4"
+                        />
                     </div>
                 </div>
                 <Footer />

@@ -88,17 +88,17 @@ class Product extends Component {
                     if(index == 3)
                         return (
                             <div className='product-card-last'>
-                                <Link style={{ textDecoration: 'none' }} to={{pathname:`/product/detail/${data.id}`}}><img className='product-image' src={data.img} /></Link>
+                                <img className='product-image' src={data.img} />
                                 <div className='product-name'>{data.name}</div>
-                                <div className='product-price'>฿ {data.price}</div>
+                                <div className='product-price'>฿ {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                                 <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
                             </div>
                         )
                     return (
                         <div className='product-card'>
-                            <Link style={{ textDecoration: 'none' }} to={{pathname:`/product/detail/${data.id}`, productId: data.id}}><img className='product-image' src={data.img} /></Link>
+                            <img className='product-image' src={data.img} />
                             <div className='product-name'>{data.name}</div>
-                            <div className='product-price'>฿ {data.price}</div>
+                            <div className='product-price'>฿ {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                             <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
                         </div>
                     )
@@ -116,10 +116,10 @@ class Product extends Component {
                             <div className="product-catalogue-header-text-first">INNOCARE</div>
                             <div className="product-catalogue-header-text">PRODUCTS</div>
                         </div>
-                        <div className="product-list-header">สินค้า Karcher</div>
-                        {this.renderProduct('karcher')}
-                        <div className="product-list-header">สินค้า Inno Product</div>
+                        <div className="product-list-header">ผลิตภัณฑ์สำหรับเครื่องปรับอากาศ</div>
                         {this.renderProduct('innocare')}
+                        <div className="product-list-header">ผลิตภัณฑ์สำหรับสุขภาพและความงาม</div>
+                        {this.renderProduct('bn3')}
                     </div>
                     <Modal
                         isOpen={this.state.modalIsOpen}

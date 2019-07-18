@@ -34,7 +34,6 @@ class Coupon extends Component {
     async getCoupon() {
         await axios.get(route + "coupons").then(
             response => {
-                console.log(response)
                 const couponList = response.data.data.map(c => {
                     return ({
                         code: c.code,

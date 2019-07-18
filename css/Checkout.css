@@ -282,6 +282,10 @@
         width: 300px;
         height: 120px;
     }
+    .payment-text-detail {
+        margin-top: 20px;
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 64em){
@@ -342,6 +346,10 @@
         width: 300px;
         height: 120px;
     }
+    .payment-text-detail {
+        margin-top: 20px;
+        font-size: 18px;
+    }
 }
 
 @media (min-width: 72em){
@@ -401,5 +409,9 @@
     .checkout-payment-img {
         width: 400px;
         height: 150px;
+    }
+    .payment-text-detail {
+        margin-top: 20px;
+        font-size: 20px;
     }
 }

@@ -4,6 +4,7 @@ import '../css/Checkout.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
 import { setProducts, setTotalProductPrice } from '../actions/product';
+import { setUser } from '../actions/user'
 import { Link } from 'react-router-dom';
 import Header from '../Header'
 import Select from 'react-select'
@@ -33,6 +34,19 @@ class Checkout extends Component {
             confirmpassword: '',
             imagePreviewUrl: '',
         }
+    }
+
+    componentDidMount() {
+        this.setState({name: this.props.userReducer.user.name})
+        this.setState({surname: this.props.userReducer.user.surname})
+        this.setState({email: this.props.userReducer.user.email})
+        this.setState({company: this.props.userReducer.user.company})
+        this.setState({phone: this.props.userReducer.user.phone})
+        this.setState({address: this.props.userReducer.user.address})
+        this.setState({province: this.props.userReducer.user.province})
+        this.setState({district: this.props.userReducer.user.district})
+        this.setState({subdistrict: this.props.userReducer.user.subdistrict})
+        this.setState({zipcode: this.props.userReducer.user.zipcode})
     }
 
     handleChangeWithKey = (key, e) => {
@@ -81,9 +95,21 @@ class Checkout extends Component {
                 totalprice: this.props.productReducer.totalprice,
                 paymentImage: this.state.imagePreviewUrl
             }).catch(error => console.log(error))
+            this.updateUserProduct()
         }
         this.props.dispatch(setProducts([]))
         this.props.dispatch(setTotalProductPrice(0))
+    }
+
+    async updateUserProduct() {
+        let productOrderList = this.props.userReducer.user.productOrderList
+        productOrderList.push({ productList: this.props.productReducer.products, paymentImage: this.state.imagePreviewUrl })
+        await axios.put(route + "userproduct/" + this.props.userReducer.user._id, {
+            productOrderList: productOrderList
+        }).catch(error => console.log(error))
+        let user = this.props.userReducer.user
+        user.productOrderList = productOrderList
+        this.props.dispatch(setUser(user))
     }
 
     handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
@@ -114,18 +140,18 @@ class Checkout extends Component {
             <div className="product-wrapper">
                 <Header active="product" />
                 <div className="shopping-status-container">
-                    <div className="shopping-status-first">
+                    <Link className="shopping-status-first" to="/product/shoppingcart" style={{ textDecoration: 'none' }}>
                         <div className="shopping-status-circle">
                             <div>1</div>
                         </div>
                         <div className="shopping-status-text">รถเข็น</div>
-                    </div>
-                    <div className="shopping-status-second">
+                    </Link>
+                    <Link className="shopping-status-second" to="/product/checkout" style={{ textDecoration: 'none' }}>
                         <div className="shopping-status-circle-active">
                             <div>2</div>
                         </div>
                         <div className="shopping-status-text">วิธีจัดส่งและวิธีชำระเงิน</div>
-                    </div>
+                    </Link>
                     <div className="shopping-status-third">
                         <div className="shopping-status-circle">
                             <div>3</div>
@@ -222,20 +248,6 @@ class Checkout extends Component {
                                             onChange={e => this.handleChangeWithKey("fax", e)} />
                                     </div>
                                 </div>
-                                <div className="checkout-input-row">
-                                    <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">รหัสผ่าน</div>
-                                        <input className="checkout-input"
-                                            value={this.state.password}
-                                            onChange={e => this.handleChangeWithKey("password", e)} />
-                                    </div>
-                                    <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">ยืนยันรหัสผ่าน</div>
-                                        <input className="checkout-input"
-                                            value={this.state.confirmpassword}
-                                            onChange={e => this.handleChangeWithKey("confirmpassword", e)} />
-                                    </div>
-                                </div>
                             </div>
                             <div className="checkout-shopping-form">
                                 <div className="checkout-form-header">2. รายการสินค้า</div>
@@ -277,6 +289,7 @@ class Checkout extends Component {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="payment-text-detail">(รูปสลิปหลักฐานการโอนเงินสามารถ Upload ในภายหลังได้ในหน้าการสั่งซื้อของคุณ)</div> 
                                 <div className="previewComponent">
                                     <form onSubmit={(e) => this.handleSubmit(e)}>
                                         <FileUploader

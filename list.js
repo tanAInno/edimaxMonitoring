@@ -1,20 +1,27 @@
 const list = {
-    productList: [{ id: "8846374733914", img: "../assets/images/K2420.jpg", type: 'karcher', price: 4300, name: "K 2.420", desc: "เครื่องฉีดน้ำแรงดันสูงที่เหมาะสำหรับการทำความสะอาดในส่วนที่ยากจะเข้าถึง เช่นหลังคอมเพรสเซอร์แอร์ ใต้ท้องรถ ฯลฯ และให้ผลลัพธ์ที่ดีและรวดเร็วกว่าเมื่อเทียบกับการใช้แปรงหรืออุปกรณ์ขัดถูใดๆ" },
-    { id: "9621512048940", img: "../assets/images/SC2.jpg", type: 'karcher', price: 4350, name: "SC 2 Easy Fix", desc: "เครื่องทำความสะอาดระบบไอน้ำรุ่นพื้นฐาน สามารถใช้งานง่ายและสะดวก มีส่วนควบคุมไอน้ำ 2 ระดับสำหรับปรับความเข้มข้นของไอน้ำให้เหมาะกับพื้นผิวและสิ่งสกปรก" },
-    { id: "8543551567671", img: "../assets/images/SC2D.jpg", type: 'karcher', price: 4600, name: "SC 2 Deluxe Easy Fix", desc: "เครื่องทำความสะอาดระบบไอน้ำรุ่นพื้นฐาน สามารถใช้งานง่ายและสะดวก มีส่วนควบคุมไอน้ำ 2 ระดับสำหรับปรับความเข้มข้นของไอน้ำให้เหมาะกับพื้นผิวและสิ่งสกปรก" },
-    { id: "1133041058101", img: "../assets/images/FC5.jpg", type: 'karcher', price: 9900, name: "FC 5 Premium", desc: "เครื่องทำความสะอาดพื้นอัตโนมัติที่จะทำความสะอาด รวมกันได้ในครั้งเดียว ทำให้พื้นของคุณเปล่งประกายโดย ไม่ต้องใช้ ไม้ถูพื้น ถังน้ำ หรือ การขัดพื้นแต่อย่างใด" },
-    { id: "9820540089326", img: "../assets/images/airmaskAll.jpg", type: 'innocare', price: 405, name: "Airmask + หนามเตย", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
-    { id: "1583123676394", img: "../assets/images/airmask.png", type: 'innocare', price: 295, name: "Airmask", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
-    { id: "9056043202526", img: "../assets/images/bazel.png", type: 'innocare', price: 110, name: "หนามเตย", desc: "" },],
+    productList: [
+    { id: "9820540089326", img: "../assets/images/airmaskAll.jpg", type: 'innocare', price: 620, name: "Airmask / 10 แผ่น + หนามเตย / 1 ม้วน", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
+    { id: "1583123676394", img: "../assets/images/airmask.png", type: 'innocare', price: 450, name: "Airmask / 10 แผ่น", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
+    { id: "9056043202526", img: "../assets/images/bazel.png", type: 'innocare', price: 170, name: "หนามเตย / 1 ม้วน", desc: "" },
+    { id: "8846374733914", img: "../assets/images/meox.jpg", type: 'bn3', price: 139, name: "MEO X / 3 ชิ้น", desc: "หน้ากากกันฝุ่นละออง PM 2.5 MEO Air" },
+    { id: "9621512048940", img: "../assets/images/adapter.jpg", type: 'bn3', price: 450, name: "Shower Adapter", desc: "" },
+    { id: "8543551567671", img: "../assets/images/hottab.jpg", type: 'bn3', price: 490, name: "PUMI Onsen & Spa Hair / 10 เม็ด", desc: "เม็ดน้ำแร่ออนเซ็น Sparkling Hot Tab" },
+    { id: "1133041058101", img: "../assets/images/hottabpet.jpg", type: 'bn3', price: 590, name: "PUMI Onsen Pets / 10 เม็ด", desc: "เม็ดน้ำแร่ออนเซ็น Sparkling Hot Tab สำหรับสัตว์เลี้ยง" },{ id: "1133041058101", img: "../assets/images/FC5.jpg", type: 'karcher', price: 9900, name: "PUMI Onsen Pets / 10 เม็ด", desc: "เม็ดน้ำแร่ออนเซ็น Sparkling Hot Tab สำหรับสัตว์เลี้ยง" },
+    { id: "1133041058101", img: "../assets/images/spark.jpg", type: 'bn3', price: 2500, name: "Sparkling Shower", desc: "" },
+    { id: "1133041058101", img: "../assets/images/pot.jpg", type: 'bn3', price: 27000, name: "Portable Hydrogen Pot", desc: "เครื่องทำน้ำไฮโดรเจน Biolux รุ่น EOS7150-HU" },
+    { id: "1133041058101", img: "../assets/images/hos.jpg", type: 'bn3', price: 65000, name: "HOS", desc: "เครื่องเพิ่มค่าไฮโดรเจนให้กับน้ำและทำน้ำโอโซน Biolux รุ่น EOS7130-HU" },
+    { id: "1133041058101", img: "../assets/images/oxyz.jpg", type: 'bn3', price: 99000, name: "Oxy'z", desc: "เครื่องผลิตออกซิเจนแบบพกพา (Oxy'z) Mobile Oxygen Generator" },
+    { id: "1133041058101", img: "../assets/images/psa.jpg", type: 'bn3', price: 139000, name: "PSA3000", desc: "เครื่องผลิตออกซิเจน Oxygen generator model PSA 3000" },],
     
-    serviceList: [{ name: "9,000 - 18,000 BTU, แบบติดผนัง", price: 549, type: "ติดผนัง" },
-    { name: "18,001 - 36,000 BTU, แบบติดผนัง", price: 749, type: "ติดผนัง" },
-    { name: "9,000 - 18,000 BTU, แบบแขวน", price: 799, type: "แขวน" },
-    { name: "18,001 - 36,000 BTU, แบบแขวน", price: 899, type: "แขวน" },
-    { name: "9,000 - 18,000 BTU, แบบฝังฝ้า", price: 999, type: "ฝังฝ้า" },
-    { name: "36,001 - 60,000 BTU, แบบฝังฝ้า", price: 1349, type: "ฝังฝ้า" },
-    { name: "9,000 - 24,000 BTU, แบบตู้ตั้ง", price: 1149, type: "ตู้ตั้ง" },
-    { name: "9,000 - 36,000 BTU, 4 ทิศทาง", price: 999, type: "4 ทิศ" }]
+    serviceList: [{ name: "9,000 - 25,000 BTU, Wall type", price: 500, type: "ติดผนัง" },
+    { name: "26,000 - 44,000 BTU, Wall type", price: 650, type: "ติดผนัง" },
+    { name: "45,000 - 60,000 BTU, Wall type", price: 800, type: "ติดผนัง" },
+    { name: "12,000 - 25,000 BTU, Ceiling type", price: 550, type: "แขวน" },
+    { name: "26,000 - 44,000 BTU, Ceiling type", price: 700, type: "แขวน" },
+    { name: "45,000 - 60,000 BTU, Ceiling type", price: 850, type: "แขวน" },
+    { name: "12,000 - 25,000 BTU, Ceiling type", price: 550, type: "4 ทิศ" },
+    { name: "26,000 - 44,000 BTU, Ceiling type", price: 700, type: "4 ทิศ" },
+    { name: "45,000 - 60,000 BTU, Ceiling type", price: 850, type: "4 ทิศ" }]
 }   
 
 export default list

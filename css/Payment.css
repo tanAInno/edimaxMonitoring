@@ -160,6 +160,41 @@
     color: #13304F;
 }
 
+.service-payment-box-coupon-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.service-payment-coupon-input {
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 60%;
+    margin-right: 2%;
+    height: 35px;
+    font-family: 'RSU';
+}
+
+.service-payment-coupon-button {
+    border: 0px;
+    background: #7FD0DA;
+    border-radius: 5px;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    color: white;
+    font-size: 22px;
+    font-family: 'RSU';
+}
+
+.service-payment-caution {
+    color: #B22222;
+    margin-top: 10px;
+}
+
 @media (min-width: 24em){
     .service-payment-box-header {
         margin-left: 5%;

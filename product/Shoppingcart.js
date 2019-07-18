@@ -133,7 +133,7 @@ class ShoppingCart extends Component {
                                                     <div className="shopping-content-name">{data.name}</div>
                                                 </div>
                                                 <div className="shopping-content-sub">
-                                                    <div className="shopping-content-price">{data.price} บาท</div>
+                                                    <div className="shopping-content-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                                 </div>
                                                 <div className="shopping-content-sub">
                                                     <div className="shopping-content-amount-group">
@@ -148,17 +148,17 @@ class ShoppingCart extends Component {
                                             </div>
                                         )
                                     })}
-                                    <div className="shopping-table-footer">
+                                    {/* <div className="shopping-table-footer">
                                         <input className="shopping-table-coupon-input" 
                                             placeholder="กรอกโค้ดส่วนลด" 
                                             value={this.state.coupon}
                                             onChange={e => this.handleChangeWithKey("coupon", e)}/>
                                         <div className="shopping-table-coupon-text" onClick={() => this.useCoupon()}>ใช้คูปอง</div>
                                         <div className="shopping-table-coupon-sub-text">(ถ้ามี)</div>
-                                    </div>
+                                    </div> */}
                                     <div className="shopping-table-footer">
                                         {this.renderCaution(this.state.caution)}
-                                        <div className="shopping-table-coupon-sub-text">รวม {this.props.productReducer.totalprice} บาท</div>
+                                        <div className="shopping-table-coupon-sub-text">รวม {this.props.productReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                     </div>
                                     <div className="shopping-table-footer">
                                         <Link className="shopping-content-button-wrapper" style={{ textDecoration: 'none' }} to="/product/checkout">

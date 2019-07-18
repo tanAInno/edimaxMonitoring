@@ -9,6 +9,7 @@ import route from '../api'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { setServices, setTotalServicePrice } from '../actions/service'
+import { setUser } from '../actions/user'
 import firebase from 'firebase'
 import FileUploader from 'react-firebase-file-uploader'
 
@@ -18,7 +19,10 @@ class Payment extends Component {
         bankpayment: true,
         cashpayment: false,
         imagePreviewUrl: '',
-        paymentOption: ''
+        paymentOption: '',
+        coupon: '',
+        couponValid: true,
+        couponData: {}
     }
 
     handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
@@ -56,9 +60,9 @@ class Payment extends Component {
     }
 
     renderAddress() {
-        return this.props.serviceReducer.address.addressNumber + " " + this.props.serviceReducer.address.housing +
-            " " + this.props.serviceReducer.address.road + " " + this.props.serviceReducer.address.subdistrict +
-            " " + this.props.serviceReducer.address.district + " " + this.props.serviceReducer.address.province
+        return this.props.serviceReducer.serviceaddress.addressNumber + " " + this.props.serviceReducer.serviceaddress.housing +
+            " " + this.props.serviceReducer.serviceaddress.road + " " + this.props.serviceReducer.serviceaddress.subdistrict +
+            " " + this.props.serviceReducer.serviceaddress.district + " " + this.props.serviceReducer.serviceaddress.province
     }
 
     renderBankButton() {
@@ -93,6 +97,46 @@ class Payment extends Component {
         this.setState({ imagePreviewUrl: null })
     }
 
+    async updateUserService() {
+        let serviceOrderList = this.props.userReducer.user.serviceOrderList
+        let paymentStage = ''
+        if(this.state.imagePreviewUrl == '')
+            paymentStage = "unpaid"
+        if(this.state.imagePreviewUrl != '')
+            paymentStage = "processing"
+        serviceOrderList.push({ serviceList: this.props.serviceReducer.services, paymentImage: this.state.imagePreviewUrl, paymentStage: paymentStage, coupon: this.state.coupon})
+        await axios.put(route + "userservice/" + this.props.userReducer.user._id, {
+            serviceOrderList: serviceOrderList
+        }).catch(error => console.log(error))
+        let user = this.props.userReducer.user
+        user.serviceOrderList = serviceOrderList
+        this.props.dispatch(setUser(user))
+    }
+
+    handleChange(e) {
+        this.setState({coupon: e.target.value})
+    }
+
+    async useCoupon() {
+        await axios.get(route + "couponbycode/" + this.state.coupon).then(
+            response => {
+                if(response.data.status == "ok"){
+                    this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - 100))
+                    this.setState({couponValid: true})
+                    this.setState({couponData: response.data.data})
+                }
+                if(response.data.status == "undefined")
+                    this.setState({couponValid: false})
+            }).catch(error => console.log(error))
+    }
+
+    renderCaution(){
+        if(this.state.couponValid == false)
+            return <div className="service-payment-caution">รหัสคูปองไม่ถูกต้อง หรือคูปองได้ถูกใช้งานไปแล้ว</div>
+        if(this.state.couponValid == true)
+            return <div/>
+    }
+
     renderPaymentContent() {
         let vatPrice = Math.ceil(this.props.serviceReducer.totalprice * 7 / 100)
         let { imagePreviewUrl } = this.state;
@@ -118,6 +162,7 @@ class Payment extends Component {
                         <div className="service-payment-bank-text">ชื่อบัญชี</div>
                         <div className="service-payment-bank-text">บริษัท อินโนเวชั่น เทคโนโลยี จำกัด</div>
                     </div>
+                    <div className="payment-text-detail">(รูปสลิปหลักฐานการโอนเงินสามารถ Upload ในภายหลังได้ในหน้าการสั่งซื้อของคุณ)</div> 
                     <div className="service-previewcomponent">
                         <div className="service-imgPreview">
                             {$imagePreview}
@@ -139,16 +184,23 @@ class Payment extends Component {
                     </div>
                     <div className="service-payment-box-price-row">
                         <div className="service-payment-box-price-header">ราคาค่าบริการทั้งหมด</div>
-                        <div className="service-payment-box-price-text">฿ {this.props.serviceReducer.totalprice}</div>
+                        <div className="service-payment-box-price-text">฿ {this.props.serviceReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                     </div>
                     <div className="service-payment-box-price-row">
                         <div className="service-payment-box-price-header">ภาษีมูลค่าเพิ่ม (VAT) 7 %</div>
-                        <div className="service-payment-box-price-text">฿ {vatPrice}</div>
+                        <div className="service-payment-box-price-text">฿ {vatPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                     </div>
                     <div className="service-payment-box-price-row">
                         <div className="service-payment-box-price-header">รวมเป็นจำนวนเงินที่ต้องชำระ</div>
-                        <div className="service-payment-box-price-text">฿ {this.props.serviceReducer.totalprice + vatPrice}</div>
+                        <div className="service-payment-box-price-text">฿ {(this.props.serviceReducer.totalprice + vatPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                     </div>
+                    <div className="service-payment-box-coupon-wrapper">
+                        <input className="service-payment-coupon-input"
+                            value={this.state.coupon}
+                            onChange={e => this.handleChange(e)}/>
+                        <button className="service-payment-coupon-button" onClick={() => this.useCoupon()}>ใช้งานคูปอง</button>
+                    </div>
+                    {this.renderCaution()}
                 </div>
             )
         if (this.state.cashpayment)
@@ -156,7 +208,7 @@ class Payment extends Component {
                 <div className="service-payment-box-content">
                     <div className="service-payment-box-price-row">
                         <div className="service-payment-box-price-header">ราคาค่าบริการทั้งหมด</div>
-                        <div className="service-payment-box-price-text">฿ {this.props.serviceReducer.totalprice}</div>
+                        <div className="service-payment-box-price-text">฿ {this.props.serviceReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                     </div>
                     <div className="service-payment-box-price-row">
                         <div className="service-payment-box-price-header">ภาษีมูลค่าเพิ่ม (VAT) 7 %</div>
@@ -164,8 +216,15 @@ class Payment extends Component {
                     </div>
                     <div className="service-payment-box-price-row">
                         <div className="service-payment-box-price-header">รวมเป็นจำนวนเงินที่ต้องชำระ</div>
-                        <div className="service-payment-box-price-text">฿ {this.props.serviceReducer.totalprice + vatPrice}</div>
+                        <div className="service-payment-box-price-text">฿ {(this.props.serviceReducer.totalprice + vatPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                     </div>
+                    <div className="service-payment-box-coupon-wrapper">
+                        <input className="service-payment-coupon-input"
+                            value={this.state.coupon}
+                            onChange={e => this.handleChange(e)}/>
+                        <button className="service-payment-coupon-button" onClick={() => this.useCoupon()}>ใช้งานคูปอง</button>
+                    </div>
+                    {this.renderCaution()}
                 </div>
             )
     }
@@ -194,11 +253,17 @@ class Payment extends Component {
         this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
     }
 
+    async updateCoupon() {
+        await axios.put(route + "usedcoupon/" + this.state.couponData._id,{
+            used: "used"
+        }).catch(error => console.log(error))
+    }
+
     async sendRequest() {
         if (this.props.serviceReducer.services.length > 0) {
             await axios.post(route + "services", {
-                name: this.props.serviceReducer.address.name,
-                phone: this.props.serviceReducer.address.phone,
+                name: this.props.serviceReducer.serviceaddress.name,
+                phone: this.props.serviceReducer.serviceaddress.phone,
                 address: this.renderAddress(),
                 totalprice: this.props.serviceReducer.totalprice,
                 date: this.props.serviceReducer.selectedDate,
@@ -208,12 +273,18 @@ class Payment extends Component {
                 image: this.state.imagePreviewUrl,
                 paymentOption: this.state.paymentOption
             }).catch(error => console.log(error))
+            this.updateUserService()
+            if(this.state.couponData != {})
+                this.updateCoupon()
         }
+        this.props.dispatch(setServices([]))
+        this.props.dispatch(setTotalServicePrice(0))
     }
 
     render() {
         const format = "D MMMM YYYY"
         let th = require('date-fns/locale/th')
+        let vatPrice = Math.ceil(this.props.serviceReducer.totalprice * 7 / 100)
         return (
             <div className="service-wrapper">
                 <Header active="service" />
@@ -287,7 +358,7 @@ class Payment extends Component {
                                 </div>
                                 <div className="service-booking-reserve-total-wrapper">
                                     <div className="service-booking-reserve-total-header">รวมยอด</div>
-                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice} บาท</div>
+                                    <div className="service-booking-reserve-total">{(this.props.serviceReducer.totalprice + vatPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                 </div>
                             </div>
                             <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/thanks">

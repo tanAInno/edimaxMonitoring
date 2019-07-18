@@ -4,6 +4,8 @@ import Monitor from './containers/App';
 import Product from './product/App';
 import Service from './service/App'
 import Blog from './blog/App'
+import Register from './Register/App'
+import Profile from './Profile/App'
 import Main from './App';
 export default () => {
  return (
@@ -14,6 +16,8 @@ export default () => {
     <Route path='/product' component={Product} />
     <Route path='/service' component={Service} />
     <Route path='/blog' component={Blog} />
+    <Route path='/register' component={Register} />
+    <Route path='/profile' component={Profile}/>
     </Switch>
    </BrowserRouter>
  )

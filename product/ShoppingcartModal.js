@@ -99,7 +99,7 @@ class ShoppingcartModal extends Component {
                                             <img className="shopping-modal-box-img" src={data.img} />
                                             <div className="shopping-modal-box-content">
                                                 <div className="shopping-modal-box-name">{data.name}</div>
-                                                <div className="shopping-modal-box-price">{data.price} บาท</div>
+                                                <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                                 <div className="shopping-modal-box-button-group">
                                                     <button className="shopping-modal-box-button" onClick={() => this.minus(data,"product")}>-</button>
                                                     <div className="shopping-modal-box-amount">{data.amount}</div>
@@ -116,7 +116,7 @@ class ShoppingcartModal extends Component {
                                             <img className="shopping-modal-box-img" src={"../assets/images/air_1.jpg"} />
                                             <div className="shopping-modal-box-content">
                                                 <div className="shopping-modal-box-name">{data.name}</div>
-                                                <div className="shopping-modal-box-price">{data.price} บาท</div>
+                                                <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                                 <div className="shopping-modal-box-button-group">
                                                     <button className="shopping-modal-box-button" onClick={() => this.minus(data,"service")}>-</button>
                                                     <div className="shopping-modal-box-amount">{data.amount}</div>
@@ -138,7 +138,7 @@ class ShoppingcartModal extends Component {
                                             <img className="shopping-modal-box-img" src={"../assets/images/air_1.jpg"} />
                                             <div className="shopping-modal-box-content">
                                                 <div className="shopping-modal-box-name">{data.name}</div>
-                                                <div className="shopping-modal-box-price">{data.price} บาท</div>
+                                                <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                                 <div className="shopping-modal-box-button-group">
                                                     <button className="shopping-modal-box-button" onClick={() => this.minus(data,"service")}>-</button>
                                                     <div className="shopping-modal-box-amount">{data.amount}</div>
@@ -149,7 +149,7 @@ class ShoppingcartModal extends Component {
                                         </div>
                                     )
                                 })}
-                                <div className="shopping-modal-total-price">รวมทั้งสิ้น: {this.props.serviceReducer.totalprice} บาท</div>
+                                <div className="shopping-modal-total-price">รวมทั้งสิ้น: {this.props.serviceReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                             </div>
                         </TabContent>
                         <TabContent for="products">
@@ -160,7 +160,7 @@ class ShoppingcartModal extends Component {
                                             <img className="shopping-modal-box-img" src={data.img} />
                                             <div className="shopping-modal-box-content">
                                                 <div className="shopping-modal-box-name">{data.name}</div>
-                                                <div className="shopping-modal-box-price">{data.price} บาท</div>
+                                                <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                                 <div className="shopping-modal-box-button-group">
                                                     <button className="shopping-modal-box-button" onClick={() => this.minus(data)}>-</button>
                                                     <div className="shopping-modal-box-amount">{data.amount}</div>
@@ -171,7 +171,7 @@ class ShoppingcartModal extends Component {
                                         </div>
                                     )
                                 })}
-                                <div className="shopping-modal-total-price">รวมทั้งสิ้น: {this.props.productReducer.totalprice} บาท</div>
+                                <div className="shopping-modal-total-price">รวมทั้งสิ้น: {this.props.productReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                             </div>
                         </TabContent>
                     </Tabs>

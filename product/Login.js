@@ -25,7 +25,6 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(response => {
-            console.log(response)
             if (response.data.status == "login success"){
                 Cookies.set('access_token', response.data.accessToken, {expires:1})
                 this.setState({isLoggedIn: true})

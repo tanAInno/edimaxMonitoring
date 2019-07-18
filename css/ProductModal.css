@@ -2,7 +2,7 @@
 @media (min-width: 24em){
     .product-modal-container {
         width: 60vw;
-        height: 15vh;
+        height: 300px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;
@@ -11,7 +11,7 @@
 @media (min-width: 64em){
     .product-modal-container {
         width: 60vw;
-        height: 25vh;
+        height: 330px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;
@@ -20,7 +20,7 @@
 @media (min-width: 72em){
     .product-modal-container {
         width: 50vw;
-        height: 50vh;
+        height: 400px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;

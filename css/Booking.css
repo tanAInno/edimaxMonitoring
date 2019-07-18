@@ -92,7 +92,8 @@
 }
 
 .service-booking-sub-header {
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     font-size: 26px;
     font-weight: bold;
     color: #13304F;
@@ -297,6 +298,25 @@
     margin-left: 4%;
     font-size: 22px;
     color: #13304F;
+}
+
+.service-booking-checkbox-row {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.service-booking-checkbox {
+    height: 25px;
+    width: 25px;
+}
+
+.service-booking-checkbox-text {
+    font-size: 22px;
+    color: #7FD0DA;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 2%;
 }
 
 @media (min-width: 24em){

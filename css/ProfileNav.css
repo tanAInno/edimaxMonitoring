@@ -1,0 +1,43 @@
+.profile-nav-container {
+    width: 25%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-nav-header {
+    font-size: 22px;
+    color: #13304F;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.profile-nav-menu {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #13304F;
+}
+
+.profile-nav-menu-active {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #7FD0DA;
+}
+
+.profile-nav-menu:focus {
+    cursor: pointer;
+}
+
+.profile-nav-menu:hover {
+    cursor: pointer;
+}
+
+.profile-nav-menu-active:focus {
+    cursor: pointer;
+}
+
+.profile-nav-menu-active:hover {
+    cursor: pointer;
+}

@@ -5,9 +5,9 @@ import Header from '../Header'
 import Footer from '../Footer'
 import '../assets/fonts/fontface.css'
 import '../css/Address.css'
-import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, RefreshRoute, Switch, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { setServices, setTotalServicePrice, setAddress } from '../actions/service'
+import { setServices, setTotalServicePrice, setServiceAddress } from '../actions/service'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class Address extends Component {
@@ -23,24 +23,18 @@ class Address extends Component {
         road: "",
         subdistrict: "",
         district: "",
-        province: ""
+        province: "",
+        nextPage: false
     }
 
-    onMarkerClick = (props, marker, e) =>
-        this.setState({
-            selectedPlace: props,
-            activeMarker: marker,
-            showingInfoWindow: true
-        });
-
-    onMapClicked = (props) => {
-        if (this.state.showingInfoWindow) {
-            this.setState({
-                showingInfoWindow: false,
-                activeMarker: null
-            })
-        }
-    };
+    componentDidMount() {
+        this.setState({name: this.props.userReducer.user.name + " " + this.props.userReducer.user.surname})
+        this.setState({phone: this.props.userReducer.user.phone})
+        this.setState({addressNumber: this.props.userReducer.user.address})
+        this.setState({province: this.props.userReducer.user.province})
+        this.setState({district: this.props.userReducer.user.district})
+        this.setState({subdistrict: this.props.userReducer.user.subdistrict})
+    }
 
     handleChangeWithKey = (key, e) => {
         if (key == "name")
@@ -62,7 +56,7 @@ class Address extends Component {
     }
 
     setAddress() {
-        this.props.dispatch(setAddress({
+        let address = {
             name: this.state.name,
             phone: this.state.phone,
             addressNumber: this.state.addressNumber,
@@ -71,7 +65,9 @@ class Address extends Component {
             subdistrict: this.state.subdistrict,
             district: this.state.district,
             province: this.state.province
-        }))
+        }
+        this.props.dispatch(setServiceAddress(address))
+        this.setState({nextPage: true})
     }
 
     renderChoosenItems() {
@@ -119,6 +115,8 @@ class Address extends Component {
     render() {
         const format = "D MMMM YYYY"
         let th = require('date-fns/locale/th')
+        if(this.state.nextPage == true)
+            return <Redirect to="/service/payment"/>
         return (
             <div className="service-wrapper">
                 <Header active="service" />
@@ -216,12 +214,10 @@ class Address extends Component {
                                 </div>
                                 <div className="service-booking-reserve-total-wrapper">
                                     <div className="service-booking-reserve-total-header">รวมยอด</div>
-                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice} บาท</div>
+                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                 </div>
                             </div>
-                            <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/payment">
-                                <button className="service-booking-reserve-button" onClick={() => this.setAddress()}>ดำเนินการต่อ</button>
-                            </Link>
+                            <button className="service-booking-reserve-button" onClick={() => this.setAddress()}>ดำเนินการต่อ</button>
                         </div>
                     </div>
                 </div>
@@ -232,6 +228,4 @@ class Address extends Component {
 
 }
 
-export default GoogleApiWrapper({
-    apiKey: "AIzaSyAL6S4-IXfF5T_QXPHGckbRFtyx46uSgeo"
-})(connect(state => state)(Address))
+export default connect(state => state)(Address)

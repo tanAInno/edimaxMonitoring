@@ -1,0 +1,114 @@
+import React, { Component } from 'react';
+import axios from 'axios'
+import '../css/LoginModal.css'
+import { connect } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom';
+import route from '../api';
+import Cookies from 'js-cookie'
+import { setUser } from '../actions/user'
+
+class LoginModal extends Component {
+
+    state = {
+        username: '',
+        password: '',
+        isLoggedIn: false,
+        isFailed: false,
+    }
+
+    handleChangeWithKey = (key, e) => {
+        if (key == "username")
+            this.setState({ username: e.target.value })
+        if (key == "password")
+            this.setState({ password: e.target.value })
+    }
+
+    async Login() {
+        await axios.post(route+"login",{
+            username: this.state.username,
+            password: this.state.password
+        }).then(response => {
+            if (response.data.status == "login success"){
+                Cookies.set('access_token', response.data.accessToken, {expires:1})
+                this.setState({isLoggedIn: true})
+                this.updateAccessToken(response.data.accessToken)
+                location.reload()
+            }
+            if (response.data.status == "login failed")
+                this.setState({isFailed: true})
+        }).catch(error=> {
+            this.setState({isLoggedIn : false})
+        })
+    }
+
+    async updateAccessToken(accessToken) {
+        await axios.put(route+"updatetoken",{
+            username: this.state.username,
+            accessToken: accessToken
+        }).then(response => {
+            this.getUser(accessToken)
+        }).catch(error=> console.log(error))
+    }
+
+    async getUser(cookie) {
+        await axios.get(route + "userbytoken",{
+            accessToken: cookie+""
+        }).then(response => {
+            const data = response.data.data
+            const user = {
+                username : data.username,
+                password : data.password,
+                type : data.type,
+                name : data.name,
+                surname : data.surname,
+                email : data.email,
+                company : data.company,
+                address : data.address,
+                province : data.province,
+                district : data.district,
+                subdistrict : data.subdistrict,
+                phone : data.phone,
+                zipcode : data.zipcode,
+                productOrderList : data.productOrderList,
+                serviceOrderList : data.serviceOrderList,
+            }
+            this.props.dispatch(setUser(user))
+        }).catch(error => console.log(error))
+    }
+
+    _handleKeyPress = (e) => {
+        if (e.key === 'Enter') 
+            this.Login()
+    }
+
+    renderCaution() {
+        if(this.state.isFailed == true)
+            return <div className="login-caution">login ไม่สำเร็จ username หรือ password ไม่ถูกต้อง โปรดลองใหม่อีกครั้ง</div>
+    }
+
+    render() {
+        return (
+            <div className="login-modal-container">
+                <div className="login-modal-header">เข้าสู่ระบบ</div>
+                <div className="login-modal-content">
+                    <div className="login-modal-input-header">Username</div>
+                    <input className="login-modal-input"
+                        value={this.state.username}
+                        onKeyPress={this._handleKeyPress}
+                        onChange={e => this.handleChangeWithKey("username", e)} />
+                    <div className="login-modal-input-header">Password</div>
+                    <input className="login-modal-input"
+                        value={this.state.password}
+                        onKeyPress={this._handleKeyPress}
+                        onChange={e => this.handleChangeWithKey("password", e)}
+                        type="password" />
+                </div>
+                {this.renderCaution()}
+                <button className="login-modal-button" onClick={() => this.Login()}>Login</button>
+            </div>
+        )
+    }
+
+}
+
+export default connect(state => state)(LoginModal)

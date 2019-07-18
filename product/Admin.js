@@ -28,14 +28,12 @@ class Admin extends Component {
         var iconv = require('iconv-lite');
         var fileDownload = require('js-file-download');
         let encodedFile = iconv.encode(csv, 'utf16')
-        console.log(encodedFile)
         fileDownload(encodedFile, 'history.csv')
     }
 
     async getList() {
         await axios.get(route + "products").then(
             response => {
-                console.log(response)
                 const customerList = response.data.data.map(c => {
                     return ({
                         _id: c._id,

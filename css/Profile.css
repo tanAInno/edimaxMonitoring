@@ -1,0 +1,122 @@
+.profile-wrapper {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-family: 'RSU';
+    align-items: center;
+}
+
+.profile-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-content-box {
+    width: 75%;
+    border-left: 1.5px solid #CCC;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+
+.profile-content-box-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-content-header-wrapper {
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #CCC;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-content-header {
+    color: #13304F;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 3.5%;
+}
+
+.profile-content-sub-header {
+    color: #CCC;
+    font-size: 22px;
+    margin-left: 3.5%;
+    margin-top: 10px;
+}
+
+.profile-content-edit {
+    color: #13304F;
+    margin-left: auto;
+    margin-right: 5%;
+    font-size: 22px;
+}
+
+.profile-content-edit:hover {
+    cursor: pointer;
+}
+
+.profile-content-edit:focus {
+    cursor: pointer;
+}
+
+.profile-content-row {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+}
+
+.profile-detail-header{
+    font-size: 20px;
+    color: #13304F;
+    width: 15%;
+}
+
+.profile-detail-text {
+    font-size: 20px;
+    color:#111111;
+    width: 30%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.profile-detail-input {
+    font-size: 20px;
+    color:#111111;
+    width: 30%;
+    height: 30px;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    font-family: 'RSU';
+}
+
+.profile-content-button-group {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.profile-content-button {
+    width: 40%;
+    height: 40px;
+    font-size: 22px;
+    color: white;
+    background: #7FD0DA;
+    border: 0;
+    border-radius: 5px;
+    font-family: 'RSU';
+    line-height: 40px;
+    vertical-align: middle;
+}

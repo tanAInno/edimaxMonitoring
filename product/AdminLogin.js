@@ -21,11 +21,10 @@ class AdminLogin extends Component {
     }
 
     async login(){
-        await axios.post(route+"login",{
+        await axios.post(route+"loginadmin",{
             username: this.state.username,
             password: this.state.password
         }).then(response => {
-            console.log(response)
             if (response.data.status == "login success"){
                 Cookies.set('access_token', response.data.accessToken, {expires:1})
                 this.setState({isLoggedIn: true})

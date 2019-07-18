@@ -5,7 +5,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import '../assets/fonts/fontface.css'
 import '../css/Addition.css'
-import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, RefreshRoute, Switch, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { setServices, setTotalServicePrice, setAddition } from '../actions/service'
 import firebase from 'firebase'
@@ -16,7 +16,8 @@ class Addition extends Component {
     state = {
         imagePreviewUrl: '',
         selectedOption: '',
-        detail: ''
+        detail: '',
+        nextPage: false
     }
 
     renderChoosenItems() {
@@ -87,7 +88,7 @@ class Addition extends Component {
 
     setAddition(){
         this.props.dispatch(setAddition({type: this.state.selectedOption, detail: this.state.detail, img: this.state.imagePreviewUrl}))
-        console.log(this.state.selectedOption)
+        this.setState({nextPage: true})
     }
 
     render() {
@@ -100,6 +101,8 @@ class Addition extends Component {
         } else {
           $imagePreview = (<div className="previewText">อัพโหลดรูปภาพรายละเอียดของแอร์</div>);
         }
+        if(this.state.nextPage == true)
+            return <Redirect to="/service/address"/>
         return (
             <div className="service-wrapper">
                 <Header active="service" />
@@ -201,12 +204,10 @@ class Addition extends Component {
                                 </div>
                                 <div className="service-booking-reserve-total-wrapper">
                                     <div className="service-booking-reserve-total-header">รวมยอด</div>
-                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice} บาท</div>
+                                    <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                 </div>
                             </div>
-                            <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/address">
-                                <button className="service-booking-reserve-button" onClick={() => this.setAddition()}>ดำเนินการต่อ</button>
-                            </Link>
+                            <button className="service-booking-reserve-button" onClick={() => this.setAddition()}>ดำเนินการต่อ</button>
                         </div>
                     </div>
                 </div>
