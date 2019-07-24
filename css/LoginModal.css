@@ -2,7 +2,7 @@
 @media (min-width: 24em){
     .login-modal-container {
         width: 50vw;
-        height: 360px;
+        height: 330px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;
@@ -39,13 +39,19 @@
         border: 0px;
         border-radius: 5px;
         margin-top: 20px;
+    }
+    .login-modal-text {
+        font-size: 16px;
+        color: #7FD0DA;
+        line-height: 1.5;
+        margin-top: 10px;
         margin-bottom: 20px;
     }
 }
 @media (min-width: 64em){
     .login-modal-container {
         width: 50vw;
-        height: 360px;
+        height: 340px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;
@@ -84,11 +90,17 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
+    .login-modal-text {
+        font-size: 18px;
+        color: #7FD0DA;
+        line-height: 1.5;
+        margin-top: 10px;
+    }
 }
 @media (min-width: 72em){
     .login-modal-container {
         width: 50vw;
-        height: 410px;
+        height: 380px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;
@@ -126,6 +138,12 @@
         border-radius: 5px;
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    .login-modal-text {
+        font-size: 20px;
+        color: #7FD0DA;
+        line-height: 1.5;
+        margin-top: 10px;
     }
 }
 

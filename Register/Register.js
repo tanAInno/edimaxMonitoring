@@ -3,6 +3,7 @@ import axios from 'axios'
 import '../css/Register.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 import route from '../api';
 import Header from '../Header'
 import Footer from '../Footer'
@@ -79,6 +80,8 @@ class Register extends Component {
     }
 
     render() {
+        if(this.props.userReducer.user.name != undefined)
+            return <Redirect to="/"/>
         if(this.state.isRegistered)
             return <Redirect to="/register/done"/>
         return (
@@ -181,4 +184,4 @@ class Register extends Component {
 
 }
 
-export default Register
+export default connect(state => state)(Register)

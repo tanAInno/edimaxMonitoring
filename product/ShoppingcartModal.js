@@ -6,8 +6,27 @@ import { Link, Redirect } from 'react-router-dom';
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { setProducts, setTotalProductPrice } from '../actions/product';
 import { setServices, setTotalServicePrice, setAddition } from '../actions/service'
+import Modal from 'react-modal';
+import LoginModal from '../Register/LoginModal'
+
+const loginStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
+Modal.setAppElement('body')
 
 class ShoppingcartModal extends Component {
+
+    state = {
+        loginmodalIsOpen: false,
+    }
 
     componentDidMount() {
         let products = this.props.productReducer.products
@@ -71,6 +90,34 @@ class ShoppingcartModal extends Component {
         }
     }
 
+    openloginModal() {
+        this.setState({ loginmodalIsOpen: true })
+    }
+
+    afterOpenloginModal() {
+    }
+
+    closeloginModal() {
+        this.setState({ loginmodalIsOpen: false })
+    }
+
+    renderModalButton() {
+        if (this.props.userReducer.user.name != undefined) {
+            return (
+                <Link className="shopping-modal-button-wrapper" style={{ textDecoration: 'none' }} to="/product/shoppingcart">
+                    <button className="shopping-modal-button">ชำระค่าสินค้า</button>
+                </Link>
+            )
+        }
+        if (this.props.userReducer.user.name == undefined) {
+            return (
+                <div className="shopping-modal-button-wrapper">
+                    <button className="shopping-modal-button" onClick={() => this.openloginModal()}>ชำระค่าสินค้า</button>
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <div className="shopping-modal-wrapper">
@@ -101,10 +148,10 @@ class ShoppingcartModal extends Component {
                                                 <div className="shopping-modal-box-name">{data.name}</div>
                                                 <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                                 <div className="shopping-modal-box-button-group">
-                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data,"product")}>-</button>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data, "product")}>-</button>
                                                     <div className="shopping-modal-box-amount">{data.amount}</div>
-                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data,"product")}>+</button>
-                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data,"product")}>ลบ</button>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data, "product")}>+</button>
+                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data, "product")}>ลบ</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,10 +165,10 @@ class ShoppingcartModal extends Component {
                                                 <div className="shopping-modal-box-name">{data.name}</div>
                                                 <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                                 <div className="shopping-modal-box-button-group">
-                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data,"service")}>-</button>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data, "service")}>-</button>
                                                     <div className="shopping-modal-box-amount">{data.amount}</div>
-                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data,"service")}>+</button>
-                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data,"service")}>ลบ</button>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data, "service")}>+</button>
+                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data, "service")}>ลบ</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,10 +187,10 @@ class ShoppingcartModal extends Component {
                                                 <div className="shopping-modal-box-name">{data.name}</div>
                                                 <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                                 <div className="shopping-modal-box-button-group">
-                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data,"service")}>-</button>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.minus(data, "service")}>-</button>
                                                     <div className="shopping-modal-box-amount">{data.amount}</div>
-                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data,"service")}>+</button>
-                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data,"service")}>ลบ</button>
+                                                    <button className="shopping-modal-box-button" onClick={() => this.plus(data, "service")}>+</button>
+                                                    <button className="shopping-modal-box-delete" onClick={() => this.delete(data, "service")}>ลบ</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -175,9 +222,16 @@ class ShoppingcartModal extends Component {
                             </div>
                         </TabContent>
                     </Tabs>
-                    <Link className="shopping-modal-button-wrapper" style={{ textDecoration: 'none' }} to="/product/shoppingcart">
-                        <button className="shopping-modal-button">ชำระค่าสินค้า</button>
-                    </Link>
+                    {this.renderModalButton()}
+                    <Modal
+                        isOpen={this.state.loginmodalIsOpen}
+                        onAfterOpen={() => this.afterOpenloginModal()}
+                        onRequestClose={() => this.closeloginModal()}
+                        contentLabel="Login"
+                        style={loginStyles}
+                    >
+                        <LoginModal />
+                    </Modal>
                 </div>
             </div>
         )

@@ -105,6 +105,7 @@ class LoginModal extends Component {
                 </div>
                 {this.renderCaution()}
                 <button className="login-modal-button" onClick={() => this.Login()}>Login</button>
+                <Link to="/register" className="login-modal-text">สมัครใหม่</Link>
             </div>
         )
     }

@@ -133,22 +133,22 @@ class Booking extends Component {
                             <div className="service-booking-order-circle-active">1</div>
                             <div className="service-booking-order-text">รายการ</div>
                         </Link>
-                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/datetime">
+                        <div className="service-booking-order-wrapper">
                             <div className="service-booking-order-circle">2</div>
                             <div className="service-booking-order-text">วันเวลา</div>
-                        </Link>
-                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/addition">
+                        </div>
+                        <div className="service-booking-order-wrapper">
                             <div className="service-booking-order-circle">3</div>
                             <div className="service-booking-order-text">เพิ่มเติม</div>
-                        </Link>
-                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/address">
+                        </div>
+                        <div className="service-booking-order-wrapper">
                             <div className="service-booking-order-circle">4</div>
                             <div className="service-booking-order-text">ที่อยู่</div>
-                        </Link>
-                        <Link className="service-booking-order-wrapper" style={{ textDecoration: 'none' }} to="/service/payment">
+                        </div>
+                        <div className="service-booking-order-wrapper">
                             <div className="service-booking-order-circle">5</div>
                             <div className="service-booking-order-text">ชำระเงิน</div>
-                        </Link>
+                        </div>
                     </div>
                     <div className="service-booking-story">
                         <div className="service-booking-story-wrapper-side">

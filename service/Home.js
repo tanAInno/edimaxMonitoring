@@ -2,11 +2,59 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Header from '../Header'
 import Footer from '../Footer'
+import { connect } from 'react-redux'
 import '../assets/fonts/fontface.css'
 import '../css/Service.css'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
+import Modal from 'react-modal';
+import LoginModal from '../Register/LoginModal'
+
+const loginStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
+Modal.setAppElement('body')
 
 class Home extends Component {
+
+    state = {
+        loginmodalIsOpen: false,
+    }
+
+    openloginModal() {
+        this.setState({ loginmodalIsOpen: true })
+    }
+
+    afterOpenloginModal() {
+    }
+
+    closeloginModal() {
+        this.setState({ loginmodalIsOpen: false })
+    }
+
+    renderModalButton() {
+        if (this.props.userReducer.user.name != undefined) {
+            return (
+                <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/booking">
+                    <button className="service-home-button">จองบริการ</button>
+                </Link>
+            )
+        }
+        if (this.props.userReducer.user.name == undefined) {
+            return (
+                <div className="shopping-home-button-wrapper">
+                    <button className="service-home-button" onClick={() => this.openloginModal()}>จองบริการ</button>
+                </div>
+            )
+        }
+    }
     
     render() {
         return(
@@ -30,10 +78,17 @@ class Home extends Component {
                         <div className="service-home-content-subtext">10.   ทางผู้รับจ้างจะจัดส่งช่างไปตรวจซ่อม หลังจากได้รับการแจ้งปัญหาจากผู้ว่าจ้างและดำเนินการอย่างต่อเนื่องจนกว่าจะใช้งานได้ตามปกติ</div>
                         <div className="service-home-content-subtext">11.   ในกรณีที่จำเป็นต้องใช้นั่งร้านหรือใช้อุปกรณ์พิเศษในการให้บริการ ทางผู้ว่าจ้างต้องจัดหาและรับผิดชอบค่าใช้จ่ายที่เกิดขึ้น</div>
                     </div>
-                    <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/booking">
-                        <button className="service-home-button">จองบริการ</button>
-                    </Link>
+                    {this.renderModalButton()}
                 </div>
+                <Modal
+                        isOpen={this.state.loginmodalIsOpen}
+                        onAfterOpen={() => this.afterOpenloginModal()}
+                        onRequestClose={() => this.closeloginModal()}
+                        contentLabel="Login"
+                        style={loginStyles}
+                    >
+                        <LoginModal />
+                </Modal>
                 <Footer/>
             </div>
         )
@@ -41,4 +96,4 @@ class Home extends Component {
 
 }
 
-export default Home
+export default connect(state => state)(Home)

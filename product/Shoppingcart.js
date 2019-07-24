@@ -3,24 +3,40 @@ import axios from 'axios'
 import '../css/Shopping.css'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
-import { setProducts,setTotalProductPrice } from '../actions/product';
+import { setProducts, setTotalProductPrice } from '../actions/product';
 import Header from '../Header'
 import Footer from '../Footer'
 import { Link, Redirect } from 'react-router-dom';
+import Modal from 'react-modal';
+import LoginModal from '../Register/LoginModal'
+
+const loginStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
+Modal.setAppElement('body')
 
 class ShoppingCart extends Component {
 
     state = {
         coupon: "",
-        couponUsed : false,
+        couponUsed: false,
         caution: '',
+        loginmodalIsOpen: false,
     }
 
     componentDidMount() {
         let products = this.props.productReducer.products
         let total = 0
-        if(products.length > 0){
-            for(let i=0; i < products.length; i++) {
+        if (products.length > 0) {
+            for (let i = 0; i < products.length; i++) {
                 total += products[i].price * products[i].amount
             }
             this.props.dispatch(setTotalProductPrice(total))
@@ -37,7 +53,7 @@ class ShoppingCart extends Component {
     minus(data) {
         let products = this.props.productReducer.products
         let index = products.indexOf(data)
-        if (products[index].amount > 1){
+        if (products[index].amount > 1) {
             products[index].amount -= 1
             this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice - data.price))
         }
@@ -57,35 +73,63 @@ class ShoppingCart extends Component {
     }
 
     useCoupon() {
-        if (this.state.coupon == "123456" && this.state.couponUsed == false){
-            this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice * 8/10))
-            this.setState({couponUsed: true})
-            this.setState({coupon : ''})
-            this.setState({caution: 'right'})
+        if (this.state.coupon == "123456" && this.state.couponUsed == false) {
+            this.props.dispatch(setTotalProductPrice(this.props.productReducer.totalprice * 8 / 10))
+            this.setState({ couponUsed: true })
+            this.setState({ coupon: '' })
+            this.setState({ caution: 'right' })
             this.renderCaution()
         }
         else {
             this.renderCaution()
-            this.setState({caution: 'wrong'})
+            this.setState({ caution: 'wrong' })
         }
     }
 
     renderCaution() {
-        if (this.state.caution == 'wrong'){
-            if (this.state.coupon != "123456"){
-                return(
+        if (this.state.caution == 'wrong') {
+            if (this.state.coupon != "123456") {
+                return (
                     <div className="shopping-caution-text-red">รหัสคูปองไม่ถูกต้อง</div>
                 )
             }
-            else if (this.state.couponUsed == true){
-                return(
+            else if (this.state.couponUsed == true) {
+                return (
                     <div className="shopping-caution-text-red">คุณได้ใช้คูปองไปแล้ว</div>
                 )
             }
         }
-        if (this.state.caution == 'right'){
-            return(
+        if (this.state.caution == 'right') {
+            return (
                 <div className="shopping-caution-text-green">ใช้งานคูปองเรียบร้อยแล้ว</div>
+            )
+        }
+    }
+
+    openloginModal() {
+        this.setState({ loginmodalIsOpen: true })
+    }
+
+    afterOpenloginModal() {
+    }
+
+    closeloginModal() {
+        this.setState({ loginmodalIsOpen: false })
+    }
+
+    renderPaymentButton() {
+        if (this.props.userReducer.user.name != undefined) {
+            return (
+                <Link className="shopping-content-button-wrapper" style={{ textDecoration: 'none' }} to="/product/checkout">
+                    <button className="shopping-content-button-payment">ชำระเงิน</button>
+                </Link>
+            )
+        }
+        if (this.props.userReducer.user.name == undefined) {
+            return (
+                <div className="shopping-content-button-wrapper">
+                    <button className="shopping-content-button-payment" onClick={() => this.openloginModal()}>ชำระเงิน</button>
+                </div>
             )
         }
     }
@@ -93,7 +137,7 @@ class ShoppingCart extends Component {
     render() {
         return (
             <div className="shopping-wrapper">
-                <Header active="product"/>
+                <Header active="product" />
                 <div className="shopping-status-container">
                     <div className="shopping-status-first">
                         <div className="shopping-status-circle-active">
@@ -161,10 +205,17 @@ class ShoppingCart extends Component {
                                         <div className="shopping-table-coupon-sub-text">รวม {this.props.productReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                     </div>
                                     <div className="shopping-table-footer">
-                                        <Link className="shopping-content-button-wrapper" style={{ textDecoration: 'none' }} to="/product/checkout">
-                                            <button className="shopping-content-button-payment">ชำระเงิน</button>
-                                        </Link>
+                                        {this.renderPaymentButton()}
                                     </div>
+                                    <Modal
+                                        isOpen={this.state.loginmodalIsOpen}
+                                        onAfterOpen={() => this.afterOpenloginModal()}
+                                        onRequestClose={() => this.closeloginModal()}
+                                        contentLabel="Login"
+                                        style={loginStyles}
+                                    >
+                                        <LoginModal />
+                                    </Modal>
                                 </div>
                             </div>
                         </div>

@@ -9,8 +9,20 @@ import Modal from 'react-modal';
 import ProductModal from './ProductModal'
 import {Link} from 'react-router-dom';
 import list from '../list'
+import LoginModal from '../Register/LoginModal'
 
 const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
+const loginStyles = {
     content: {
         top: '50%',
         left: '50%',
@@ -31,6 +43,17 @@ class Product extends Component {
         this.state = {
             modalIsOpen: false,
         }
+    }
+
+    openloginModal(data) {
+        this.setState({ loginmodalIsOpen: true })
+    }
+
+    afterOpenloginModal() {
+    }
+
+    closeloginModal() {
+        this.setState({ loginmodalIsOpen: false })
     }
 
     openModal(data) {
@@ -81,6 +104,15 @@ class Product extends Component {
     }
 
 
+    renderPickButton(data) {
+        if(this.props.userReducer.user.name != undefined) {
+            return <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
+        }
+        if(this.props.userReducer.user.name == undefined) {
+            return <button className='pick-button' onClick={() => this.openloginModal(data)}>ซื้อเลย</button>
+        }
+    }
+
     renderRow(list) {
         return (
             <div className='product-row'>
@@ -91,7 +123,7 @@ class Product extends Component {
                                 <img className='product-image' src={data.img} />
                                 <div className='product-name'>{data.name}</div>
                                 <div className='product-price'>฿ {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
-                                <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
+                                {this.renderPickButton(data)}
                             </div>
                         )
                     return (
@@ -99,7 +131,7 @@ class Product extends Component {
                             <img className='product-image' src={data.img} />
                             <div className='product-name'>{data.name}</div>
                             <div className='product-price'>฿ {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
-                            <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
+                            {this.renderPickButton(data)}
                         </div>
                     )
                 })}
@@ -141,6 +173,15 @@ class Product extends Component {
                             <button className="product-modal-link-button" onClick={() => this.closeModal()}>กลับ</button>
                             <button className="product-modal-link-button" onClick={() => this.closeModal()}>ทำการสั่งซื้อ</button>
                         </div>
+                    </Modal>
+                    <Modal
+                        isOpen={this.state.loginmodalIsOpen}
+                        onAfterOpen={() => this.afterOpenloginModal()}
+                        onRequestClose={() => this.closeloginModal()}
+                        contentLabel="Login"
+                        style={loginStyles}
+                    >
+                        <LoginModal />
                     </Modal>
                 </div>
             </div>
