@@ -1,11 +1,37 @@
-.shopping-modal-wrapper {
-    width: 35vw;
-    height: 100vh;
-    background: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    font-family: 'RSU';
-    border: 0;
+@media (min-width: 24em){
+    .shopping-modal-wrapper {
+        width: 50vw;
+        height: 100vh;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        font-family: 'RSU';
+        border: 0;
+    }
+}
+
+@media (min-width: 64em){
+    .shopping-modal-wrapper {
+        width: 40vw;
+        height: 100vh;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        font-family: 'RSU';
+        border: 0;
+    }
+}
+
+@media (min-width: 72em){
+    .shopping-modal-wrapper {
+        width: 35vw;
+        height: 100vh;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        font-family: 'RSU';
+        border: 0;
+    }
 }
 
 .shopping-modal-content-wrapper {
@@ -26,7 +52,7 @@
 }
 
 .shopping-modal-header {
-    font-size: 28px;
+    font-size: 22px;
     color: white;
 }
 
@@ -38,7 +64,7 @@
 
 .shopping-modal-tab-header-wrapper {
     width: 100%;
-    height: 60px;
+    height: 40px;
     background: #7FD0DA;
     display: flex;
     flex-direction: row;
@@ -47,11 +73,11 @@
 
 .shopping-modal-tab {
     width: 33.3333333333333%;
-    height: 60px;
+    height: 40px;
     background: #7FD0DA;
     text-align: center;
     color: white;
-    font-size: 30px;
+    font-size: 22px;
     font-family: 'RSU';
     border: 0;
 }
@@ -90,13 +116,13 @@
 }
 
 .shopping-modal-box-name {
-    font-size: 26px;
+    font-size: 18px;
     line-height: 1.5;
     color: black;
 }
 
 .shopping-modal-box-price {
-    font-size: 26px;
+    font-size: 18px;
     line-height: 1.5;
     color: #7FD0DA;
 }
@@ -111,7 +137,7 @@
 .shopping-modal-box-button {
     width: 10%;
     height: 25px;
-    font-size: 24px;
+    font-size: 16px;
     color: black;
     background: #DEDEDE;
     border: 0;    
@@ -122,7 +148,7 @@
 }
 
 .shopping-modal-box-amount {
-    font-size: 24px;
+    font-size: 16px;
     color: black;
     margin-left: 5%;
     margin-right: 5%;
@@ -132,7 +158,7 @@
     border: 0;
     background: white;
     color: #CCC;
-    font-size: 24px;
+    font-size: 16px;
     margin-left: auto;
     margin-right: 4%;
     width: 8%;
@@ -141,7 +167,7 @@
 
 .shopping-modal-total-price {
     margin-top: 20px;
-    font-size: 26px;
+    font-size: 18px;
     color: black;
     align-self: flex-end;
     margin-right: 2%;
@@ -161,7 +187,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 22px;
     font-family: 'RSU';
     color: white;
     margin-bottom: 10px;

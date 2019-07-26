@@ -10,7 +10,7 @@
 }
 
 .service-home-wrapper {
-    width: 100%;
+    width: 85%;
     display: flex;
     flex-direction: column;
     background: white;
@@ -18,7 +18,7 @@
 }
 
 .service-home-header {
-    font-size: 35px;
+    font-size: 30px;
     color: #13304F;
     margin-top: 20px;
 }
@@ -42,31 +42,31 @@
     .service-home-img {
         margin-top: 20px;
         width: 80%;
-        height: 550px;
+        height: auto;
     }
     .service-home-content {
         width: 90%;
         margin-top: 35px;
     }
     .service-home-content-text {
-        font-size: 20px;
+        font-size: 16px;
         color: #13304F;
         line-height: 1.5;
     }
     .service-home-content-header-green {
-        font-size: 20px;
+        font-size: 16px;
         color: #228B22;
         margin-top: 25px;
         line-height: 1.5;
     }
     .service-home-content-header-red {
-        font-size: 20px;
+        font-size: 16px;
         color: #B22222;
         margin-top: 25px;
         line-height: 1.5;
     }
     .service-home-content-subtext {
-        font-size: 17px;
+        font-size: 13px;
         color: #13304F;
         line-height: 1.5;
         margin-top: 10px;
@@ -80,14 +80,53 @@
     .service-home-img {
         margin-top: 20px;
         width: 80%;
-        height: 550px;
+        height: auto;
     }
     .service-home-content {
         width: 90%;
         margin-top: 35px;
     }
     .service-home-content-text {
+        font-size: 16px;
+        color: #13304F;
+        line-height: 1.5;
+    }
+    .service-home-content-header-green {
+        font-size: 16px;
+        color: #228B22;
+        margin-top: 25px;
+        line-height: 1.5;
+    }
+    .service-home-content-header-red {
+        font-size: 16px;
+        color: #B22222;
+        margin-top: 25px;
+        line-height: 1.5;
+    }
+    .service-home-content-subtext {
+        font-size: 13px;
+        color: #13304F;
+        line-height: 1.5;
+        margin-top: 10px;
+    }
+    .service-home-button-wrapper{
+        width: 25%;
+    }
+}
+
+@media (min-width: 72em){
+    .service-home-img {
+        margin-top: 20px;
+        width: 60%;
+        height: auto;
+    }
+    .service-home-content {
+        width: 85%;
+        margin-top: 35px;
+    }
+    .service-home-content-text {
         font-size: 20px;
+        width: 100%;
         color: #13304F;
         line-height: 1.5;
     }
@@ -105,45 +144,6 @@
     }
     .service-home-content-subtext {
         font-size: 17px;
-        color: #13304F;
-        line-height: 1.5;
-        margin-top: 10px;
-    }
-    .service-home-button-wrapper{
-        width: 25%;
-    }
-}
-
-@media (min-width: 72em){
-    .service-home-img {
-        margin-top: 20px;
-        width: 60%;
-        height: 600px;
-    }
-    .service-home-content {
-        width: 85%;
-        margin-top: 35px;
-    }
-    .service-home-content-text {
-        font-size: 26px;
-        width: 100%;
-        color: #13304F;
-        line-height: 1.5;
-    }
-    .service-home-content-header-green {
-        font-size: 26px;
-        color: #228B22;
-        margin-top: 25px;
-        line-height: 1.5;
-    }
-    .service-home-content-header-red {
-        font-size: 26px;
-        color: #B22222;
-        margin-top: 25px;
-        line-height: 1.5;
-    }
-    .service-home-content-subtext {
-        font-size: 23px;
         color: #13304F;
         line-height: 1.5;
         margin-top: 10px;

@@ -2,7 +2,7 @@
 @media (min-width: 24em){
     .login-modal-container {
         width: 50vw;
-        height: 330px;
+        height: 400px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;
@@ -51,7 +51,7 @@
 @media (min-width: 64em){
     .login-modal-container {
         width: 50vw;
-        height: 340px;
+        height: 420px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;
@@ -100,7 +100,7 @@
 @media (min-width: 72em){
     .login-modal-container {
         width: 50vw;
-        height: 380px;
+        height: 450px;
         font-family: 'RSU';
         display: flex;
         flex-direction: column;

@@ -7,7 +7,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background: #CCC;
+    background: #AAA;
     align-items: center;
 }
 
@@ -185,8 +185,11 @@
 
 @media (min-width: 72em){
     .main-banner-wrapper {
-        width: 100%;
-        height: 500px;
+        width: 75%;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        margin-left: 12.5%;
+        height: 360px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -203,11 +206,11 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: -270px;
+        margin-top: -200px;
     }
 
     .main-banner-button {
-        font-size: 40px;
+        font-size: 30px;
         width: 50px;
         height: 50px;
         color: #13304F;
@@ -222,12 +225,12 @@
     }
 
     .main-banner-circle-group {
-        width: 5%;
+        width: 7%;
         height: 10px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: 150px;
+        margin-top: 90px;
     }
 
     .main-banner-circle {
@@ -247,7 +250,7 @@
     }
 
     .main-video-player {
-        width: 60%;
+        width: 40%;
         height: auto;
     }
 }

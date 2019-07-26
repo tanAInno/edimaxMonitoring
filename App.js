@@ -10,11 +10,11 @@ import { Link, Redirect } from 'react-router-dom';
 import './assets/fonts/fontface.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { Player } from 'video-react';
 import "./node_modules/video-react/dist/video-react.css";
 
-library.add(faArrowLeft, faArrowRight)
+library.add(faArrowCircleLeft, faArrowCircleRight)
 
 class App extends Component {
 
@@ -79,8 +79,8 @@ class App extends Component {
                 <div className="main-banner-wrapper">
                     {this.renderBanner()}
                     <div className="main-banner-button-group">
-                        <div className="main-banner-button-wrapper" onClick={() => this.back()}><FontAwesomeIcon icon="arrow-left" className="main-banner-button" /></div>
-                        <div className="main-banner-button-wrapper" onClick={() => this.next()}><FontAwesomeIcon icon="arrow-right" className="main-banner-button" onClick={() => this.next()} /></div>
+                        <div className="main-banner-button-wrapper" onClick={() => this.back()}><FontAwesomeIcon icon="arrow-circle-left" className="main-banner-button" /></div>
+                        <div className="main-banner-button-wrapper" onClick={() => this.next()}><FontAwesomeIcon icon="arrow-circle-right" className="main-banner-button" onClick={() => this.next()} /></div>
                     </div>
                     {this.renderCircle()}
                 </div>
@@ -90,6 +90,9 @@ class App extends Component {
                         playsInline
                         poster="./assets/images/poster.png"
                         src="./assets/videos/airmaskvideo.mp4"
+                        playing={true}
+                        loop={true}
+                        muted={true}
                         />
                     </div>
                 </div>

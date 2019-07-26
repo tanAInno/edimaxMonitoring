@@ -1,5 +1,5 @@
 .service-addition-wrapper {
-    width: 92%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     background: white;
@@ -7,7 +7,7 @@
 }
 
 .service-addition-header {
-    font-size: 28px;
+    font-size: 24px;
     margin-top: 30px;
     color: #13304F;
     align-self: flex-start;
@@ -58,7 +58,7 @@
 }
 
 .service-addition-type-textarea {
-    font-size: 20px;
+    font-size: 18px;
     height: 90px;
     width: 95%;
     border: 1px solid #CCC;
@@ -113,7 +113,7 @@
     border-radius: 5px;
     background: #7FD0DA;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
     width: 80%;
     height: 50px;
     line-height: 50px;
@@ -195,7 +195,7 @@
 
 @media (min-width: 72em){
     .service-addition-radio-row {
-        font-size: 22px;
+        font-size: 20px;
         color: #13304F;
         height: 45px;
         line-height: 45px;
@@ -204,7 +204,7 @@
         flex-direction: row;
     }
     .service-addition-type-text {
-        font-size: 18px;
+        font-size: 16px;
         color: #13304F;
         height: 35px;
         line-height: 35px;
@@ -214,7 +214,7 @@
         margin-top: 10px;
     }
     .service-addition-type-header {
-        font-size: 24px;
+        font-size: 22px;
         color: #13304F;
         height: 45px;
         line-height: 45px;

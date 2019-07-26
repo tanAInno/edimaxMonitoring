@@ -12,6 +12,7 @@ import utf8 from 'utf8'
 class Coupon extends Component {
 
     state = {
+        name: "",
         amount: 1
     }
 
@@ -27,8 +28,10 @@ class Coupon extends Component {
 
     async randomCoupon() {
         await axios.post(route + "coupons", {
-            code: "INC" + Math.floor(Math.random() * 9) + Math.floor(Math.random() * 9) + Math.floor(Math.random() * 9) + Math.floor(Math.random() * 9) + Math.floor(Math.random() * 9) + Math.floor(Math.random() * 9)
+            code: this.state.name + Math.floor(Math.random() * 9) + Math.floor(Math.random() * 9) + Math.floor(Math.random() * 9) + Math.floor(Math.random() * 9),
+            type: this.state.name
         }).catch(error => console.log(error))
+        location.reload()
     }
 
     async getCoupon() {
@@ -37,7 +40,8 @@ class Coupon extends Component {
                 const couponList = response.data.data.map(c => {
                     return ({
                         code: c.code,
-                        used: c.used
+                        used: c.used,
+                        type: c.type
                     })
                 })
                 this.props.dispatch(setCouponList(couponList))
@@ -48,9 +52,17 @@ class Coupon extends Component {
         this.setState({amount: e.target.value})
     }
 
+    handleChangeName(e) {
+        this.setState({name: e.target.value})
+    }
+
     render() {
         return (
             <div className="admin-container">
+                <input
+                    value={this.state.name}
+                    onChange={e => this.handleChangeName(e)}
+                    placeholder="enter code name..."/>
                 <button onClick={() => this.randomAmountOfCoupon()} className="admin-export-button">Generate</button>
                 <input 
                     value={this.state.amount}
