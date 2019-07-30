@@ -36,7 +36,6 @@
 
 .shopping-modal-content-wrapper {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -64,7 +63,7 @@
 
 .shopping-modal-tab-header-wrapper {
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     background: #7FD0DA;
     display: flex;
     flex-direction: row;
@@ -73,7 +72,7 @@
 
 .shopping-modal-tab {
     width: 33.3333333333333%;
-    height: 40px;
+    min-height: 40px;
     background: #7FD0DA;
     text-align: center;
     color: white;
@@ -84,16 +83,18 @@
 
 .shopping-modal-table {
     width: 95%;
+    height: 75vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'RSU';
     margin-left: 2.5%;
+    overflow-y: scroll;
 }
 
 .shopping-modal-box {
     width: 95%;
-    height: 20%;
+    min-height: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -181,7 +182,7 @@
 
 .shopping-modal-button {
     width: 100%;
-    height: 50px;
+    min-height: 50px;
     background: #7FD0DA;
     display: flex;
     flex-direction: row;

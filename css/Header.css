@@ -126,7 +126,7 @@
     border-radius: 50%;
     background: #FF4500;
     color: white;
-    margin-left: -35%;
+    margin-left: -45%;
     margin-bottom: 45%;
     font-size: 17px;
     text-align: center;
@@ -183,7 +183,7 @@
     }
     .product-header-sub-logo-wrapper {
         margin-right: 2%;
-        width: 5%;
+        width: 4.5%;
         height: 60%;
         display: flex;
         flex-direction: row;
@@ -217,7 +217,7 @@
     }
     .product-header-sub-logo-wrapper {
         margin-right: 2%;
-        width: 3%;
+        width: 3.5%;
         height: 60%;
         display: flex;
         flex-direction: row;

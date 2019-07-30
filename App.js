@@ -90,7 +90,7 @@ class App extends Component {
                         playsInline
                         poster="./assets/images/poster.png"
                         src="./assets/videos/airmaskvideo.mp4"
-                        playing={true}
+                        autoPlay={true}
                         loop={true}
                         muted={true}
                         />
