@@ -12,7 +12,6 @@ import Admin from './Admin'
 import AdminLogin from './AdminLogin'
 import Coupon from './Coupon'
 import Detail from './Detail'
-import Login from './Login'
 import Header from '../Header'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 

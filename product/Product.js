@@ -145,8 +145,9 @@ class Product extends Component {
                 <div className="product-content-container">
                     <div className='product-catalogue'>
                         <div className="product-catalogue-header">
-                            <div className="product-catalogue-header-text-first">INNOCARE</div>
-                            <div className="product-catalogue-header-text">PRODUCTS</div>
+                            <div className="product-catalogue-header-wrapper"><img className="product-catalogue-header-img" src={"../assets/images/promo1.jpg"}/></div>
+                            <div className="product-catalogue-header-wrapper"><img className="product-catalogue-header-img" src={"../assets/images/promo2.jpg"}/></div>
+                            <div className="product-catalogue-header-wrapper"><img className="product-catalogue-header-img" src={"../assets/images/promo3.jpg"}/></div>  
                         </div>
                         <div className="product-list-header">ผลิตภัณฑ์สำหรับเครื่องปรับอากาศ</div>
                         {this.renderProduct('innocare')}

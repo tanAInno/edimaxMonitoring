@@ -2,6 +2,8 @@ const list = {
     productList: [
     { id: "9820540089326", img: "../assets/images/airmaskAll.jpg", type: 'innocare', price: 620, name: "Airmask / 10 แผ่น + หนามเตย / 1 ม้วน", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
     { id: "1583123676394", img: "../assets/images/airmask.png", type: 'innocare', price: 450, name: "Airmask / 10 แผ่น", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
+    { id: "1583123676394", img: "../assets/images/airmask.png", type: 'innocare', price: 270, name: "Airmask / 6 แผ่น", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
+    { id: "1583123676394", img: "../assets/images/airmaskAll1.jpg", type: 'innocare', price: 250, name: "Airmask / 1 แผ่น + หนามเตย / 1 ม้วน", desc: "ฟิลเตอร์กรองฝุ่นเพื่อสุขภาพที่ดีของคุณ" },
     { id: "9056043202526", img: "../assets/images/bazel.png", type: 'innocare', price: 170, name: "หนามเตย / 1 ม้วน", desc: "" },
     { id: "8846374733914", img: "../assets/images/meox.jpg", type: 'bn3', price: 139, name: "MEO X / 3 ชิ้น", desc: "หน้ากากกันฝุ่นละออง PM 2.5 MEO Air" },
     { id: "9621512048940", img: "../assets/images/adapter.jpg", type: 'bn3', price: 450, name: "Shower Adapter", desc: "" },

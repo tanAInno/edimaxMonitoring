@@ -52,13 +52,16 @@ class Header extends Component {
 
     componentDidMount() {
         let cookie = Cookies.get('access_token')
+        let id = Cookies.get('id')
+        console.log(cookie)
         if (cookie != undefined && cookie != ''){
-            this.getUser(cookie)
+            this.getUser(id)
         }
     }
 
-    async getUser(cookie) {
-        await axios.get(route + "userbytoken/" + cookie)
+    async getUser(id) {
+        console.log(id)
+        await axios.get(route + "users/" + id)
         .then(response => {
             const data = response.data.data
             const user = {
@@ -137,7 +140,8 @@ class Header extends Component {
     }
 
     logout() {
-        Cookies.set('access_token', '')
+        Cookies.remove('access_token')
+        Cookies.remove('id')
         this.props.dispatch(setUser({}))
         this.updateAccessToken('')
         location.reload()

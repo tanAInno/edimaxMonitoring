@@ -49,7 +49,7 @@ class Home extends Component {
         }
         if (this.props.userReducer.user.name == undefined) {
             return (
-                <div className="shopping-home-button-wrapper">
+                <div className="service-home-button-wrapper">
                     <button className="service-home-button" onClick={() => this.openloginModal()}>จองบริการ</button>
                 </div>
             )

@@ -32,8 +32,9 @@ class LoginModal extends Component {
         }).then(response => {
             if (response.data.status == "login success") {
                 Cookies.set('access_token', response.data.accessToken, { expires: 1 })
+                Cookies.set('id', response.data.id, { expires : 1 })
                 this.setState({ isLoggedIn: true })
-                this.updateAccessToken(response.data.accessToken)
+                this.getUser(response.data.id)
                 location.reload()
             }
             if (response.data.status == "login failed")
@@ -43,28 +44,26 @@ class LoginModal extends Component {
         })
     }
 
-    async updateAccessToken(accessToken) {
-        await axios.put(route + "updatetoken", {
-            username: this.state.username,
-            accessToken: accessToken
-        }).then(response => {
-            this.getUser(accessToken)
-        }).catch(error => console.log(error))
-    }
+    // async updateAccessToken(accessToken) {
+    //     await axios.put(route + "updatetoken", {
+    //         username: this.state.username,
+    //         accessToken: accessToken
+    //     }).then(response => {
+    //         this.getUser(accessToken)
+    //     }).catch(error => console.log(error))
+    // }
 
-    async updateAccessTokenFB(accessToken) {
-        await axios.put(route + "updatetoken", {
-            username: this.state.usernamefb,
-            accessToken: accessToken
-        }).then(response => {
-            this.getUser(accessToken)
-        }).catch(error => console.log(error))
-    }
+    // async updateAccessTokenFB(accessToken) {
+    //     await axios.put(route + "updatetoken", {
+    //         username: this.state.usernamefb,
+    //         accessToken: accessToken
+    //     }).then(response => {
+    //         this.getUser(accessToken)
+    //     }).catch(error => console.log(error))
+    // }
 
-    async getUser(cookie) {
-        await axios.get(route + "userbytoken", {
-            accessToken: cookie + ""
-        }).then(response => {
+    async getUser(id) {
+        await axios.get(route + "users/" + id).then(response => {
             const data = response.data.data
             const user = {
                 username: data.username,
