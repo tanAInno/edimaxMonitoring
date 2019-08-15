@@ -44,24 +44,6 @@ class LoginModal extends Component {
         })
     }
 
-    // async updateAccessToken(accessToken) {
-    //     await axios.put(route + "updatetoken", {
-    //         username: this.state.username,
-    //         accessToken: accessToken
-    //     }).then(response => {
-    //         this.getUser(accessToken)
-    //     }).catch(error => console.log(error))
-    // }
-
-    // async updateAccessTokenFB(accessToken) {
-    //     await axios.put(route + "updatetoken", {
-    //         username: this.state.usernamefb,
-    //         accessToken: accessToken
-    //     }).then(response => {
-    //         this.getUser(accessToken)
-    //     }).catch(error => console.log(error))
-    // }
-
     async getUser(id) {
         await axios.get(route + "users/" + id).then(response => {
             const data = response.data.data
@@ -95,7 +77,8 @@ class LoginModal extends Component {
         }).then(response => {
             if (response.data.status == "login success") {
                 Cookies.set('access_token', res.accessToken, { expires: 1 })
-                this.setState({ usernamefb: res.userID},() => this.updateAccessTokenFB(res.accessToken))
+                Cookies.set('id', response.data.id, { expire: 1 })
+                this.setState({ usernamefb: res.userID})
                 this.setState({ isLoggedIn: true })
                 location.reload()
             }
