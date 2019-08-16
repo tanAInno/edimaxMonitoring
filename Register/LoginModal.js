@@ -124,13 +124,13 @@ class LoginModal extends Component {
                 {this.renderCaution()}
                 <button className="login-modal-button" onClick={() => this.Login()}>Login</button>
                 <Link to="/register" className="login-modal-text">สมัครใหม่</Link>
-                {/* <FacebookLogin
+                <FacebookLogin
                     appId="339758753558333"
                     autoLoad={true}
                     fields="name,email"
                     onClick={<div/>}
                     callback={responseFacebook}
-                    icon="fa-facebook" />, */}
+                    icon="fa-facebook" />
             </div>
         )
     }
