@@ -8,7 +8,7 @@ const list = {
     { id: "8846374733914", img: "../assets/images/meox.jpg", type: 'bn3', price: 139, name: "MEO X / 3 ชิ้น", desc: "หน้ากากกันฝุ่นละออง PM 2.5 MEO Air" },
     { id: "9621512048940", img: "../assets/images/adapter.jpg", type: 'bn3', price: 450, name: "Shower Adapter", desc: "" },
     { id: "8543551567671", img: "../assets/images/hottab.jpg", type: 'bn3', price: 490, name: "PUMI Onsen & Spa Hair / 10 เม็ด", desc: "เม็ดน้ำแร่ออนเซ็น Sparkling Hot Tab" },
-    { id: "1133041058101", img: "../assets/images/hottabpet.jpg", type: 'bn3', price: 590, name: "PUMI Onsen Pets / 10 เม็ด", desc: "เม็ดน้ำแร่ออนเซ็น Sparkling Hot Tab สำหรับสัตว์เลี้ยง" },{ id: "1133041058101", img: "../assets/images/FC5.jpg", type: 'karcher', price: 9900, name: "PUMI Onsen Pets / 10 เม็ด", desc: "เม็ดน้ำแร่ออนเซ็น Sparkling Hot Tab สำหรับสัตว์เลี้ยง" },
+    { id: "1133041058101", img: "../assets/images/hottabpet.jpg", type: 'bn3', price: 590, name: "PUMI Onsen Pets / 10 เม็ด", desc: "เม็ดน้ำแร่ออนเซ็น Sparkling Hot Tab สำหรับสัตว์เลี้ยง" },
     { id: "1133041058101", img: "../assets/images/spark.jpg", type: 'bn3', price: 2500, name: "Sparkling Shower", desc: "" },
     { id: "1133041058101", img: "../assets/images/pot.jpg", type: 'bn3', price: 27000, name: "Portable Hydrogen Pot", desc: "เครื่องทำน้ำไฮโดรเจน Biolux รุ่น EOS7150-HU" },
     { id: "1133041058101", img: "../assets/images/hos.jpg", type: 'bn3', price: 65000, name: "HOS", desc: "เครื่องเพิ่มค่าไฮโดรเจนให้กับน้ำและทำน้ำโอโซน Biolux รุ่น EOS7130-HU" },
