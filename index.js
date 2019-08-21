@@ -5,6 +5,7 @@ import store from './store';
 import firebase from 'firebase/app'
 // main app
 import AppRoutes from './routes';
+import HttpsRedirect from 'react-https-redirect';
 
 const config = {
     apiKey: "AIzaSyCRytL_xEruC_-gSaBPYfBdklVGTWRR_u8",
@@ -19,7 +20,9 @@ firebase.initializeApp(config);
 
 ReactDOM.render(
     <Provider store={store}>
+    <HttpsRedirect>
     <AppRoutes />
+    </HttpsRedirect>
     </Provider>, 
     document.getElementById('app')
 )
