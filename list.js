@@ -18,12 +18,22 @@ const list = {
     serviceList: [{ name: "9,000 - 25,000 BTU, Wall type", price: 500, type: "ติดผนัง" },
     { name: "26,000 - 44,000 BTU, Wall type", price: 650, type: "ติดผนัง" },
     { name: "45,000 - 60,000 BTU, Wall type", price: 800, type: "ติดผนัง" },
-    { name: "12,000 - 25,000 BTU, Ceiling type", price: 550, type: "แขวน" },
-    { name: "26,000 - 44,000 BTU, Ceiling type", price: 700, type: "แขวน" },
-    { name: "45,000 - 60,000 BTU, Ceiling type", price: 850, type: "แขวน" },
-    { name: "12,000 - 25,000 BTU, Ceiling type", price: 550, type: "4 ทิศ" },
-    { name: "26,000 - 44,000 BTU, Ceiling type", price: 700, type: "4 ทิศ" },
-    { name: "45,000 - 60,000 BTU, Ceiling type", price: 850, type: "4 ทิศ" }]
+    { name: "12,000 - 25,000 BTU, Ceiling type", price: 700, type: "แขวน" },
+    { name: "26,000 - 44,000 BTU, Ceiling type", price: 900, type: "แขวน" },
+    { name: "45,000 - 60,000 BTU, Ceiling type", price: 1100, type: "แขวน" },
+    { name: "12,000 - 25,000 BTU, Cassette type", price: 700, type: "4 ทิศ" },
+    { name: "26,000 - 44,000 BTU, Casset type", price: 900, type: "4 ทิศ" },
+    { name: "45,000 - 60,000 BTU, Casset type", price: 1100, type: "4 ทิศ" }],
+
+    serviceAirMaskList: [{ name: "9,000 - 25,000 BTU, Wall type + Air Mask", price: 700, type: "ติดผนัง" },
+    { name: "26,000 - 44,000 BTU, Wall type + Air Mask", price: 850, type: "ติดผนัง" },
+    { name: "45,000 - 60,000 BTU, Wall type + Air Mask", price: 1000, type: "ติดผนัง" },
+    { name: "12,000 - 25,000 BTU, Ceiling type + Air Mask", price: 900, type: "แขวน" },
+    { name: "26,000 - 44,000 BTU, Ceiling type + Air Mask", price: 1100, type: "แขวน" },
+    { name: "45,000 - 60,000 BTU, Ceiling type + Air Mask", price: 1300, type: "แขวน" },
+    { name: "12,000 - 25,000 BTU, Cassette type + Air Mask", price: 900, type: "4 ทิศ" },
+    { name: "26,000 - 44,000 BTU, Cassette type + Air Mask", price: 1100, type: "4 ทิศ" },
+    { name: "45,000 - 60,000 BTU, Cassette type + Air Mask", price: 1300, type: "4 ทิศ" }]
 }   
 
 export default list

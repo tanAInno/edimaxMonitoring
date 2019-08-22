@@ -39,18 +39,43 @@ class Home extends Component {
         this.setState({ loginmodalIsOpen: false })
     }
 
-    renderModalButton() {
+    renderAirButton() {
         if (this.props.userReducer.user.name != undefined) {
             return (
-                <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/booking">
-                    <button className="service-home-button">จองบริการ</button>
-                </Link>
+                <div className="service-home-button-box">
+                    <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/airservice">
+                        <img className="service-home-button-img" src="../assets/images/air_img.jpg"/>
+                    </Link>
+                    <div className="service-home-button-text">บริการล้างแอร์</div>
+                </div>
             )
         }
         if (this.props.userReducer.user.name == undefined) {
             return (
-                <div className="service-home-button-wrapper">
-                    <button className="service-home-button" onClick={() => this.openloginModal()}>จองบริการ</button>
+                <div className="service-home-button-box">
+                    <img className="service-home-button-img" src="../assets/images/air_img.jpg" onClick={() => this.openloginModal()}/>
+                    <div className="service-home-button-text">บริการล้างแอร์</div>
+                </div>
+            )
+        }
+    }
+
+    renderAirMaskButton() {
+        if (this.props.userReducer.user.name != undefined) {
+            return (
+                <div className="service-home-button-box">
+                    <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/airmaskservice">
+                        <img className="service-home-button-img" src="../assets/images/airmask_img.jpg"/>
+                    </Link>
+                    <div className="service-home-button-text">บริการล้างแอร์+airmask</div>
+                </div>
+            )
+        }
+        if (this.props.userReducer.user.name == undefined) {
+            return (
+                <div className="service-home-button-box">
+                    <img className="service-home-button-img" src="../assets/images/airmask_img.jpg" onClick={() => this.openloginModal()}/>
+                    <div className="service-home-button-text">บริการล้างแอร์+airmask</div>
                 </div>
             )
         }
@@ -61,24 +86,34 @@ class Home extends Component {
             <div className="service-wrapper">
                 <Header active="service" />
                 <div className="service-home-wrapper">
-                    <div className="service-home-header">บริการล้างแอร์</div>
-                    <img className="service-home-img" src={"../assets/images/serviceair.jpg"} />
-                    <div className="service-home-content">
-                        <div className="service-home-content-text">ล้างแอร์ ทำความสะอาดเครื่องปรับอากาศ เหมาะสำหรับแอร์ที่ไม่ได้ทำการล้างมามากกว่า 6 เดือน เพื่อประหยัดไฟและรักษาสุขภาพ</div>
-                        <div className="service-home-content-header-red">เงื่อนไขการให้บริการ</div>
-                        <div className="service-home-content-subtext">1.    ตรวจสอบการทำงานของเครื่องปรับอากาศโดยรวมว่าทำงานปกติหรือไม่ เช่น ความเร็วลม เสียงการทำงาน อุณหภูมิ ปริมาณน้ำยา การทำงานตัวเครื่องภายใน (คอยล์เย็น) และการทำงานตัวเครื่องภายนอก (คอยล์ร้อน) พร้อมออกใบรายงานการทดสอบในแต่ละครั้ง</div>
-                        <div className="service-home-content-subtext">2.    ทำความสะอาดพัดลมกรงกระรอก และฟิลคอยล์ (Evaporator) ด้วยปั้มน้ำแรงดันสูง / เป่าทำความสะอาดด้วย Blower / ล้างทำความสะอาดแผ่นกรองอากาศ (Filter) / ฆ่าเชื้อด้วยไอน้ำอุณหภูมิสูง / ตรวจเช็คจุดต่อสายไฟภายในระบบ และยึดสะกรูไฟให้แน่น / ติดตั้ง Airmask บริเวณ Return ของเครื่องปรับอากาศ</div>
-                        <div className="service-home-content-subtext">3.    ค่าใช้จ่ายในการให้บริการ ไม่รวมถึงวัสดุอุปกรณ์และอะไหล่ที่ชำรุดเสียหายและน้ำยาสารทำความเย็น</div>
-                        <div className="service-home-content-subtext">4.    หากเครื่องปรับอากาศ เกิดการชำรุดและจำเป็นต้องซ่อมแก้ไข เปลี่ยนอุปกรณ์หรืออะไหล่ เจ้าหน้าที่จะแจ้งให้ผู้ว่าจ้างทราบโดยการ เสนอราคาค่าใช้จ่ายอุปกรณ์ อะไหล่ ค่าแรงและสารทำความเย็นโดยไม่คิดค่าเดินทาง</div>
-                        <div className="service-home-content-subtext">5.    อุปกรณ์และอะไหล่ที่เปลี่ยน ทางผู้รับจ้างจะจัดหาอุปกรณ์และอะไหล่ที่เป็นผลิตภัณฑ์เดียวกับที่ชำรุด หรือมีคุณภาพเทียบเท่า</div>
-                        <div className="service-home-content-subtext">6.    ชิ้นส่วนอุปกรณ์ อะไหล่ที่ชำรุด และที่ไม่สามารถซ่อมได้ เมื่อมีการเปลี่ยนใหม่จะคืนชิ้นส่วนที่ชำรุดนั้น ให้ผู้ว่าจ้างเก็บไว้เป็นหลักฐาน</div>
-                        <div className="service-home-content-subtext">7.    การดำเนินการบริการตรวจเช็ค ซ่อมแก้ไข เปลี่ยนอุปกรณ์หรืออะไหล่ ทางผู้รับจ้างจะทำรายงานสรุปผลการดำเนินงาน พร้อมทั้งระบุหัวหน้าและจำนวนคนที่ไปดำเนินการให้ผู้ว่าจ้างทราบทุกครั้ง</div>
-                        <div className="service-home-content-subtext">8.    ทางผู้รับจ้างจะรับประกันการซ่อม เฉพาะจุดที่ทำการซ่อมเป็นระยะเวลา 60 วัน นับจากวันที่ทำการซ่อมแล้วเสร็จ</div>
-                        <div className="service-home-content-subtext">9.    ผู้รับจ้างจะเข้าไปดำเนินการตรวจเช็คภายใน 24 ชั่วโมงอย่างเร็วสุดหรือช้าสุดภายใน 48 ชั่วโมงหลังจากได้รับแจ้งจากผู้ว่าจ้าง</div>
-                        <div className="service-home-content-subtext">10.   ทางผู้รับจ้างจะจัดส่งช่างไปตรวจซ่อม หลังจากได้รับการแจ้งปัญหาจากผู้ว่าจ้างและดำเนินการอย่างต่อเนื่องจนกว่าจะใช้งานได้ตามปกติ</div>
-                        <div className="service-home-content-subtext">11.   ในกรณีที่จำเป็นต้องใช้นั่งร้านหรือใช้อุปกรณ์พิเศษในการให้บริการ ทางผู้ว่าจ้างต้องจัดหาและรับผิดชอบค่าใช้จ่ายที่เกิดขึ้น</div>
+                    <img className="service-home-img" src="../assets/images/service_img.jpg"/>
+                    <div className="service-home-header">
+                        <img className="service-home-header-img" src="../assets/images/LogoWhite.png"/>
+                        <div className="service-home-header-innocare">
+                            <div className="service-home-header-inno">INNO</div>
+                            <div className="service-home-header-care">CARE</div>
+                        </div>
+                        <div className="service-home-header-text">ให้บริการด้วยทีมงานมืออาชีพ</div>
                     </div>
-                    {this.renderModalButton()}
+                    <div className="service-home-story">
+                        <div className="service-home-story-box">
+                            <img className="service-home-story-img" src="../assets/images/air_story1.png"/>
+                            <div className="service-home-story-text">ล้างแอร์โดยช่างผู้เชี่ยวชาญ</div>
+                        </div>
+                        <div className="service-home-story-box">
+                            <img className="service-home-story-img" src="../assets/images/air_story2.png"/>
+                            <div className="service-home-story-text">ฆ่าเชื้อด้วยไอน้ำร้อนแรงดันสูง</div>
+                        </div>
+                        <div className="service-home-story-box">
+                            <img className="service-home-story-img" src="../assets/images/air_story3.png"/>
+                            <div className="service-home-story-text">รับประกันนาน 60 วัน</div>
+                        </div>
+                    </div>
+                    <div className="service-home-text-header">บริการที่เราแนะนำ</div>
+                    <div className="service-home-button-group">
+                        {this.renderAirButton()}
+                        {this.renderAirMaskButton()}
+                    </div>
                 </div>
                 <Modal
                         isOpen={this.state.loginmodalIsOpen}

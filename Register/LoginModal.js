@@ -126,7 +126,7 @@ class LoginModal extends Component {
                 <Link to="/register" className="login-modal-text">สมัครใหม่</Link>
                 <FacebookLogin
                     appId="339758753558333"
-                    autoLoad={true}
+                    autoLoad={false}
                     fields="name,email"
                     onClick={<div/>}
                     callback={responseFacebook}
