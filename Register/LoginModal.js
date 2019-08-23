@@ -130,6 +130,8 @@ class LoginModal extends Component {
                     fields="name,email"
                     onClick={<div/>}
                     callback={responseFacebook}
+                    isMobile={true}
+                    disableMobileRedirect={true}
                     icon="fa-facebook" />
             </div>
         )
