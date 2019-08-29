@@ -64,6 +64,15 @@
     white-space: nowrap;
 }
 
+.product-top-last-text-name {
+    font-size: 16px;
+    height: 20px;
+    color: #7FD0DA;
+    margin-right: 5%;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
 .product-top-last-text-button {
     font-size: 16px;
     width: auto;

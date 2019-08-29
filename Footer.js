@@ -58,7 +58,7 @@ class Footer extends Component {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <div className="footer-bottom-text">บริษัท อินโนเวชั่นเทคโนโลยี จำกัด | INNOVATION TECHNOLOGY CO,.LTD.</div>
+                    <div className="footer-bottom-text">บริษัท อินโนเวชั่น เทคโนโลยี จำกัด | INNOVATION TECHNOLOGY CO.,LTD.</div>
                 </div>
             </div>
         )

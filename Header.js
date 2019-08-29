@@ -226,7 +226,7 @@ class Header extends Component {
         if (this.props.userReducer.user.name != undefined) {
             return(
                 <div className="product-top-container">
-                <Link className="product-top-last-text" style={{ textDecoration: 'none' }} to="/profile">{this.props.userReducer.user.name} {this.props.userReducer.user.surname}</Link>
+                <Link className="product-top-last-text-name" style={{ textDecoration: 'none' }} to="/profile">{this.props.userReducer.user.name} {this.props.userReducer.user.surname}</Link>
                 <div className="product-top-wall">|</div>
                 <button className="product-top-last-text-button" onClick={() => this.logout()}>ออกจากระบบ</button>
                 </div>
