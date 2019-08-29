@@ -60,7 +60,7 @@ class ProductModal extends Component {
         return (
             <div className="product-modal-container">
                 <div className="product-modal-header">
-                    <div className="product-modal-header-text">เพิ่มสินค้าลงในตะกร้าเรียบร้อย</div>
+                    <div className="product-modal-header-text">รายละเอียดสินค้า</div>
                 </div>
                 <div className="product-modal-content">
                     <div className="product-modal-left">

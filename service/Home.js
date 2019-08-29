@@ -86,7 +86,7 @@ class Home extends Component {
             <div className="service-wrapper">
                 <Header active="service" />
                 <div className="service-home-wrapper">
-                    <img className="service-home-img" src="../assets/images/service_img.jpg"/>
+                    <img className="service-home-img" src="../assets/images/air_banner.jpg"/>
                     <div className="service-home-header">
                         <img className="service-home-header-img" src="../assets/images/LogoWhite.png"/>
                         <div className="service-home-header-innocare">

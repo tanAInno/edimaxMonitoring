@@ -10,11 +10,11 @@ import { Link, Redirect } from 'react-router-dom';
 import './assets/fonts/fontface.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { Player } from 'video-react';
 import "./node_modules/video-react/dist/video-react.css";
 
-library.add(faArrowCircleLeft, faArrowCircleRight)
+library.add(faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight)
 
 class App extends Component {
 
@@ -76,23 +76,33 @@ class App extends Component {
         return (
             <div className="main-container">
                 <Header active="main" />
-                <div className="main-banner-wrapper">
-                    {this.renderBanner()}
-                    <div className="main-banner-button-group">
-                        <div className="main-banner-button-wrapper" onClick={() => this.back()}><FontAwesomeIcon icon="arrow-circle-left" className="main-banner-button" /></div>
-                        <div className="main-banner-button-wrapper" onClick={() => this.next()}><FontAwesomeIcon icon="arrow-circle-right" className="main-banner-button" onClick={() => this.next()} /></div>
+                <div className="main-all-banner-wrapper">
+                    <div className="main-banner-wrapper">
+                        {this.renderBanner()}
+                        <div className="main-banner-button-group">
+                            <div className="main-banner-button-wrapper" onClick={() => this.back()}><FontAwesomeIcon icon="chevron-left" className="main-banner-button" /></div>
+                            <div className="main-banner-button-wrapper" onClick={() => this.next()}><FontAwesomeIcon icon="chevron-right" className="main-banner-button" onClick={() => this.next()} /></div>
+                        </div>
+                        {this.renderCircle()}
                     </div>
-                    {this.renderCircle()}
+                    <div className="main-sub-banner-wrapper">
+                        <div className="main-sub-banner">
+                            <img className="main-banner-img" src="./assets/images/product_banner.jpg" />
+                        </div>
+                        <div className="main-sub-banner-last">
+                            <img className="main-banner-img" src="./assets/images/air_banner.jpg" />
+                        </div>
+                    </div>
                 </div>
                 <div className="main-content">
                     <div className="main-video-player">
-                    <Player
-                        playsInline
-                        poster="./assets/images/poster.png"
-                        src="./assets/videos/airmaskvideo.mp4"
-                        autoPlay={true}
-                        loop={true}
-                        muted={true}
+                        <Player
+                            playsInline
+                            poster="./assets/images/poster.png"
+                            src="./assets/videos/airmaskvideo.mp4"
+                            autoPlay={true}
+                            loop={true}
+                            muted={true}
                         />
                     </div>
                 </div>

@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 import route from '../api';
 import Header from '../Header'
 import Footer from '../Footer'
+import Cookies from 'js-cookie'
+import { setUser } from '../actions/user'
+import FacebookLogin from 'react-facebook-login';
 
 class Register extends Component {
 
@@ -24,7 +27,9 @@ class Register extends Component {
         zipcode: '',
         phone: '',
         isRegistered: false,
-        message: ''
+        message: '',
+        isLoggedIn: false,
+        isFailed: false,
     }
 
     async createUser() {
@@ -43,13 +48,36 @@ class Register extends Component {
             zipcode: this.state.zipcode,
             phone: this.state.phone
         }).then(response => {
-            if(response.data.status == "success")
-                this.setState({isRegistered: true})
-            if(response.data.status == "failed"){
-                this.setState({isRegistered: false})
-                this.setState({message: response.data.message})
+            if (response.data.status == "success")
+                this.setState({ isRegistered: true })
+            if (response.data.status == "failed") {
+                this.setState({ isRegistered: false })
+                this.setState({ message: response.data.message })
             }
         }).catch(error => console.log(error))
+    }
+
+    async loginFacebook(res) {
+        await axios.post(route + "loginfacebook", {
+            name: res.name,
+            email: res.email,
+            username: res.userID,
+            accessToken: res.accessToken
+        }).then(response => {
+            if (response.data.status == "login success") {
+                Cookies.set('access_token', res.accessToken, { expires: 1 })
+                Cookies.set('id', response.data.id, { expire: 1 })
+                this.setState({ usernamefb: res.userID })
+                this.setState({ isLoggedIn: true })
+                location.reload()
+            }
+            if (response.data.status == "login failed")
+                this.setState({ isFailed: true })
+            location.reload()
+        }).catch(error => {
+            this.setState({ isLoggedIn: false })
+            location.reload()
+        })
     }
 
     handleChangeWithKey = (key, e) => {
@@ -80,10 +108,13 @@ class Register extends Component {
     }
 
     render() {
-        if(this.props.userReducer.user.name != undefined)
-            return <Redirect to="/"/>
-        if(this.state.isRegistered)
-            return <Redirect to="/register/done"/>
+        if (this.props.userReducer.user.name != undefined)
+            return <Redirect to="/" />
+        if (this.state.isRegistered)
+            return <Redirect to="/register/done" />
+        const responseFacebook = (response) => {
+            this.loginFacebook(response)
+        }
         return (
             <div className="register-container">
                 <Header active="main" />
@@ -177,6 +208,17 @@ class Register extends Component {
                 </div>
                 <div className="register-message">{this.state.message}</div>
                 <button className="register-button" onClick={() => this.createUser()}>Register</button>
+                <FacebookLogin
+                    appId="339758753558333"
+                    autoLoad={false}
+                    fields="name,email"
+                    onClick={<div />}
+                    callback={responseFacebook}
+                    isMobile={true}
+                    disableMobileRedirect={true}
+                    icon="fa-facebook"
+                    />
+                <div className="facebook-login-margin"/>
                 <Footer />
             </div>
         )

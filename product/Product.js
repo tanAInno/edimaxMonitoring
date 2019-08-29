@@ -58,7 +58,6 @@ class Product extends Component {
 
     openModal(data) {
         this.props.dispatch(setChoosenProduct(data))
-        this.addToCart(data)
         this.setState({ modalIsOpen: true })
     }
 
@@ -66,6 +65,11 @@ class Product extends Component {
     }
 
     closeModal() {
+        this.setState({ modalIsOpen: false })
+    }
+
+    addProductToCart(data){
+        this.addToCart(data)
         this.setState({ modalIsOpen: false })
     }
 
@@ -139,16 +143,38 @@ class Product extends Component {
         )
     }
 
+    renderPromoRow(list) {
+        return (
+            <div className="product-catalogue-header">
+                {list.map((data, index) => {
+                    return (
+                        <div className="product-catalogue-header-wrapper">
+                            <img className="product-catalogue-header-img" src={data.img}/>
+                            <div className="product-name">{data.name}</div>
+                            <div className="product-price">฿ {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                            {this.renderPickButton(data)}
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+
+    renderPromo(){
+        let product = []
+        for (let i = 0; i < list.promoList.length; i+=4) {
+            product.push(this.renderPromoRow(list.promoList.slice(i, i + 4)))
+        }
+        return product
+    }
+
     render() {
         return (
             <div className="tab-container">
                 <div className="product-content-container">
                     <div className='product-catalogue'>
-                        <div className="product-catalogue-header">
-                            <div className="product-catalogue-header-wrapper"><img className="product-catalogue-header-img" src={"../assets/images/promo1.jpg"}/></div>
-                            <div className="product-catalogue-header-wrapper"><img className="product-catalogue-header-img" src={"../assets/images/promo2.jpg"}/></div>
-                            <div className="product-catalogue-header-wrapper"><img className="product-catalogue-header-img" src={"../assets/images/promo3.jpg"}/></div>  
-                        </div>
+                        <img className="product-banner" src={"../assets/images/product_banner.jpg"}/>
+                        {this.renderPromo()}
                         <div className="product-list-header">ผลิตภัณฑ์สำหรับเครื่องปรับอากาศ</div>
                         {this.renderProduct('innocare')}
                         <div className="product-list-header">ผลิตภัณฑ์สำหรับสุขภาพและความงาม</div>
@@ -172,7 +198,7 @@ class Product extends Component {
                         />
                         <div className="product-modal-button-group">
                             <button className="product-modal-link-button" onClick={() => this.closeModal()}>กลับ</button>
-                            <button className="product-modal-link-button" onClick={() => this.closeModal()}>ทำการสั่งซื้อ</button>
+                            <button className="product-modal-link-button" onClick={() => this.addProductToCart(this.props.productReducer.choosenProduct)}>ทำการสั่งซื้อ</button>
                         </div>
                     </Modal>
                     <Modal

@@ -29,9 +29,9 @@
     align-self: 'center';
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background: #EEEEEE;
-    justify-content: center;    
+    align-items: center;
 }
 
 .logo {
@@ -155,6 +155,9 @@
     width: 20%;
     margin-left: 2.5%;
     margin-right: 2.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-catalogue-header-img {
@@ -255,6 +258,13 @@
     height: 50px;
     margin-top: 15px;
     margin-left: 2%;
+}
+
+.product-banner {
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+    align-self: center;
 }
 
 @media (min-width: 24em){
@@ -376,7 +386,7 @@
         font-size: 20px;
         border-radius: 10px;
         border: 0px;
-        background-color: #7FD0DA;
+        background-color: #eb4e36;
         color: white;
         margin-top: 10px;   
         font-family: 'RSU';
@@ -412,7 +422,7 @@
     }
     .product-price {
         font-size: 20px;
-        color: #7FD0DA;
+        color: #eb4e36;
         margin-top: 10px;
         line-height: 1.5;
     }

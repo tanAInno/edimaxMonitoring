@@ -132,7 +132,8 @@ class LoginModal extends Component {
                     callback={responseFacebook}
                     isMobile={true}
                     disableMobileRedirect={true}
-                    icon="fa-facebook" />
+                    icon="fa-facebook" 
+                />
             </div>
         )
     }
