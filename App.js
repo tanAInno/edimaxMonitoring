@@ -86,12 +86,12 @@ class App extends Component {
                         {this.renderCircle()}
                     </div>
                     <div className="main-sub-banner-wrapper">
-                        <div className="main-sub-banner">
+                        <Link className="main-sub-banner"style={{ textDecoration: 'none' }} to="/product">
                             <img className="main-banner-img" src="./assets/images/product_banner.jpg" />
-                        </div>
-                        <div className="main-sub-banner-last">
+                        </Link>
+                        <Link className="main-sub-banner-last" style={{ textDecoration: 'none' }} to="/service">
                             <img className="main-banner-img" src="./assets/images/air_banner.jpg" />
-                        </div>
+                        </Link>
                     </div>
                 </div>
                 <div className="main-content">

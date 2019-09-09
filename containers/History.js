@@ -41,7 +41,7 @@ class History extends Component {
 
 
     async getHistories() {
-        await axios.get(route+"edimaxs")
+        await axios.get(route+"magellans")
             .then(response => {
                 const histories = response.data.data
                 this.setOption(histories)
@@ -200,12 +200,8 @@ class History extends Component {
                     </div>
                     <div className="table-container">
                         <div className="table-header">
-                            <div className="table-header-name">Name</div>
-                            <div className="table-header-area">Area</div>
-                            <div className="table-header-data">PM1</div>
                             <div className="table-header-data">PM2.5</div>
                             <div className="table-header-data">PM10</div>
-                            <div className="table-header-data">CO</div>
                             <div className="table-header-data">CO2</div>
                             <div className="table-header-data">TVOC</div>
                             <div className="table-header-data">HCHO</div>
@@ -216,17 +212,13 @@ class History extends Component {
                         {this.state.used_log_list.map((data, index) => {
                             return (
                                 <div className="table-row">
-                                    <div className="table-row-name">{data.name}</div>
-                                    <div className="table-row-area">{data.area}</div>
-                                    <div className="table-row-data">{data.pm1}</div>
                                     <div className="table-row-data">{data.pm25}</div>
                                     <div className="table-row-data">{data.pm10}</div>
-                                    <div className="table-row-data">{data.co}</div>
                                     <div className="table-row-data">{data.co2}</div>
                                     <div className="table-row-data">{data.tvoc}</div>
                                     <div className="table-row-data">{data.hcho}</div>
-                                    <div className="table-row-data">{data.temperature}</div>
-                                    <div className="table-row-data">{data.humidity}</div>
+                                    <div className="table-row-data">{data.temp}</div>
+                                    <div className="table-row-data">{data.hum}</div>
                                     <div className="table-row-date">{data.date_time}</div>
                                 </div>
                             )

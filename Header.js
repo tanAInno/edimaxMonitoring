@@ -251,9 +251,6 @@ class Header extends Component {
                 </div>
                 <div className="product-header-content-wrapper">
                     <div className="product-header-top">
-                        <img className="product-top-logo" src={"../assets/images/help.jpg"} />
-                        <div className="product-top-text">ช่วยเหลือ</div>
-                        <div className="product-top-text">เขตพื้นที่ให้บริการ</div>
                         {this.renderUserTab()}
                     </div>
                     {this.renderActive(this.props.active)}

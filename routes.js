@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
-import Monitor from './containers/App';
+import Monitor from './containers/History';
 import Product from './product/App';
 import Service from './service/App'
 import Blog from './blog/App'
 import Register from './Register/App'
 import Profile from './Profile/App'
+import Admin from './admin/App'
 import Main from './App';
 export default () => {
  return (
@@ -18,6 +19,7 @@ export default () => {
     <Route path='/blog' component={Blog} />
     <Route path='/register' component={Register} />
     <Route path='/profile' component={Profile}/>
+    <Route path='/admin' component={Admin}/>
     </Switch>
    </BrowserRouter>
  )

@@ -187,9 +187,6 @@ class Booking extends Component {
                                     <div className="service-booking-reserve-total">{this.props.serviceReducer.totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
                                 </div>
                             </div>
-                            <div className="service-booking-checkbox-row">
-                                <input type="checkbox" className="service-booking-checkbox" onChange={() => this.handleCheck()} /> <div className="service-booking-checkbox-text">พร้อมติดตั้ง airmask</div>
-                            </div>
                             <Link className="service-booking-reserve-button-wrapper" style={{ textDecoration: 'none' }} to="/service/datetime">
                                 <button className="service-booking-reserve-button">ดำเนินการต่อ</button>
                             </Link>

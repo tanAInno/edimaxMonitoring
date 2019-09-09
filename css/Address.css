@@ -50,3 +50,10 @@
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
+.service-booking-dialog {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #B22222;
+    align-self: center;
+}

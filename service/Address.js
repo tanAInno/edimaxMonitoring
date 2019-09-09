@@ -24,7 +24,8 @@ class Address extends Component {
         subdistrict: "",
         district: "",
         province: "",
-        nextPage: false
+        nextPage: false,
+        showDialog: false
     }
 
     componentDidMount() {
@@ -56,18 +57,23 @@ class Address extends Component {
     }
 
     setAddress() {
-        let address = {
-            name: this.state.name,
-            phone: this.state.phone,
-            addressNumber: this.state.addressNumber,
-            housing: this.state.housing,
-            road: this.state.road,    
-            subdistrict: this.state.subdistrict,
-            district: this.state.district,
-            province: this.state.province
+        if(this.state.name != "" && this.state.phone != "" && this.state.addressNumber != "" && this.state.housing != "" && this.state.road != "" && this.state.subdistrict != "" && this.state.district != "" && this.state.province != ""){
+            let address = {
+                name: this.state.name,
+                phone: this.state.phone,
+                addressNumber: this.state.addressNumber,
+                housing: this.state.housing,
+                road: this.state.road,    
+                subdistrict: this.state.subdistrict,
+                district: this.state.district,
+                province: this.state.province
+            }
+            this.props.dispatch(setServiceAddress(address))
+            this.setState({nextPage: true})
         }
-        this.props.dispatch(setServiceAddress(address))
-        this.setState({nextPage: true})
+        else{
+            this.setState({showDialog: true})
+        }
     }
 
     renderChoosenItems() {
@@ -110,6 +116,13 @@ class Address extends Component {
         services.splice(index, 1)
         this.props.dispatch(setServices(services))
         this.props.dispatch(setTotalServicePrice(this.props.serviceReducer.totalprice - (data.price * data.amount)))
+    }
+
+    renderDialog(){
+        if(this.state.showDialog == true)
+            return <div className="service-booking-dialog">โปรดใส่รายละเอียดที่จำเป็น (ชื่อ, เบอร์โทรศัพท์, ที่อยู่) ให้ครบถ้วนเพื่อดำเนินการต่อ</div>
+        else
+            return <div/>
     }
 
     render() {
@@ -218,6 +231,7 @@ class Address extends Component {
                                 </div>
                             </div>
                             <button className="service-booking-reserve-button" onClick={() => this.setAddress()}>ดำเนินการต่อ</button>
+                            {this.renderDialog()}
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { connect } from 'react-redux'
 import { setProducts, setTotalProductPrice } from '../actions/product';
 import { setUser } from '../actions/user'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Header from '../Header'
 import Select from 'react-select'
 import route from '../api'
@@ -19,7 +19,6 @@ class Checkout extends Component {
         super()
         this.state = {
             name: '',
-            surname: '',
             email: '',
             company: '',
             address: '',
@@ -29,16 +28,16 @@ class Checkout extends Component {
             phone: '',
             zipcode: '',
             homephone: '',
-            fax: '',
             password: '',
             confirmpassword: '',
             imagePreviewUrl: '',
+            nextPage: false,
+            showDialog: false
         }
     }
 
     componentDidMount() {
         this.setState({name: this.props.userReducer.user.name})
-        this.setState({surname: this.props.userReducer.user.surname})
         this.setState({email: this.props.userReducer.user.email})
         this.setState({company: this.props.userReducer.user.company})
         this.setState({phone: this.props.userReducer.user.phone})
@@ -52,8 +51,6 @@ class Checkout extends Component {
     handleChangeWithKey = (key, e) => {
         if (key == "name")
             this.setState({ name: e.target.value })
-        if (key == "surname")
-            this.setState({ surname: e.target.value })
         if (key == "email")
             this.setState({ email: e.target.value })
         if (key == "company")
@@ -72,15 +69,22 @@ class Checkout extends Component {
             this.setState({ zipcode: e.target.value })
         if (key == "homephone")
             this.setState({ homephone: e.target.value })
-        if (key == "fax")
-            this.setState({ fax: e.target.value })
+    }
+
+    requestCheckout() {
+        if(this.state.name != "" && this.state.email != "" && this.state.company != "" && this.state.address != "" && this.state.subdistrict != "" && this.state.district != "" && this.state.province != "" && this.state.phone != "" && this.state.zipcode != "" && this.state.imagePreviewUrl != ""){
+            this.sendRequest()
+            this.setState({nextPage : true})
+        }
+        else{
+            this.setState({showDialog : true})
+        }
     }
 
     async sendRequest() {
         if (this.props.productReducer.products.length > 0) {
             await axios.post(route + "products", {
                 name: this.state.name,
-                surname: this.state.surname,
                 email: this.state.email,
                 company: this.state.company,
                 address: this.state.address,
@@ -90,7 +94,6 @@ class Checkout extends Component {
                 phone: this.state.phone,
                 zipcode: this.state.zipcode,
                 homephone: this.state.homephone,
-                fax: this.state.fax,
                 productList: this.props.productReducer.products,
                 totalprice: this.props.productReducer.totalprice,
                 paymentImage: this.state.imagePreviewUrl
@@ -128,6 +131,13 @@ class Checkout extends Component {
         .then(url => this.setState({ imagePreviewUrl: url }));
     };
 
+    renderDialog(){
+        if(this.state.showDialog == true)
+            return <div className="checkout-dialog">กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน รวมทั้ง Upload รูปภาพหลักฐานการโอนเงิน เพื่อดำเนินการต่อ</div>
+        else
+            return <div/>
+    }
+
     render() {
         let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
@@ -136,6 +146,8 @@ class Checkout extends Component {
         } else {
           $imagePreview = (<div className="previewText">อัพโหลดรูปเพื่อส่งหลักฐานการชำระเงิน</div>);
         }
+        if(this.state.nextPage == true)
+            return <Redirect to="/product/confirmation"/>
         return (
             <div className="product-wrapper">
                 <Header active="product" />
@@ -166,86 +178,72 @@ class Checkout extends Component {
                                 <div className="checkout-form-header">1. สถานที่จัดส่ง</div>
                                 <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">ชื่อ</div>
+                                        <div className="checkout-input-header">ชื่อ *</div>
                                         <input className="checkout-input"
                                             value={this.state.name}
                                             onChange={e => this.handleChangeWithKey("name", e)} />
                                     </div>
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">นามสกุล</div>
-                                        <input className="checkout-input"
-                                            value={this.state.surname}
-                                            onChange={e => this.handleChangeWithKey("surname", e)} />
-                                    </div>
-                                </div>
-                                <div className="checkout-input-row">
-                                    <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">อีเมล</div>
+                                        <div className="checkout-input-header">อีเมล *</div>
                                         <input className="checkout-input"
                                             value={this.state.email}
                                             onChange={e => this.handleChangeWithKey("email", e)} />
                                     </div>
+                                </div>
+                                <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">บริษัท</div>
+                                        <div className="checkout-input-header">บริษัท *</div>
                                         <input className="checkout-input"
                                             value={this.state.company}
                                             onChange={e => this.handleChangeWithKey("company", e)} />
                                     </div>
-                                </div>
-                                <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">ที่อยู่</div>
+                                        <div className="checkout-input-header">ที่อยู่ *</div>
                                         <input className="checkout-input"
                                             value={this.state.address}
                                             onChange={e => this.handleChangeWithKey("address", e)} />
                                     </div>
+                                </div>
+                                <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">จังหวัด</div>
+                                        <div className="checkout-input-header">จังหวัด *</div>
                                         <input className="checkout-input"
                                             value={this.state.province}
                                             onChange={e => this.handleChangeWithKey("province", e)} />
                                     </div>
-                                </div>
-                                <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">อำเภอ / เขต</div>
+                                        <div className="checkout-input-header">อำเภอ / เขต *</div>
                                         <input className="checkout-input"
                                             value={this.state.district}
                                             onChange={e => this.handleChangeWithKey("district", e)} />
                                     </div>
+                                </div>
+                                <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">ตำบล / แขวง</div>
+                                        <div className="checkout-input-header">ตำบล / แขวง *</div>
                                         <input className="checkout-input"
                                             value={this.state.subdistrict}
                                             onChange={e => this.handleChangeWithKey("subdistrict", e)} />
                                     </div>
-                                </div>
-                                <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">รหัสไปรษณีย์</div>
+                                        <div className="checkout-input-header">รหัสไปรษณีย์ *</div>
                                         <input className="checkout-input"
                                             value={this.state.zipcode}
                                             onChange={e => this.handleChangeWithKey("zipcode", e)} />
                                     </div>
+                                </div>
+                                <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">โทรศัพท์มือถือ</div>
+                                        <div className="checkout-input-header">โทรศัพท์มือถือ *</div>
                                         <input className="checkout-input"
                                             value={this.state.phone}
                                             onChange={e => this.handleChangeWithKey("phone", e)} />
                                     </div>
-                                </div>
-                                <div className="checkout-input-row">
                                     <div className="checkout-input-wrapper">
                                         <div className="checkout-input-header">โทรศัพท์</div>
                                         <input className="checkout-input"
                                             value={this.state.homephone}
                                             onChange={e => this.handleChangeWithKey("homephone", e)} />
-                                    </div>
-                                    <div className="checkout-input-wrapper">
-                                        <div className="checkout-input-header">โทรสาร</div>
-                                        <input className="checkout-input"
-                                            value={this.state.fax}
-                                            onChange={e => this.handleChangeWithKey("fax", e)} />
                                     </div>
                                 </div>
                             </div>
@@ -308,9 +306,10 @@ class Checkout extends Component {
                                         {$imagePreview}
                                     </div>
                                 </div>
-                                <Link to="/product/confirmation" className="checkout-confirm-button-wrapper">
-                                    <button className="checkout-confirm-button" onClick={() => this.sendRequest()}>ยืนยันการสั่งซื้อ</button>
-                                </Link>
+                                <div className="checkout-confirm-button-wrapper">
+                                    <button className="checkout-confirm-button" onClick={() => this.requestCheckout()}>ยืนยันการสั่งซื้อ</button>
+                                </div>
+                                {this.renderDialog()}
                             </div>
                         </div>
                     </div>

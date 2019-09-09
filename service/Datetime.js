@@ -22,6 +22,7 @@ class Datetime extends Component {
 
     componentDidMount() {
         this.props.dispatch(setSelectedDate(dateFns.addDays(new Date(), 14)))
+        this.props.dispatch(setSelectedTime("9.00 - 12.00 น. (ช่วงเช้า)"))
     }
 
     renderChoosenItems() {

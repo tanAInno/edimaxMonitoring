@@ -48,7 +48,7 @@ class AdminLogin extends Component {
 
     render() {
         if (this.state.isLoggedIn){
-            return <Redirect to="/product/adminmain" />
+            return <Redirect to="/admin/adminmain" />
         }
         return(
             <div className="login-container">

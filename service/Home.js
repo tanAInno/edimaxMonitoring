@@ -44,7 +44,7 @@ class Home extends Component {
             return (
                 <div className="service-home-button-box">
                     <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/airservice">
-                        <img className="service-home-button-img" src="../assets/images/air_img.jpg"/>
+                        <img className="service-home-button-img" src="../assets/images/air_1.jpg"/>
                     </Link>
                     <div className="service-home-button-text">บริการล้างแอร์</div>
                 </div>
@@ -53,7 +53,7 @@ class Home extends Component {
         if (this.props.userReducer.user.name == undefined) {
             return (
                 <div className="service-home-button-box">
-                    <img className="service-home-button-img" src="../assets/images/air_img.jpg" onClick={() => this.openloginModal()}/>
+                    <img className="service-home-button-img" src="../assets/images/air_1.jpg" onClick={() => this.openloginModal()}/>
                     <div className="service-home-button-text">บริการล้างแอร์</div>
                 </div>
             )
@@ -65,7 +65,7 @@ class Home extends Component {
             return (
                 <div className="service-home-button-box">
                     <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/airmaskservice">
-                        <img className="service-home-button-img" src="../assets/images/airmask_img.jpg"/>
+                        <img className="service-home-button-img" src="../assets/images/air_2.jpg"/>
                     </Link>
                     <div className="service-home-button-text">บริการล้างแอร์+airmask</div>
                 </div>
@@ -74,7 +74,7 @@ class Home extends Component {
         if (this.props.userReducer.user.name == undefined) {
             return (
                 <div className="service-home-button-box">
-                    <img className="service-home-button-img" src="../assets/images/airmask_img.jpg" onClick={() => this.openloginModal()}/>
+                    <img className="service-home-button-img" src="../assets/images/air_2.jpg" onClick={() => this.openloginModal()}/>
                     <div className="service-home-button-text">บริการล้างแอร์+airmask</div>
                 </div>
             )

@@ -20,7 +20,7 @@ class Monitor extends Component {
     }
 
     async getDevices(){
-        await axios.get("https://airbox.edimaxcloud.com/devices?token=9af3944d-5ffa-4650-8e6a-dd7e665e0cf7")
+        await axios.get("https://www.aismagellan.io/api/things/pull/093c0e90-c8a5-11e8-be06-154c92873ad1")
             .then(response => {
                 if(response != null){
                     const devices = response.data.devices
