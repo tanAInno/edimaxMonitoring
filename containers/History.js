@@ -124,13 +124,13 @@ class History extends Component {
             this.setState({ used_log_list: this.state.log_list.slice(0, 40) })
         }
         else {
-            let from_date = moment(this.state.from_date)
-            let to_date = moment(this.state.to_date)
+            let from_date = moment(this.state.from_date).format('DD/MM/YYYY HH:mm:ss')
+            let to_date = moment(this.state.to_date).format('DD/MM/YYYY HH:mm:ss')
             let filter_list = []
             for (let i = 0; i < this.state.name_filter_list.length; i++) {
                 let data = this.state.name_filter_list[i]
-                if ((moment(data.date_time) >= from_date || this.state.from_date == '')
-                    && (moment(data.date_time) <= to_date || this.state.to_date == ''))
+                if ((moment(data.date_time) >= moment(from_date) || this.state.from_date == '')
+                    && (moment(data.date_time) <= moment(to_date) || this.state.to_date == ''))
                     filter_list.push(data)
             }
             this.setState({ counter: 40 })
@@ -153,12 +153,9 @@ class History extends Component {
                 <div className="history-container">
                     <div className="filter-container">
                         <div className="button-container">
-                            <Select
-                                value={this.state.selectedOption}
-                                onChange={this.handleChange}
-                                options={this.state.options}
-                                className="module-select"
-                            />
+                            <button
+                                className="export-button"
+                                onClick={() => this.export()}>Export to CSV</button>
                             <div className="date-text">From</div>
                             <div className="date-picker-wrapper">
                                 <DatePicker
@@ -187,15 +184,9 @@ class History extends Component {
                                     placeholderText="Select final time"
                                 />
                             </div>
-                            <button className="time-button" style={{marginLeft: '2%'}}>1 Min</button>
-                            <button className="time-button">15 Min</button>
-                            <button className="time-button">1 Hour</button>
-                        </div>
-                        <div className="export-container">
-
-                            <button
-                                className="export-button"
-                                onClick={() => this.export()}>Export to CSV</button>
+                            <button className="time-button" onClick={() => this.selectDevice('all')}>All</button>
+                            <button className="time-button" onClick={() => this.selectDevice('nbas')}>N'Bas</button>
+                            <button className="time-button" onClick={() => this.selectDevice('vsw')}>วชิราวุทธ</button>
                         </div>
                     </div>
                     <div className="table-container">

@@ -75,7 +75,8 @@
 }
 
 .table-header-date{
-    width: 30%;
+    width: 28%;
+    margin-left: 2%;
     font-size: 14px;
     color: #f9f9f9;
 }
@@ -105,9 +106,9 @@
 }
 
 .time-button{
-    width: 7%;
+    width: 10%;
     height: 40px;
-    margin-left: 1%;
+    margin-left: 3%;
     font-size: 75%;
     background-color: #f9f9f9;
     border: 1.5px solid #808080;
