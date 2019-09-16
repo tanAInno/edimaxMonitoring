@@ -126,11 +126,12 @@ class History extends Component {
         else {
             let from_date = moment(this.state.from_date).format('DD/MM/YYYY HH:mm:ss')
             let to_date = moment(this.state.to_date).format('DD/MM/YYYY HH:mm:ss')
+            console.log(from_date <= "16/09/2019 09:59:50")
             let filter_list = []
             for (let i = 0; i < this.state.name_filter_list.length; i++) {
                 let data = this.state.name_filter_list[i]
-                if ((moment(data.date_time) >= moment(from_date) || this.state.from_date == '')
-                    && (moment(data.date_time) <= moment(to_date) || this.state.to_date == ''))
+                if ((data.date_time >= from_date || this.state.from_date == '')
+                    && (data.date_time <= to_date || this.state.to_date == ''))
                     filter_list.push(data)
             }
             this.setState({ counter: 40 })
