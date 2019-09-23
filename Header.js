@@ -10,6 +10,7 @@ import Shoppingcart from './product/Shoppingcart';
 import LoginModal from './Register/LoginModal'
 import Cookies from 'js-cookie'
 import route from './api';
+import images from './ImageStorage'
 import { setUser, setAddress, setCompany, setDistrict, setEmail, setName, setPhone, setProvince, setSubdistrict, setSurname, setUserId, setZipcode } from './actions/user'
 
 const shoppingStyles = {
@@ -158,10 +159,10 @@ class Header extends Component {
                     {/* <input className="product-search-input" placeholder={"Search"} /> */}
                     <div className="product-dummy"/>
                     <div className="product-header-sub-logo-wrapper">
-                        <img className="product-header-sub-logo" src={"../assets/images/noti.jpg"} />
+                        <img className="product-header-sub-logo" src={images.noti} />
                     </div>
                     <div className="product-header-sub-logo-wrapper">
-                        <img className="product-header-sub-logo" src={"../assets/images/shopping.jpg"} onClick={() => this.openshoppingModal(this.props.productReducer.products)} />
+                        <img className="product-header-sub-logo" src={images.shopping} onClick={() => this.openshoppingModal(this.props.productReducer.products)} />
                         {this.renderCounter()}
                     </div>
                 </div>
@@ -176,10 +177,10 @@ class Header extends Component {
                     {/* <input className="product-search-input" placeholder={"Search"} /> */}
                     <div className="product-dummy"/>
                     <div className="product-header-sub-logo-wrapper">
-                        <img className="product-header-sub-logo" src={"../assets/images/noti.jpg"} />
+                        <img className="product-header-sub-logo" src={images.noti} />
                     </div>
                     <div className="product-header-sub-logo-wrapper">
-                        <img className="product-header-sub-logo" src={"../assets/images/shopping.jpg"} onClick={() => this.openshoppingModal(this.props.productReducer.products)} />
+                        <img className="product-header-sub-logo" src={images.shopping} onClick={() => this.openshoppingModal(this.props.productReducer.products)} />
                         {this.renderCounter()}
                     </div>
                 </div>
@@ -194,10 +195,10 @@ class Header extends Component {
                     {/* <input className="product-search-input" placeholder={"Search"} value={this.state.searchInput} onChange={e => this.handleSearchChange(e)} /> */}
                     <div className="product-dummy"/>
                     <div className="product-header-sub-logo-wrapper">
-                        <img className="product-header-sub-logo" src={"../assets/images/noti.jpg"} />
+                        <img className="product-header-sub-logo" src={images.noti} />
                     </div>
                     <div className="product-header-sub-logo-wrapper">
-                        <img className="product-header-sub-logo" src={"../assets/images/shopping.jpg"} onClick={() => this.openshoppingModal(this.props.productReducer.products)} />
+                        <img className="product-header-sub-logo" src={images.shopping} onClick={() => this.openshoppingModal(this.props.productReducer.products)} />
                         {this.renderCounter()}
                     </div>
                 </div>
@@ -212,10 +213,10 @@ class Header extends Component {
                     {/* <input className="product-search-input" placeholder={"Search"} value={this.state.searchInput} onChange={e => this.handleSearchChange(e)} /> */}
                     <div className="product-dummy"/>
                     <div className="product-header-sub-logo-wrapper">
-                        <img className="product-header-sub-logo" src={"../assets/images/noti.jpg"} />
+                        <img className="product-header-sub-logo" src={images.noti} />
                     </div>
                     <div className="product-header-sub-logo-wrapper">
-                        <img className="product-header-sub-logo" src={"../assets/images/shopping.jpg"} onClick={() => this.openshoppingModal(this.props.productReducer.products)} />
+                        <img className="product-header-sub-logo" src={images.shopping} onClick={() => this.openshoppingModal(this.props.productReducer.products)} />
                         {this.renderCounter()}
                     </div>
                 </div>
@@ -247,7 +248,7 @@ class Header extends Component {
         return (
             <div className="product-header-wrapper">
                 <div className="product-header-logo-wrapper">
-                    <Link className="product-header-logo" style={{ textDecoration: 'none' }} to="/"><img className="product-header-logo-img" src={"../assets/images/logo.png"} /></Link>
+                    <Link className="product-header-logo" style={{ textDecoration: 'none' }} to="/"><img className="product-header-logo-img" src={images.logo} /></Link>
                 </div>
                 <div className="product-header-content-wrapper">
                     <div className="product-header-top">

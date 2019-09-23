@@ -19,3 +19,87 @@
     color: #13304F;
     align-self: center;
 }
+
+.product-create-input-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.product-create-input-left {
+    width: 56%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 7%;
+}
+
+.product-create-input-right {
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-create-input-text {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #13304F;
+}
+
+.product-create-input-field {
+    margin-bottom: 15px;
+    font-size: 14px;
+    width: 100%;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.product-create-previewcomponent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-create-fileInput {
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    background: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10%;
+    margin-top: 5px;
+    margin-left: -6%;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.product-create-imgPreview {
+    text-align: center;
+    height: 95%;
+    width: 100%;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 5px solid gray;
+    border-bottom: 5px solid gray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: white;
+}
+
+.product-create-button {
+    border: 0px;
+    border-radius: 5px;
+    background: #7FD0DA;
+    color: white;
+    font-size: 20px;
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    font-family: 'RSU';
+    margin-top: 10px;
+    align-self: center;
+}

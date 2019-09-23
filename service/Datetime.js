@@ -11,6 +11,7 @@ import { setServices, setTotalServicePrice, setSelectedDate, setSelectedTime } f
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import images from '../ImageStorage'
 
 library.add(faArrowLeft, faArrowRight)
 
@@ -149,8 +150,8 @@ class Datetime extends Component {
                 <Header active="service" />
                 <div className="service-datetime-wrapper">
                     <div className="service-booking-img-group">
-                        <img className="service-booking-img" src={"../assets/images/air_1.jpg"} />
-                        <img className="service-booking-img" src={"../assets/images/air_2.jpg"} />
+                        <img className="service-booking-img" src={images.air_1} />
+                        <img className="service-booking-img" src={images.air_2} />
                     </div>
                     <div className="service-booking-header">ล้างแอร์</div>
                     <div className="service-booking-order">

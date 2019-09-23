@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { Player } from 'video-react';
 import "./node_modules/video-react/dist/video-react.css";
+import images from './ImageStorage'
 
 library.add(faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight)
 
@@ -24,11 +25,11 @@ class App extends Component {
 
     renderBanner() {
         if (this.state.banner == 1)
-            return <img className="main-banner-img" src={"./assets/images/banner1.jpg"} />
+            return <img className="main-banner-img" src={images.banner1} />
         if (this.state.banner == 2)
-            return <img className="main-banner-img" src={"./assets/images/banner2.jpg"} />
+            return <img className="main-banner-img" src={images.banner2} />
         if (this.state.banner == 3)
-            return <img className="main-banner-img" src={"./assets/images/banner3.jpg"} />
+            return <img className="main-banner-img" src={images.banner3} />
     }
 
     back() {
@@ -87,10 +88,10 @@ class App extends Component {
                     </div>
                     <div className="main-sub-banner-wrapper">
                         <Link className="main-sub-banner"style={{ textDecoration: 'none' }} to="/product">
-                            <img className="main-banner-img" src="./assets/images/product_banner.jpg" />
+                            <img className="main-banner-img" src={images.product_banner} />
                         </Link>
                         <Link className="main-sub-banner-last" style={{ textDecoration: 'none' }} to="/service">
-                            <img className="main-banner-img" src="./assets/images/air_banner.jpg" />
+                            <img className="main-banner-img" src={images.air_banner} />
                         </Link>
                     </div>
                 </div>

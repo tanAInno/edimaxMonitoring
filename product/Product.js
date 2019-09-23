@@ -7,9 +7,11 @@ import { setProducts, setChoosenProduct } from '../actions/product';
 import { connect } from 'react-redux'
 import Modal from 'react-modal';
 import ProductModal from './ProductModal'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import list from '../list'
 import LoginModal from '../Register/LoginModal'
+import images from '../ImageStorage'
+import route from '../api'
 
 const customStyles = {
     content: {
@@ -42,7 +44,29 @@ class Product extends Component {
 
         this.state = {
             modalIsOpen: false,
+            productList: []
         }
+    }
+
+    componentDidMount(){
+        this.getProducts()
+    }
+
+    async getProducts() {
+        await axios.get(route + "productAds").then(
+            response => {
+                const productList = response.data.data.map(c => {
+                    return ({
+                        _id: c._id,
+                        name: c.name,
+                        image: c.image,
+                        type: c.type,
+                        price: c.price,
+                        description: c.description,
+                    })
+                })
+                this.setState({productList: productList})
+            }).catch(error => console.log(error))
     }
 
     openloginModal(data) {
@@ -68,7 +92,7 @@ class Product extends Component {
         this.setState({ modalIsOpen: false })
     }
 
-    addProductToCart(data){
+    addProductToCart(data) {
         this.addToCart(data)
         this.setState({ modalIsOpen: false })
     }
@@ -76,9 +100,9 @@ class Product extends Component {
     renderProduct(type) {
         let product = []
         let usedlist = []
-        for (let i = 0; i < list.productList.length; i++) {
-            if(list.productList[i].type == type)
-                usedlist.push(list.productList[i])
+        for (let i = 0; i < this.state.productList.length; i++) {
+            if (this.state.productList[i].type == type)
+                usedlist.push(this.state.productList[i])
         }
         for (let i = 0; i < usedlist.length; i += 4) {
             product.push(this.renderRow(usedlist.slice(i, i + 4)))
@@ -88,13 +112,15 @@ class Product extends Component {
 
     addToCart(data) {
         let products = this.props.productReducer.products
-        let newobj = { img: data.img, 
-                    name: data.name, 
-                    desc: data.desc, 
-                    tag: data.tag, 
-                    amount: 1,
-                    price: data.price,
-                    type: data.type }
+        let newobj = {
+            img: data.image,
+            name: data.name,
+            desc: data.desc,
+            tag: data.tag,
+            amount: 1,
+            price: data.price,
+            type: data.type
+        }
         let exist = false
         for (let i = 0; i < products.length; i++) {
             if (products[i].name == data.name) {
@@ -109,10 +135,10 @@ class Product extends Component {
 
 
     renderPickButton(data) {
-        if(this.props.userReducer.user.name != undefined) {
+        if (this.props.userReducer.user.name != undefined) {
             return <button className='pick-button' onClick={() => this.openModal(data)}>ซื้อเลย</button>
         }
-        if(this.props.userReducer.user.name == undefined) {
+        if (this.props.userReducer.user.name == undefined) {
             return <button className='pick-button' onClick={() => this.openloginModal(data)}>ซื้อเลย</button>
         }
     }
@@ -121,10 +147,10 @@ class Product extends Component {
         return (
             <div className='product-row'>
                 {list.map((data, index) => {
-                    if(index == 3)
+                    if (index == 3)
                         return (
                             <div className='product-card-last'>
-                                <img className='product-image' src={data.img} />
+                                <img className='product-image' src={data.image} />
                                 <div className='product-name'>{data.name}</div>
                                 <div className='product-price'>฿ {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                                 {this.renderPickButton(data)}
@@ -132,7 +158,7 @@ class Product extends Component {
                         )
                     return (
                         <div className='product-card'>
-                            <img className='product-image' src={data.img} />
+                            <img className='product-image' src={data.image} />
                             <div className='product-name'>{data.name}</div>
                             <div className='product-price'>฿ {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                             {this.renderPickButton(data)}
@@ -149,8 +175,8 @@ class Product extends Component {
                 {list.map((data, index) => {
                     return (
                         <div className="product-catalogue-header-wrapper">
-                            <img className="product-catalogue-header-img" src={data.img}/>
-                            <div className="product-name">{data.name}</div>
+                            <img className="product-catalogue-header-img" src={data.image} />
+                            <div className="product-catalogue-name">{data.name}</div>
                             <div className="product-price">฿ {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                             {this.renderPickButton(data)}
                         </div>
@@ -160,9 +186,9 @@ class Product extends Component {
         )
     }
 
-    renderPromo(){
+    renderPromo() {
         let product = []
-        for (let i = 0; i < list.promoList.length; i+=4) {
+        for (let i = 0; i < list.promoList.length; i += 4) {
             product.push(this.renderPromoRow(list.promoList.slice(i, i + 4)))
         }
         return product
@@ -173,12 +199,12 @@ class Product extends Component {
             <div className="tab-container">
                 <div className="product-content-container">
                     <div className='product-catalogue'>
-                        <img className="product-banner" src={"../assets/images/product_banner.jpg"}/>
+                        <img className="product-banner" src={images.product_banner} />
                         {this.renderPromo()}
                         <div className="product-list-header">ผลิตภัณฑ์สำหรับเครื่องปรับอากาศ</div>
-                        {this.renderProduct('innocare')}
+                        {this.renderProduct('ผลิตภัณฑ์สำหรับเครื่องปรับอากาศ')}
                         <div className="product-list-header">ผลิตภัณฑ์สำหรับสุขภาพและความงาม</div>
-                        {this.renderProduct('bn3')}
+                        {this.renderProduct('ผลิตภัณฑ์สำหรับสุขภาพและความงาม')}
                     </div>
                     <Modal
                         isOpen={this.state.modalIsOpen}
@@ -188,7 +214,7 @@ class Product extends Component {
                         style={customStyles}
                     >
                         <ProductModal
-                            img={this.props.productReducer.choosenProduct.img}
+                            img={this.props.productReducer.choosenProduct.image}
                             type={this.props.productReducer.choosenProduct.type}
                             name={this.props.productReducer.choosenProduct.name}
                             desc={this.props.productReducer.choosenProduct.desc}

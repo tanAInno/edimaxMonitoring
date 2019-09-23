@@ -8,6 +8,7 @@ import '../css/Service.css'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import LoginModal from '../Register/LoginModal'
+import images from '../ImageStorage'
 
 const loginStyles = {
     content: {
@@ -44,7 +45,7 @@ class Home extends Component {
             return (
                 <div className="service-home-button-box">
                     <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/airservice">
-                        <img className="service-home-button-img" src="../assets/images/air_1.jpg"/>
+                        <img className="service-home-button-img" src={images.air_1}/>
                     </Link>
                     <div className="service-home-button-text">บริการล้างแอร์</div>
                 </div>
@@ -53,7 +54,7 @@ class Home extends Component {
         if (this.props.userReducer.user.name == undefined) {
             return (
                 <div className="service-home-button-box">
-                    <img className="service-home-button-img" src="../assets/images/air_1.jpg" onClick={() => this.openloginModal()}/>
+                    <img className="service-home-button-img" src={images.air_1} onClick={() => this.openloginModal()}/>
                     <div className="service-home-button-text">บริการล้างแอร์</div>
                 </div>
             )
@@ -65,7 +66,7 @@ class Home extends Component {
             return (
                 <div className="service-home-button-box">
                     <Link className="service-home-button-wrapper" style={{ textDecoration: 'none' }} to="/service/airmaskservice">
-                        <img className="service-home-button-img" src="../assets/images/air_2.jpg"/>
+                        <img className="service-home-button-img" src={images.air_2}/>
                     </Link>
                     <div className="service-home-button-text">บริการล้างแอร์+airmask</div>
                 </div>
@@ -74,7 +75,7 @@ class Home extends Component {
         if (this.props.userReducer.user.name == undefined) {
             return (
                 <div className="service-home-button-box">
-                    <img className="service-home-button-img" src="../assets/images/air_2.jpg" onClick={() => this.openloginModal()}/>
+                    <img className="service-home-button-img" src={images.air_2} onClick={() => this.openloginModal()}/>
                     <div className="service-home-button-text">บริการล้างแอร์+airmask</div>
                 </div>
             )
@@ -86,9 +87,9 @@ class Home extends Component {
             <div className="service-wrapper">
                 <Header active="service" />
                 <div className="service-home-wrapper">
-                    <img className="service-home-img" src="../assets/images/air_banner.jpg"/>
+                    <img className="service-home-img" src={images.air_banner}/>
                     <div className="service-home-header">
-                        <img className="service-home-header-img" src="../assets/images/LogoWhite.png"/>
+                        <img className="service-home-header-img" src={images.logo_white}/>
                         <div className="service-home-header-innocare">
                             <div className="service-home-header-inno">INNO</div>
                             <div className="service-home-header-care">CARE</div>
@@ -97,15 +98,15 @@ class Home extends Component {
                     </div>
                     <div className="service-home-story">
                         <div className="service-home-story-box">
-                            <img className="service-home-story-img" src="../assets/images/air_story1.png"/>
+                            <img className="service-home-story-img" src={images.air_story1}/>
                             <div className="service-home-story-text">ล้างแอร์โดยช่างผู้เชี่ยวชาญ</div>
                         </div>
                         <div className="service-home-story-box">
-                            <img className="service-home-story-img" src="../assets/images/air_story2.png"/>
+                            <img className="service-home-story-img" src={images.air_story2}/>
                             <div className="service-home-story-text">ฆ่าเชื้อด้วยไอน้ำร้อนแรงดันสูง</div>
                         </div>
                         <div className="service-home-story-box">
-                            <img className="service-home-story-img" src="../assets/images/air_story3.png"/>
+                            <img className="service-home-story-img" src={images.air_story3}/>
                             <div className="service-home-story-text">รับประกันนาน 60 วัน</div>
                         </div>
                     </div>

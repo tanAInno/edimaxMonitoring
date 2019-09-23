@@ -8,6 +8,7 @@ import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-d
 import { connect } from 'react-redux'
 import { setServices, setTotalServicePrice } from '../actions/service'
 import list from '../list'
+import images from '../ImageStorage'
 
 class Booking extends Component {
 
@@ -124,8 +125,8 @@ class Booking extends Component {
                 <Header active="service" />
                 <div className="service-booking-wrapper">
                     <div className="service-booking-img-group">
-                        <img className="service-booking-img" src={"../assets/images/air_1.jpg"} />
-                        <img className="service-booking-img" src={"../assets/images/air_2.jpg"} />
+                        <img className="service-booking-img" src={images.air_1} />
+                        <img className="service-booking-img" src={images.air_2} />
                     </div>
                     <div className="service-booking-header">ล้างแอร์</div>
                     <div className="service-booking-order">
@@ -152,15 +153,15 @@ class Booking extends Component {
                     </div>
                     <div className="service-booking-story">
                         <div className="service-booking-story-wrapper-side">
-                            <img className="service-booking-story-img-high" src={"../assets/images/service_point.png"} />
+                            <img className="service-booking-story-img-high" src={images.service_point} />
                             <div className="service-booking-story-text">สะดวก ล้างแอร์ได้ง่ายๆแค่จองผ่านเว็บไซต์ พร้อมรับสิทธิพิเศษมากมาย</div>
                         </div>
                         <div className="service-booking-story-wrapper-center">
-                            <img className="service-booking-story-img" src={"../assets/images/service_time.png"} />
+                            <img className="service-booking-story-img" src={images.service_time} />
                             <div className="service-booking-story-text">รวดเร็ว ด้วยการให้บริการแบบมืออาชีพโดยช่างผู้เชี่ยวชาญ</div>
                         </div>
                         <div className="service-booking-story-wrapper-side">
-                            <img className="service-booking-story-img" src={"../assets/images/service_approve.png"} />
+                            <img className="service-booking-story-img" src={images.service_approve} />
                             <div className="service-booking-story-text">ปลอดภัย ผู้ให้บริการได้รับการอบรมและตรวจสอบประวัติอาชญากรรม</div>
                         </div>
                     </div>

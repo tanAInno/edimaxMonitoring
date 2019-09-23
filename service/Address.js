@@ -9,6 +9,7 @@ import { BrowserRouter, Route, RefreshRoute, Switch, Link, Redirect } from 'reac
 import { connect } from 'react-redux'
 import { setServices, setTotalServicePrice, setServiceAddress } from '../actions/service'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import images from '../ImageStorage'
 
 class Address extends Component {
 
@@ -135,8 +136,8 @@ class Address extends Component {
                 <Header active="service" />
                 <div className="service-address-wrapper">
                     <div className="service-booking-img-group">
-                        <img className="service-booking-img" src={"../assets/images/air_1.jpg"} />
-                        <img className="service-booking-img" src={"../assets/images/air_2.jpg"} />
+                        <img className="service-booking-img" src={images.air_1} />
+                        <img className="service-booking-img" src={images.air_2} />
                     </div>
                     <div className="service-booking-header">ล้างแอร์</div>
                     <div className="service-booking-order">

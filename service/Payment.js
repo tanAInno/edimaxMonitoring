@@ -12,6 +12,7 @@ import { setServices, setTotalServicePrice } from '../actions/service'
 import { setUser } from '../actions/user'
 import firebase from 'firebase'
 import FileUploader from 'react-firebase-file-uploader'
+import images from '../ImageStorage'
 
 class Payment extends Component {
 
@@ -290,8 +291,8 @@ class Payment extends Component {
                 <Header active="service" />
                 <div className="service-payment-wrapper">
                     <div className="service-booking-img-group">
-                        <img className="service-booking-img" src={"../assets/images/air_1.jpg"} />
-                        <img className="service-booking-img" src={"../assets/images/air_2.jpg"} />
+                        <img className="service-booking-img" src={images.air_1} />
+                        <img className="service-booking-img" src={images.air_2} />
                     </div>
                     <div className="service-booking-header">ล้างแอร์</div>
                     <div className="service-booking-order">
@@ -323,15 +324,15 @@ class Payment extends Component {
                             <div className="service-payment-box-text">หลังจากชำระเงินเรียบร้อยแล้ว ข้อมูลจึงส่งถึงผู้ให้บริการ</div>
                             <div className="service-payment-box-text">กรุณาชำระเงินภายใน 24 ชั่วโมง มิฉะนั้นระบบจะยกเลิกคำสั่งอัตโนมัติ</div>
                             <div className="service-payment-box-check-wrapper">
-                                <img className="service-payment-box-check" src={"../assets/images/check.png"} />
+                                <img className="service-payment-box-check" src={images.check} />
                                 <div className="service-payment-box-check-text">ค่าบริการรวมค่าเดินทางของผู้ให้บริการเรียบร้อยแล้ว</div>
                             </div>
                             <div className="service-payment-box-check-wrapper">
-                                <img className="service-payment-box-check" src={"../assets/images/check.png"} />
+                                <img className="service-payment-box-check" src={images.check} />
                                 <div className="service-payment-box-check-text">อาจมีค่าใช้จ่ายเพิ่มเติมหน้างาน หากมีคำขอเพิ่มเติมจากลูกค้า</div>
                             </div>
                             <div className="service-payment-box-check-wrapper">
-                                <img className="service-payment-box-check" src={"../assets/images/check.png"} />
+                                <img className="service-payment-box-check" src={images.check} />
                                 <div className="service-payment-box-check-text">เพื่อความสะดวกของลูกค้า กรุณาชำระเงินพอดีกับยอดเรียกเก็บ</div>
                             </div>
                             <div className="service-payment-button-group">

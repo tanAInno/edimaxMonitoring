@@ -8,6 +8,7 @@ import { setProducts, setTotalProductPrice } from '../actions/product';
 import { setServices, setTotalServicePrice, setAddition } from '../actions/service'
 import Modal from 'react-modal';
 import LoginModal from '../Register/LoginModal'
+import images from '../ImageStorage'
 
 const loginStyles = {
     content: {
@@ -160,7 +161,7 @@ class ShoppingcartModal extends Component {
                                 {this.props.serviceReducer.services.map((data, index) => {
                                     return (
                                         <div className="shopping-modal-box">
-                                            <img className="shopping-modal-box-img" src={"../assets/images/air_1.jpg"} />
+                                            <img className="shopping-modal-box-img" src={images.air_1} />
                                             <div className="shopping-modal-box-content">
                                                 <div className="shopping-modal-box-name">{data.name}</div>
                                                 <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>
@@ -182,7 +183,7 @@ class ShoppingcartModal extends Component {
                                 {this.props.serviceReducer.services.map((data, index) => {
                                     return (
                                         <div className="shopping-modal-box">
-                                            <img className="shopping-modal-box-img" src={"../assets/images/air_1.jpg"} />
+                                            <img className="shopping-modal-box-img" src={images.air_1} />
                                             <div className="shopping-modal-box-content">
                                                 <div className="shopping-modal-box-name">{data.name}</div>
                                                 <div className="shopping-modal-box-price">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท</div>

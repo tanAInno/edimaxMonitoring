@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Header from '../Header'
 import Footer from '../Footer'
 import { Link } from 'react-router-dom';
+import images from '../ImageStorage'
 
 class Confirmation extends Component {
 
@@ -15,7 +16,7 @@ class Confirmation extends Component {
                 <Header active="product"/>
                 <div className="service-thank-wrapper">
                     <div className="service-thank-text-header">สั่งซื้อสินค้าเรียบร้อยแล้ว</div>
-                    <img className="service-thank-img" src="../assets/images/check.png" />
+                    <img className="service-thank-img" src={images.check} />
                     <div className="service-thank-text">ระบบจะทำการดำเนินการตรวจสอบการสั่งซื้อของท่านและยืนยันภายใน 1 วันทำการ</div>
                     <Link className="service-thank-button-wrapper" to="/">
                         <button className="service-thank-button">กลับเข้าสู่หน้าแรก</button>
