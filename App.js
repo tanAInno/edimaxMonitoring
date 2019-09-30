@@ -14,6 +14,8 @@ import { faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight } 
 import { Player } from 'video-react';
 import "./node_modules/video-react/dist/video-react.css";
 import images from './ImageStorage'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 library.add(faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight)
 
@@ -78,22 +80,46 @@ class App extends Component {
             <div className="main-container">
                 <Header active="main" />
                 <div className="main-all-banner-wrapper">
-                    <div className="main-banner-wrapper">
+                    {/* <div className="main-banner-wrapper">
                         {this.renderBanner()}
                         <div className="main-banner-button-group">
                             <div className="main-banner-button-wrapper" onClick={() => this.back()}><FontAwesomeIcon icon="chevron-left" className="main-banner-button" /></div>
                             <div className="main-banner-button-wrapper" onClick={() => this.next()}><FontAwesomeIcon icon="chevron-right" className="main-banner-button" onClick={() => this.next()} /></div>
                         </div>
                         {this.renderCircle()}
+                    </div> */}
+                    <div className="main-all-banner-wrapper">
+                        <Carousel
+                            showThumbs={false}
+                            showStatus={false}
+                            showArrows={true}
+                            autoPlay={true}
+                            infiniteLoop={true}
+                            >
+                            <div>
+                                <img className="main-banner-img" src={images.banner1} />
+                            </div>
+                            <div>
+                                <img className="main-banner-img" src={images.banner2} />
+                            </div>
+                            <div>
+                                <img className="main-banner-img" src={images.banner3} />
+                            </div>
+                        </Carousel>
                     </div>
-                    <div className="main-sub-banner-wrapper">
-                        <Link className="main-sub-banner"style={{ textDecoration: 'none' }} to="/product">
+                    {/* <Carousel>
+                        <img className="main-banner-img" src={images.banner1} />
+                        <img className="main-banner-img" src={images.banner2} />
+                        <img className="main-banner-img" src={images.banner3} />
+                    </Carousel> */}
+                    {/* <div className="main-sub-banner-wrapper">
+                        <Link className="main-sub-banner" style={{ textDecoration: 'none' }} to="/product">
                             <img className="main-banner-img" src={images.product_banner} />
                         </Link>
                         <Link className="main-sub-banner-last" style={{ textDecoration: 'none' }} to="/service">
                             <img className="main-banner-img" src={images.air_banner} />
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="main-content">
                     <div className="main-video-player">
