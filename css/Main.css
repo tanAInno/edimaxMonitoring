@@ -42,6 +42,10 @@
     margin-top: 20px;
 }
 
+.main-banner-opacity {
+    height: 0;
+}
+
 @media (min-width: 24em){
     .main-all-banner-wrapper {
         width: 100%;

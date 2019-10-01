@@ -22,57 +22,13 @@ library.add(faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight
 class App extends Component {
 
     state = {
-        banner: 1
+        banner: 1,
+        interval: 3000,
+        arrow: true
     }
 
-    renderBanner() {
-        if (this.state.banner == 1)
-            return <img className="main-banner-img" src={images.banner1} />
-        if (this.state.banner == 2)
-            return <img className="main-banner-img" src={images.banner2} />
-        if (this.state.banner == 3)
-            return <img className="main-banner-img" src={images.banner3} />
-    }
-
-    back() {
-        if (this.state.banner - 1 <= 0)
-            this.setState({ banner: 3 })
-        else
-            this.setState({ banner: this.state.banner - 1 })
-    }
-
-    next() {
-        if (this.state.banner + 1 > 3)
-            this.setState({ banner: 1 })
-        else
-            this.setState({ banner: this.state.banner + 1 })
-    }
-
-    renderCircle() {
-        if (this.state.banner == 1)
-            return (
-                <div className="main-banner-circle-group">
-                    <div className="main-banner-circle-active" />
-                    <div className="main-banner-circle" />
-                    <div className="main-banner-circle" />
-                </div>
-            )
-        if (this.state.banner == 2)
-            return (
-                <div className="main-banner-circle-group">
-                    <div className="main-banner-circle" />
-                    <div className="main-banner-circle-active" />
-                    <div className="main-banner-circle" />
-                </div>
-            )
-        if (this.state.banner == 3)
-            return (
-                <div className="main-banner-circle-group">
-                    <div className="main-banner-circle" />
-                    <div className="main-banner-circle" />
-                    <div className="main-banner-circle-active" />
-                </div>
-            )
+    componentDidMount(){
+        this.setState({interval: 3000})
     }
 
     render() {
@@ -92,18 +48,22 @@ class App extends Component {
                         <Carousel
                             showThumbs={false}
                             showStatus={false}
-                            showArrows={true}
+                            showArrows={this.state.arrow}
                             autoPlay={true}
+                            interval={this.state.interval}
                             infiniteLoop={true}
                             >
                             <div>
                                 <img className="main-banner-img" src={images.banner1} />
+                                <p className="main-banner-opacity"/>
                             </div>
                             <div>
                                 <img className="main-banner-img" src={images.banner2} />
+                                <p className="main-banner-opacity"/>
                             </div>
                             <div>
                                 <img className="main-banner-img" src={images.banner3} />
+                                <p className="main-banner-opacity"/>
                             </div>
                         </Carousel>
                     </div>
