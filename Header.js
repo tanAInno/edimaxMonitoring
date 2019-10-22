@@ -12,6 +12,7 @@ import Cookies from 'js-cookie'
 import route from './api';
 import images from './ImageStorage'
 import { setUser, setAddress, setCompany, setDistrict, setEmail, setName, setPhone, setProvince, setSubdistrict, setSurname, setUserId, setZipcode } from './actions/user'
+import { relative } from 'path';
 
 const shoppingStyles = {
     content: {
@@ -22,7 +23,10 @@ const shoppingStyles = {
         marginRight: '0%',
         transform: 'translate(-100%, 0%)',
         borderRadius: '0px',
-        padding: 0
+        padding: 0,
+    },
+    overlay: {
+        zIndex: 10
     }
 };
 
@@ -33,7 +37,10 @@ const loginStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+    },
+    overlay: {
+        zIndex: 10
     }
 };
 
@@ -55,7 +62,7 @@ class Header extends Component {
         let cookie = Cookies.get('access_token')
         let id = Cookies.get('id')
         console.log(cookie)
-        if (cookie != undefined && cookie != ''){
+        if (cookie != undefined && cookie != '') {
             this.getUser(id)
         }
     }
@@ -63,39 +70,39 @@ class Header extends Component {
     async getUser(id) {
         console.log(id)
         await axios.get(route + "users/" + id)
-        .then(response => {
-            const data = response.data.data
-            const user = {
-                _id: data._id,
-                username : data.username,
-                password : data.password,
-                type : data.type,
-                name : data.name,
-                surname : data.surname,
-                email : data.email,
-                company : data.company,
-                address : data.address,
-                province : data.province,
-                district : data.district,
-                subdistrict : data.subdistrict,
-                phone : data.phone,
-                zipcode : data.zipcode,
-                productOrderList : data.productOrderList,
-                serviceOrderList : data.serviceOrderList,
-            }
-            this.props.dispatch(setUser(user))
-            this.props.dispatch(setUserId(user._id))
-            this.props.dispatch(setAddress(user.address))
-            this.props.dispatch(setCompany(user.company))
-            this.props.dispatch(setDistrict(user.district))
-            this.props.dispatch(setEmail(user.email))
-            this.props.dispatch(setName(user.name))
-            this.props.dispatch(setPhone(user.phone))
-            this.props.dispatch(setProvince(user.province))
-            this.props.dispatch(setSubdistrict(user.subdistrict))
-            this.props.dispatch(setSurname(user.surname))
-            this.props.dispatch(setZipcode(user.zipcode))
-        }).catch(error => console.log(error))
+            .then(response => {
+                const data = response.data.data
+                const user = {
+                    _id: data._id,
+                    username: data.username,
+                    password: data.password,
+                    type: data.type,
+                    name: data.name,
+                    surname: data.surname,
+                    email: data.email,
+                    company: data.company,
+                    address: data.address,
+                    province: data.province,
+                    district: data.district,
+                    subdistrict: data.subdistrict,
+                    phone: data.phone,
+                    zipcode: data.zipcode,
+                    productOrderList: data.productOrderList,
+                    serviceOrderList: data.serviceOrderList,
+                }
+                this.props.dispatch(setUser(user))
+                this.props.dispatch(setUserId(user._id))
+                this.props.dispatch(setAddress(user.address))
+                this.props.dispatch(setCompany(user.company))
+                this.props.dispatch(setDistrict(user.district))
+                this.props.dispatch(setEmail(user.email))
+                this.props.dispatch(setName(user.name))
+                this.props.dispatch(setPhone(user.phone))
+                this.props.dispatch(setProvince(user.province))
+                this.props.dispatch(setSubdistrict(user.subdistrict))
+                this.props.dispatch(setSurname(user.surname))
+                this.props.dispatch(setZipcode(user.zipcode))
+            }).catch(error => console.log(error))
     }
 
     openshoppingModal(data) {
@@ -132,12 +139,12 @@ class Header extends Component {
     }
 
     async updateAccessToken(accessToken) {
-        await axios.put(route+"updatetoken",{
+        await axios.put(route + "updatetoken", {
             username: this.props.userReducer.user.username,
             accessToken: accessToken
         }).then(response => {
             this.getUser(accessToken)
-        }).catch(error=> console.log(error))
+        }).catch(error => console.log(error))
     }
 
     logout() {
@@ -152,12 +159,13 @@ class Header extends Component {
         if (active == "main")
             return (
                 <div className="product-header-center">
+                    <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/"><div>HOME</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/product/"><div>PRODUCTS</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     {/* <input className="product-search-input" placeholder={"Search"} /> */}
-                    <div className="product-dummy"/>
+                    <div className="product-dummy" />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={images.noti} />
                     </div>
@@ -170,12 +178,13 @@ class Header extends Component {
         if (active == "product")
             return (
                 <div className="product-header-center">
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/"><div>HOME</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
                     <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/product/"><div>PRODUCTS</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     {/* <input className="product-search-input" placeholder={"Search"} /> */}
-                    <div className="product-dummy"/>
+                    <div className="product-dummy" />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={images.noti} />
                     </div>
@@ -188,12 +197,13 @@ class Header extends Component {
         if (active == "service")
             return (
                 <div className="product-header-center">
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/"><div>HOME</div></Link>
                     <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/product"><div>PRODUCTS</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     {/* <input className="product-search-input" placeholder={"Search"} value={this.state.searchInput} onChange={e => this.handleSearchChange(e)} /> */}
-                    <div className="product-dummy"/>
+                    <div className="product-dummy" />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={images.noti} />
                     </div>
@@ -206,12 +216,13 @@ class Header extends Component {
         if (active == "blog")
             return (
                 <div className="product-header-center">
+                    <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/"><div>HOME</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/service"><div>SERVICES</div></Link>
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/product"><div>PRODUCTS</div></Link>
                     <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     {/* <input className="product-search-input" placeholder={"Search"} value={this.state.searchInput} onChange={e => this.handleSearchChange(e)} /> */}
-                    <div className="product-dummy"/>
+                    <div className="product-dummy" />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={images.noti} />
                     </div>
@@ -225,20 +236,24 @@ class Header extends Component {
 
     renderUserTab() {
         if (this.props.userReducer.user.name != undefined) {
-            return(
+            return (
                 <div className="product-top-container">
-                <Link className="product-top-last-text-name" style={{ textDecoration: 'none' }} to="/profile">{this.props.userReducer.user.name} {this.props.userReducer.user.surname}</Link>
-                <div className="product-top-wall">|</div>
-                <button className="product-top-last-text-button" onClick={() => this.logout()}>ออกจากระบบ</button>
+                    <div className="product-top-user-container">
+                        <Link className="product-top-last-text-name" style={{ textDecoration: 'none' }} to="/profile">{this.props.userReducer.user.name} {this.props.userReducer.user.surname}</Link>
+                        <div className="product-top-wall">|</div>
+                        <button className="product-top-last-text-button" onClick={() => this.logout()}>ออกจากระบบ</button>
+                    </div>
                 </div>
             )
         }
         if (this.props.userReducer.user.name == undefined) {
             return (
                 <div className="product-top-container">
-                <Link className="product-top-last-text" style={{ textDecoration: 'none' }} to="/register">สมัครใหม่</Link>
-                <div className="product-top-wall">|</div>
-                <button className="product-top-last-text-button" onClick={() => this.openloginModal()}>เข้าสู่ระบบ</button>
+                    <div className="product-top-user-container">
+                        <Link className="product-top-last-text" style={{ textDecoration: 'none' }} to="/register">สมัครใหม่</Link>
+                        <div className="product-top-wall">|</div>
+                        <button className="product-top-last-text-button" onClick={() => this.openloginModal()}>เข้าสู่ระบบ</button>
+                    </div>
                 </div>
             )
         }
@@ -252,6 +267,9 @@ class Header extends Component {
                 </div>
                 <div className="product-header-content-wrapper">
                     <div className="product-header-top">
+                        <div className="product-center-logo-wrapper">
+                            <img className="product-center-logo" src={"../assets/images/logo_2.png"} />
+                        </div>
                         {this.renderUserTab()}
                     </div>
                     {this.renderActive(this.props.active)}

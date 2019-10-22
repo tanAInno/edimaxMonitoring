@@ -5,7 +5,12 @@
     margin: auto;
     font-family: 'RSU';
     border-bottom: 3px solid #EEEEEE;
-    height: 120px;
+    height: 120px;    
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: white;
 }
 
 .product-header-logo-wrapper {
@@ -29,11 +34,29 @@
     display: flex;
     flex-direction: row;
     background: white;
-    height: 45px;
+    height: 85px;
     align-items: center;
     justify-content: flex-end;
+    width: 95%;
+    margin-left: 5%;
+}
+
+.product-center-logo-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     width: 100%;
-    margin-bottom: 30px;
+    height: 100%;
+}
+
+.product-top-user-container {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    background: #7FD0DA;
+    border: 0px;
+    border-radius: 50px;
+    align-items: center;
 }
 
 .product-top-logo {
@@ -62,6 +85,7 @@
     margin-right: 5%;
     vertical-align: middle;
     white-space: nowrap;
+    padding-left: 15px;
 }
 
 .product-top-last-text-name {
@@ -71,6 +95,7 @@
     margin-right: 5%;
     vertical-align: middle;
     white-space: nowrap;
+    padding-left: 15px;
 }
 
 .product-top-last-text-button {
@@ -79,19 +104,20 @@
     height: 20px;
     color: #13304F;
     margin-right: 1%;
-    background: white;
+    background: transparent;
     border: 0;
     font-family: 'RSU';
     vertical-align: middle;
-    margin-top: -1px;
+    margin-top: -3px;
     white-space: nowrap;
+    padding-right: 25px;
 }
 
 .product-header-center {
     display: flex;
     flex-direction: row;
     background: white;
-    height: 65px;
+    height: 55px;
     align-items: center;
     justify-content: flex-end;
 }
@@ -113,7 +139,12 @@
 }
 
 .product-header-sub-logo {
-    width: 100%;
+    width: auto;
+    height: 100%;
+}
+
+.product-center-logo {
+    width: auto;
     height: 100%;
 }
 
@@ -147,12 +178,14 @@
         height: 70%;
     }
     .product-header-text {
-        margin-right: 3%;
+        margin-right: 4.5%;
+        margin-left: 4.5%;
         font-size: 22px;
         color: #13304F;
     }
     .product-header-text-active {
-        margin-right: 3%;
+        margin-right: 4.5;
+        margin-left: 4.5%;
         font-size: 22px;
         color: #7FD0DA;
     }
@@ -181,12 +214,14 @@
         height: 70%;
     }
     .product-header-text {
-        margin-right: 3%;
+        margin-right: 4.8%;
+        margin-left: 4.8%;
         font-size: 24px;
         color: #13304F;
     }
     .product-header-text-active {
-        margin-right: 3%;
+        margin-right: 4.8%;
+        margin-left: 4.8%;
         font-size: 24px;
         color: #7FD0DA;
     }
@@ -215,12 +250,14 @@
         height: 80%;
     }
     .product-header-text {
-        margin-right: 5%;
+        margin-right: 6%;
+        margin-left: 6%;
         font-size: 26px;
         color: #13304F;
     }
     .product-header-text-active {
-        margin-right: 5%;
+        margin-right: 6%;
+        margin-left: 6%;
         font-size: 26px;
         color: #7FD0DA;
     }
