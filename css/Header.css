@@ -14,7 +14,7 @@
 }
 
 .product-header-logo-wrapper {
-    width: 8%;
+    width: 12%;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -184,7 +184,7 @@
         color: #13304F;
     }
     .product-header-text-active {
-        margin-right: 4.5;
+        margin-right: 4.5%;
         margin-left: 4.5%;
         font-size: 22px;
         color: #7FD0DA;

@@ -6,6 +6,7 @@ import Adminmain from './Admin'
 import Admin from './AdminLogin'
 import Coupon from './Coupon'
 import ProductCreate from './ProductCreate'
+import Random from './Random'
 import { BrowserRouter, Route, RefreshRoute, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
                 <Route path={`${this.props.match.path}/adminmain`} component={Adminmain} />
                 <Route path={`${this.props.match.path}/coupon`} component={Coupon} />
                 <Route path={`${this.props.match.path}/productcreate`} component={ProductCreate} />
+                <Route path={`${this.props.match.path}/random`} component={Random} />
             </div>
         )
     }

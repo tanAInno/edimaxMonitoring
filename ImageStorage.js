@@ -18,6 +18,7 @@ const images = {
     check: "https://firebasestorage.googleapis.com/v0/b/innocare-b4f65.appspot.com/o/images%2Fweb-content%2Fcheck.png?alt=media&token=c20ec664-49b5-4117-8fb2-c50ffebb1d94",
     shopping: "https://firebasestorage.googleapis.com/v0/b/innocare-b4f65.appspot.com/o/images%2Fweb-content%2Fshopping.jpg?alt=media&token=36cdaa6d-3db6-4acb-9284-c4fcb008515e",
     noti: "https://firebasestorage.googleapis.com/v0/b/innocare-b4f65.appspot.com/o/images%2Fweb-content%2Fnoti.jpg?alt=media&token=c861bd0a-bf22-4980-9242-98d0dda240db",
+    airmask: "https://firebasestorage.googleapis.com/v0/b/innocare-b4f65.appspot.com/o/images%2F302d00fe-cfee-4faa-96cd-501dd5f9653e.jpg?alt=media&token=15bf3df7-86af-4186-b304-fd7aba973275",
 }
 
 export default images

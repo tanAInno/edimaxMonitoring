@@ -165,7 +165,6 @@ class Header extends Component {
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     {/* <input className="product-search-input" placeholder={"Search"} /> */}
-                    <div className="product-dummy" />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={images.noti} />
                     </div>
@@ -184,7 +183,6 @@ class Header extends Component {
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     {/* <input className="product-search-input" placeholder={"Search"} /> */}
-                    <div className="product-dummy" />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={images.noti} />
                     </div>
@@ -203,7 +201,6 @@ class Header extends Component {
                     <Link className="product-header-text" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     {/* <input className="product-search-input" placeholder={"Search"} value={this.state.searchInput} onChange={e => this.handleSearchChange(e)} /> */}
-                    <div className="product-dummy" />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={images.noti} />
                     </div>
@@ -222,7 +219,6 @@ class Header extends Component {
                     <Link className="product-header-text-active" style={{ textDecoration: 'none' }} to="/blog/"><div>BLOG</div></Link>
                     <div className="product-header-text">PROMOTION</div>
                     {/* <input className="product-search-input" placeholder={"Search"} value={this.state.searchInput} onChange={e => this.handleSearchChange(e)} /> */}
-                    <div className="product-dummy" />
                     <div className="product-header-sub-logo-wrapper">
                         <img className="product-header-sub-logo" src={images.noti} />
                     </div>
