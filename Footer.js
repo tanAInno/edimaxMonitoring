@@ -3,6 +3,7 @@ import axios from 'axios'
 import './css/Product.css'
 import './css/Service.css'
 import './css/Main.css'
+import './css/Footer.css'
 import './assets/fonts/fontface.css'
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -12,9 +13,11 @@ class Footer extends Component {
     render() {
         return (
             <div className="footer-container">
-                <div className="footer-top" />
-                <div className="footer-center" />
                 <div className="footer-content">
+                    <div className="footer-triangle-container">
+                        <div className="footer-triangle-left"/>
+                        <div className="footer-triangle-right"/>
+                    </div>
                     <div className="footer-content-top">
                         <div className="footer-content-top-left">
                             <div className="footer-content-header">อินโนสำนักงานใหญ่</div>
@@ -42,18 +45,9 @@ class Footer extends Component {
                         </div>
                         <div className="footer-content-top-right">
                             <div className="footer-content-header">ติดตามอินโน</div>
-                            <div className="footer-content-group">
-                                <img className="footer-logo-img" src={"../assets/images/facebook-black.png"} />
-                                <div className="footer-content-text">Facebook</div>
-                            </div>
-                            <div className="footer-content-group">
-                                <img className="footer-logo-img" src={"../assets/images/line-black.png"} />
-                                <div className="footer-content-text">Line</div>
-                            </div>
-                            <div className="footer-content-group">
-                                <img className="footer-logo-img" src={"../assets/images/website.jpg"} />
-                                <div className="footer-content-text">Website</div>
-                            </div>
+                            <div className="footer-content-text">Facebook</div>
+                            <div className="footer-content-text">Line</div>
+                            <div className="footer-content-text">Website</div>
                         </div>
                     </div>
                 </div>

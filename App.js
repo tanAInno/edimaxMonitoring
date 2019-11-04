@@ -199,18 +199,18 @@ class App extends Component {
                                     <div className="main-content-airmask-detail-text">เคลือบเปลือกมังคุดธรรมชาติปลอดภัยไร้เชื้อ</div>
                                     <div className="main-content-airmask-detail-circle"/>
                                 </div>
-                                <div className="main-content-airmask-detail-wrapper">
+                                <div className="main-content-airmask-detail-wrapper-delay-2">
                                     <div className="main-content-airmask-detail-text">กันฝุ่นในขณะที่ไม่ทำให้ลมดรอป</div>
                                     <div className="main-content-airmask-detail-circle"/>
                                 </div>
                             </div>
                             <img className="main-content-airmask-img" src={images.airmask}/>
                             <div className="main-content-airmask-detail">
-                                <div className="main-content-airmask-detail-wrapper">
+                                <div className="main-content-airmask-detail-wrapper-delay-4">
                                     <div className="main-content-airmask-detail-text">กรองฝุ่นขนาดเล็กได้ถึง PM 10.5</div>
                                     <div className="main-content-airmask-detail-circle"/>
                                 </div>
-                                <div className="main-content-airmask-detail-wrapper">
+                                <div className="main-content-airmask-detail-wrapper-delay-6">
                                     <div className="main-content-airmask-detail-text">เส้นใยถักทอไม่เป็นระเบียบ กรองได้ดีกว่า</div>
                                     <div className="main-content-airmask-detail-circle"/>
                                 </div>
