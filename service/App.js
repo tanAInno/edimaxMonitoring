@@ -17,8 +17,7 @@ class App extends Component {
         return (
             <div className="service-wrapper">
                 <Route exact path={`${this.props.match.path}`} component={Home} />
-                <Route path={`${this.props.match.path}/airservice`} component={Booking}/>
-                <Route path={`${this.props.match.path}/airmaskservice`} component={AirMaskBooking}/>
+                <Route path={`${this.props.match.path}/booking`} component={Booking}/>
                 <Route path={`${this.props.match.path}/datetime`} component={Datetime}/>
                 <Route path={`${this.props.match.path}/addition`} component={Addition}/>
                 <Route path={`${this.props.match.path}/address`} component={Address}/>
