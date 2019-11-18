@@ -150,7 +150,7 @@ class Home extends Component {
             return (
                 <div className="profile-content-box-wrapper">
                 <Tabs className="shopping-modal-tab-wrapper"
-                        activeLinkStyle={{ background: "#FFFFFF", color: "#7FD0DA" }}>
+                        activeLinkStyle={{ background: "#7FD0DA", color: "#FFFFFF" }}>
                         <div className="shopping-modal-tab-header-wrapper">
                             <TabLink className="shopping-modal-tab" to="unpaid">
                                 ที่ต้องชำระ

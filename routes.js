@@ -8,9 +8,11 @@ import Register from './Register/App'
 import Profile from './Profile/App'
 import Admin from './admin/App'
 import Main from './App';
+import ScrollToTop from './ScrollToTop'
 export default () => {
  return (
    <BrowserRouter>
+    <ScrollToTop>
     <Switch>
     <Route exact path="/" component={Main}/>
     <Route path='/monitor' component={Monitor}/>
@@ -21,6 +23,7 @@ export default () => {
     <Route path='/profile' component={Profile}/>
     <Route path='/admin' component={Admin}/>
     </Switch>
+    </ScrollToTop>
    </BrowserRouter>
  )
 }

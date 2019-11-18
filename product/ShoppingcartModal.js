@@ -127,7 +127,7 @@ class ShoppingcartModal extends Component {
                         <div className="shopping-modal-header">รถเข็น</div>
                     </div>
                     <Tabs className="shopping-modal-tab-wrapper"
-                        activeLinkStyle={{ background: "#FFFFFF", color: "#7FD0DA" }}>
+                        activeLinkStyle={{ background: "#7FD0DA", color: "#FFFFFF" }}>
                         <div className="shopping-modal-tab-header-wrapper">
                             <TabLink className="shopping-modal-tab" to="all">
                                 ALL

@@ -10,7 +10,7 @@ import { Link, Redirect } from 'react-router-dom';
 import './assets/fonts/fontface.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Player } from 'video-react';
 import "./node_modules/video-react/dist/video-react.css";
 import images from './ImageStorage'
@@ -19,7 +19,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { fadeIn } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 
-library.add(faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight)
+library.add(faArrowCircleLeft, faArrowCircleRight, faChevronLeft, faChevronRight, faArrowLeft, faArrowRight)
 
 const styles = {
     fadeIn: {
@@ -120,24 +120,45 @@ class App extends Component {
                                         <div className="main-content-box-first">
                                             <div className="main-content-box-img-wrapper">
                                                 <div className="main-content-box-img">
-                                                    <img className="main-content-box-img" src="../assets/images/building.jpg"/>
+                                                    <img className="main-content-box-img" src="../assets/images/IAQHead.jpg"/>
                                                 </div>
                                             </div>
                                             <div className="main-content-box-wrapper">
-                                                <div className="main-content-box-header">แอร์ของคุณกำลังมีปัญหาหรือไม่?</div>
-                                                <div className="main-content-box-text">ผู้คนส่วนใหญ่มักเข้าใจว่าภายในอาคารนั้นปลอดภัย เพราะมีการควบคุมอากาศด้วยระบบปรับอากาศที่มีการทำความสะอาดอยู่เสมอ แต่รู้หรือไม่ว่า? คุณภาพอากาศภายในอาคารนั้นไม่ได้ปลอดภัยอย่างแท้จริง</div>
-                                                <Link className="main-content-box-nav-right" to="/blog">เพิ่มเติม</Link>
+                                                <div className="main-content-box-header">(IAQ) Indoor Air Quality Solution</div>
+                                                <div className="main-content-box-text">ในปัจจุบัน ผู้คนส่วนใหญ่มักเข้าใจว่าภายในอาคารนั้นปลอดภัย เพราะมีการควบคุมอากาศด้วยระบบปรับอากาศที่มีการทำความสะอาดอยู่เสมอ แต่รู้หรือไม่ว่า ? คุณภาพอากาศภายในนั้นอาคารนั้นไม่ได้ปลอดภัยอย่างแท้จริง</div>
+                                                <div className="main-content-box-nav-wrapper-right">
+                                                    <Link className="main-content-box-nav-right" to="/blog/iaq">เพิ่มเติม</Link>
+                                                    <FontAwesomeIcon className="main-content-box-nav-icon" icon="arrow-right" />
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="main-content-box">
                                             <div className="main-content-box-wrapper">
-                                                <div className="main-content-box-header">กำจัดฝุ่นอย่างไรให้ได้ผล</div>
-                                                <div className="main-content-box-text">จากการวิจัยของ องค์กรอนามัยโลก (WHO) พบว่า 30% ของอาคารที่มนุษย์อาศัยอยู่นั้นมีปัญหามลพิษทางอากาศสูงกว่าภายนอกถึง 30 เท่า</div>
-                                                <Link className="main-content-box-nav-left" to="/blog">เพิ่มเติม</Link>
+                                                <div className="main-content-box-header">เลือกเครื่องปรับอากาศให้ประหยัดพลังงาน และประหยัดเงิน</div>
+                                                <div className="main-content-box-text">หลายคนกำลังเลือกซื้อเครื่องปรับอากาศที่ประหยัดพลังงาน และประหยัดเงิน แต่ก็ไม่รู้จะเลือกซื้อเครื่องปรับอากาศอย่างไรดีให้ได้ประสิทธิภาพที่สูงสุด อินโนแคร์จึงขอนำความรู้เบื้องต้นในการเลือกซื้อเครื่องปรับอากาศมาฝาก</div>
+                                                <div className="main-content-box-nav-wrapper-left">
+                                                    <FontAwesomeIcon className="main-content-box-nav-icon" icon="arrow-left" />
+                                                    <Link className="main-content-box-nav-left" to="/blog/air">เพิ่มเติม</Link>
+                                                </div>
                                             </div>
                                             <div className="main-content-box-img-wrapper">
                                                 <div className="main-content-box-img">
-                                                    <img className="main-content-box-img" src="../assets/images/building.jpg"/>
+                                                    <img className="main-content-box-img" src="../assets/images/AirHeader.jpg"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="main-content-box-first" style={{marginTop: '20px'}}>
+                                            <div className="main-content-box-img-wrapper">
+                                                <div className="main-content-box-img">
+                                                    <img className="main-content-box-img" src="../assets/images/FilterHeader.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div className="main-content-box-wrapper">
+                                                <div className="main-content-box-header">เครื่องปรับอากาศ อาจเป็นแหล่งเพาะเชื้อโรค….</div>
+                                                <div className="main-content-box-text">เพราะเครื่องปรับอากาศหากยิ่งเปิดใช้งานบ่อยและนานเท่าไหร่ ก็จะยิ่งมีฝุ่นเข้าไปสะสมภายในเครื่องปรับอากาศมากขึ้นเท่านั้น ทำให้เครื่องปรับอากาศกลายเป็นแหล่งสะสมของฝุ่นและแบคทีเรีย ซึ่งความชื้นภายในเครื่องปรับอากาศจะทำให้แบคทีเรียที่สะสมอยู่นั้นกลายเป็นแหล่งเชื้อโรคในทันที</div>
+                                                <div className="main-content-box-nav-wrapper-right">
+                                                    <Link className="main-content-box-nav-right" to="/blog/filter">เพิ่มเติม</Link>
+                                                    <FontAwesomeIcon className="main-content-box-nav-icon" icon="arrow-right" />
                                                 </div>
                                             </div>
                                         </div>
@@ -223,7 +244,7 @@ class App extends Component {
                                 <div className="main-content-airmask-view">
                                     <div className="main-content-airmask-detail">
                                         <div className="main-content-airmask-detail-wrapper">
-                                            <div className="main-content-airmask-detail-text">เคลือบเปลือกมังคุดธรรมชาติปลอดภัยไร้เชื้อ</div>
+                                            <div className="main-content-airmask-detail-text">ใช้ได้กับเครื่องปรับอากาศทุกยี่ห้อ</div>
                                             <div className="main-content-airmask-detail-circle" />
                                         </div>
                                         <div className="main-content-airmask-detail-wrapper-delay-2">

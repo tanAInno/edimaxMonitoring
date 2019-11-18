@@ -21,7 +21,7 @@ firebase.initializeApp(config);
 ReactDOM.render(
     <Provider store={store}>
     <HttpsRedirect>
-    <AppRoutes />
+    <AppRoutes onUpdate={() => window.scrollTo(0, 0)}/>
     </HttpsRedirect>
     </Provider>, 
     document.getElementById('app')

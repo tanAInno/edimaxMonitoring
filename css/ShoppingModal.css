@@ -73,9 +73,9 @@
 .shopping-modal-tab {
     width: 33.3333333333333%;
     min-height: 40px;
-    background: #7FD0DA;
+    background: #FFFFFF;
     text-align: center;
-    color: white;
+    color: #7FD0DA;
     font-size: 22px;
     font-family: 'RSU';
     border: 0;
@@ -83,7 +83,6 @@
 
 .shopping-modal-table {
     width: 95%;
-    height: 75vh;
     display: flex;
     flex-direction: column;
     align-items: center;
